@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Museum Portals: An Interactive Journey</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Scene 1: Museum Entrance -->
+    <div id="entrance-scene" class="scene active">
+        <div class="museum-facade">
+            <div class="pillars">
+                <div class="pillar left"></div>
+                <div class="pillar right"></div>
+            </div>
+            <div class="lion-statues">
+                <div class="lion left"></div>
+                <div class="lion right"></div>
+            </div>
+            <div class="entrance-door" id="entrance-door">
+                <div class="door-left"></div>
+                <div class="door-right"></div>
+                <div class="door-handles">
+                    <div class="handle left"></div>
+                    <div class="handle right"></div>
+                </div>
+                <div class="tooltip">Click to Enter</div>
+            </div>
+        </div>
+        <div class="title-overlay hidden" id="welcome-title">
+            <h1>Welcome to The Grand Museum of Worlds</h1>
+        </div>
+    </div>
+
+    <!-- Scene 2: Choose Museum Hall -->
+    <div id="lobby-scene" class="scene">
+        <div class="lobby-background">
+            <h2 class="lobby-title">Choose Your Journey</h2>
+            <div class="portals-container">
+                <!-- History Museum Portal -->
+                <div class="portal history-portal" data-museum="history">
+                    <div class="portal-frame">
+                        <div class="portal-glow"></div>
+                        <div class="portal-content">
+                            <div class="portal-icon">🏛️</div>
+                            <h3>History Museum</h3>
+                            <p>Ancient Civilization Hall</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Natural History Museum Portal -->
+                <div class="portal nature-portal" data-museum="nature">
+                    <div class="portal-frame">
+                        <div class="portal-glow"></div>
+                        <div class="portal-content">
+                            <div class="portal-icon">🦖</div>
+                            <h3>Natural History Museum</h3>
+                            <p>Prehistoric Wonders</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fine Arts Museum Portal -->
+                <div class="portal art-portal" data-museum="art">
+                    <div class="portal-frame">
+                        <div class="portal-glow"></div>
+                        <div class="portal-content">
+                            <div class="portal-icon">🎨</div>
+                            <h3>Fine Arts Museum</h3>
+                            <p>Masters Collection</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- History Museum -->
+    <div id="history-museum" class="scene museum-scene">
+        <div class="museum-background history-bg">
+            <h2 class="museum-title">Ancient Civilization Hall</h2>
+            <div class="artifacts-container">
+                <!-- Egyptian Death Mask -->
+                <div class="artifact-pedestal" data-artifact="death-mask">
+                    <div class="artifact-display">
+                        <div class="artifact death-mask"></div>
+                    </div>
+                    <div class="artifact-label">Egyptian Gold Death Mask</div>
+                </div>
+
+                <!-- Royal Crown -->
+                <div class="artifact-pedestal" data-artifact="crown">
+                    <div class="artifact-display">
+                        <div class="artifact royal-crown"></div>
+                    </div>
+                    <div class="artifact-label">Royal Crown of Medieval Empire</div>
+                </div>
+
+                <!-- Ceremonial Scepter -->
+                <div class="artifact-pedestal" data-artifact="scepter">
+                    <div class="artifact-display">
+                        <div class="artifact ceremonial-scepter"></div>
+                    </div>
+                    <div class="artifact-label">Ceremonial War Scepter</div>
+                </div>
+            </div>
+            <button class="return-btn" data-return="lobby">Return to Lobby</button>
+        </div>
+    </div>
+
+    <!-- Natural History Museum -->
+    <div id="nature-museum" class="scene museum-scene">
+        <div class="museum-background nature-bg">
+            <h2 class="museum-title">Prehistoric Wonders</h2>
+            <div class="artifacts-container">
+                <!-- T-Rex Skull -->
+                <div class="artifact-pedestal" data-artifact="trex">
+                    <div class="artifact-display">
+                        <div class="artifact trex-skull"></div>
+                    </div>
+                    <div class="artifact-label">Tyrannosaurus Rex Skull</div>
+                </div>
+
+                <!-- Pterosaur -->
+                <div class="artifact-pedestal" data-artifact="pterosaur">
+                    <div class="artifact-display">
+                        <div class="artifact pterosaur-skeleton"></div>
+                    </div>
+                    <div class="artifact-label">Pteranodon Skeleton</div>
+                </div>
+
+                <!-- Mammoth Skull -->
+                <div class="artifact-pedestal" data-artifact="mammoth">
+                    <div class="artifact-display">
+                        <div class="artifact mammoth-skull"></div>
+                    </div>
+                    <div class="artifact-label">Woolly Mammoth Skull</div>
+                </div>
+            </div>
+            <button class="return-btn" data-return="lobby">Return to Lobby</button>
+        </div>
+    </div>
+
+    <!-- Fine Arts Museum -->
+    <div id="art-museum" class="scene museum-scene">
+        <div class="museum-background art-bg">
+            <h2 class="museum-title">Masters Collection</h2>
+            <div class="artifacts-container art-layout">
+                <!-- Mona Lisa -->
+                <div class="artifact-pedestal art-frame" data-artifact="mona-lisa">
+                    <div class="artifact-display">
+                        <div class="artifact mona-lisa"></div>
+                    </div>
+                    <div class="artifact-label">Mona Lisa</div>
+                </div>
+
+                <!-- Venus de Milo -->
+                <div class="artifact-pedestal" data-artifact="venus">
+                    <div class="artifact-display">
+                        <div class="artifact venus-statue"></div>
+                    </div>
+                    <div class="artifact-label">Venus de Milo</div>
+                </div>
+
+                <!-- Last Supper -->
+                <div class="artifact-pedestal art-frame" data-artifact="last-supper">
+                    <div class="artifact-display">
+                        <div class="artifact last-supper"></div>
+                    </div>
+                    <div class="artifact-label">The Last Supper</div>
+                </div>
+            </div>
+            <button class="return-btn" data-return="lobby">Return to Lobby</button>
+        </div>
+    </div>
+
+    <!-- 3D Artifact Viewer Modal -->
+    <div id="artifact-viewer" class="viewer-modal hidden">
+        <div class="viewer-container">
+            <div class="viewer-canvas" id="viewer-canvas">
+                <div class="artifact-3d" id="artifact-3d"></div>
+            </div>
+            <div class="viewer-info">
+                <h3 id="viewer-title">Artifact Name</h3>
+                <p id="viewer-description">Artifact description goes here...</p>
+                <div class="viewer-controls">
+                    <span>Drag to rotate • Scroll to zoom</span>
+                </div>
+            </div>
+            <button class="close-viewer" id="close-viewer">✕</button>
+        </div>
+    </div>
+
+    <!-- Audio Elements -->
+    <audio id="ambient-sound" loop></audio>
+    <audio id="sfx-sound"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
