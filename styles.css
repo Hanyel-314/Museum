@@ -488,21 +488,44 @@ body {
     align-items: center;
     justify-content: center;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
     box-shadow: 0 10px 30px rgba(0,0,0,0.5),
                 inset 0 0 30px rgba(212,175,55,0.1);
+    /* 3D perspective setup */
+    perspective: 1200px;
+    transform-style: preserve-3d;
 }
 
 .artifact {
     width: 80%;
     height: 80%;
     position: relative;
-    transition: transform 0.3s ease;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+    /* Initial 3D positioning */
+    transform: rotateX(5deg) rotateY(-5deg) translateZ(20px);
 }
 
 .artifact-pedestal:hover .artifact {
-    transform: scale(1.1);
-    filter: brightness(1.2);
+    /* Enhanced 3D hover effect with rotation and lift */
+    transform: rotateX(-8deg) rotateY(12deg) translateZ(50px) scale(1.08);
+    filter: brightness(1.25) drop-shadow(0 20px 40px rgba(0,0,0,0.4));
+}
+
+/* Add 3D base shadow that moves with rotation */
+.artifact::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    transform: translateZ(-40px);
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+.artifact-pedestal:hover .artifact::after {
+    opacity: 1;
 }
 
 /* History Artifacts */
@@ -521,13 +544,18 @@ body {
         inset 0 -5px 15px rgba(0,0,0,0.2),
         /* Outer glow */
         0 0 50px rgba(255,215,0,0.6),
-        0 5px 25px rgba(0,0,0,0.3);
+        0 5px 25px rgba(0,0,0,0.3),
+        /* 3D depth shadow */
+        -8px 8px 20px rgba(0,0,0,0.3),
+        -12px 12px 30px rgba(0,0,0,0.2);
     /* Chisel marks texture simulation */
     background-size: 100% 100%, 3px 3px;
     filter: contrast(1.05) saturate(1.1);
+    /* 3D mask contour */
+    transform-style: preserve-3d;
 }
 
-/* Lapis lazuli stripes on nemes headdress */
+/* Lapis lazuli stripes on nemes headdress - raised inlay */
 .death-mask::before {
     content: '';
     position: absolute;
@@ -546,23 +574,13 @@ body {
     left: 34%;
     box-shadow:
         0 0 15px rgba(30,58,138,0.8),
-        inset 0 2px 5px rgba(0,0,0,0.4);
+        inset 0 2px 5px rgba(0,0,0,0.4),
+        /* 3D raised effect */
+        0 3px 6px rgba(0,0,0,0.5),
+        inset 0 -1px 3px rgba(255,255,255,0.3);
     border-radius: 2px;
-}
-
-/* Uraeus (cobra) and vulture forehead crest */
-.death-mask::after {
-    content: '𓆗';
-    position: absolute;
-    font-size: 28px;
-    top: 4%;
-    left: 50%;
-    transform: translateX(-50%);
-    color: #ffd700;
-    text-shadow:
-        0 2px 4px rgba(0,0,0,0.5),
-        0 0 10px rgba(255,215,0,0.6);
-    filter: drop-shadow(0 1px 2px rgba(139,90,43,0.4));
+    /* Lift lapis stripe forward in 3D space */
+    transform: translateZ(8px);
 }
 
 .royal-crown {
@@ -593,11 +611,16 @@ body {
         /* Mixed lighting for gem sparkle */
         -3px -3px 15px rgba(135,206,235,0.3),
         3px 3px 20px rgba(255,215,0,0.5),
-        0 8px 30px rgba(0,0,0,0.4);
+        0 8px 30px rgba(0,0,0,0.4),
+        /* 3D crown depth */
+        -6px 10px 25px rgba(0,0,0,0.4),
+        -10px 15px 35px rgba(0,0,0,0.3);
     filter: contrast(1.1) brightness(0.95);
+    /* 3D dimensional crown */
+    transform-style: preserve-3d;
 }
 
-/* Fleur-de-lis motifs */
+/* Fleur-de-lis motifs - raised embossing */
 .royal-crown::before {
     content: '⚜';
     position: absolute;
@@ -605,11 +628,17 @@ body {
     top: 15%;
     left: 20%;
     color: #d4af37;
-    text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+    text-shadow:
+        0 2px 5px rgba(0,0,0,0.5),
+        /* 3D emboss effect */
+        -1px -1px 0 rgba(255,255,255,0.3),
+        1px 1px 2px rgba(0,0,0,0.4);
     opacity: 0.8;
+    /* Raise emblem in 3D */
+    transform: translateZ(6px);
 }
 
-/* Central gemstones: sapphires, emeralds, rubies */
+/* Central gemstones: sapphires, emeralds, rubies - faceted 3D gems */
 .royal-crown::after {
     content: '';
     position: absolute;
@@ -629,6 +658,8 @@ body {
         radial-gradient(circle at 65% 55%, rgba(255,255,255,0.85) 0%, transparent 3.5%);
     animation: gemSparkle 3s ease-in-out infinite;
     filter: drop-shadow(0 2px 4px rgba(0,0,0,0.6));
+    /* Gems protrude forward */
+    transform: translateZ(10px);
 }
 
 @keyframes gemSparkle {
@@ -663,11 +694,16 @@ body {
         inset 4px 0 12px rgba(212,175,55,0.3),
         /* Outer glow from gold */
         0 0 25px rgba(255,215,0,0.3),
-        0 6px 18px rgba(0,0,0,0.5);
+        0 6px 18px rgba(0,0,0,0.5),
+        /* 3D cylindrical depth */
+        5px 8px 15px rgba(0,0,0,0.4),
+        8px 12px 25px rgba(0,0,0,0.3);
     filter: contrast(1.1);
+    /* 3D rod form */
+    transform-style: preserve-3d;
 }
 
-/* Gold serpent head with scale details */
+/* Gold serpent head with scale details - sculpted 3D */
 .ceremonial-scepter::before {
     content: '';
     position: absolute;
@@ -689,21 +725,27 @@ body {
     box-shadow:
         inset -3px -3px 8px rgba(0,0,0,0.4),
         inset 2px 2px 6px rgba(255,255,255,0.3),
-        0 0 15px rgba(255,215,0,0.4);
+        0 0 15px rgba(255,215,0,0.4),
+        /* 3D serpent projection */
+        0 4px 10px rgba(0,0,0,0.5);
+    /* Serpent head extends forward */
+    transform: translateZ(12px);
 }
 
-/* Garnet eyes with blood-red glint */
+/* Garnet eyes with blood-red glint - faceted gemstone */
 .ceremonial-scepter::after {
     content: '◆';
     position: absolute;
     font-size: 12px;
     top: 5%;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-50%) translateZ(15px);
     color: #dc2626;
     text-shadow:
         0 0 8px rgba(220,38,38,0.9),
-        0 2px 4px rgba(0,0,0,0.6);
+        0 2px 4px rgba(0,0,0,0.6),
+        /* 3D gem facet */
+        -1px -1px 0 rgba(255,100,100,0.4);
     animation: garnetGlow 2s ease-in-out infinite;
 }
 
@@ -739,11 +781,16 @@ body {
         inset 25px 20px 45px rgba(200,180,150,0.2),
         /* Back glow for shadows */
         inset 0 -10px 25px rgba(0,0,0,0.5),
-        0 10px 35px rgba(0,0,0,0.6);
+        0 10px 35px rgba(0,0,0,0.6),
+        /* 3D skull volume */
+        -10px 12px 30px rgba(0,0,0,0.5),
+        -15px 18px 45px rgba(0,0,0,0.4);
     filter: contrast(1.15) saturate(0.9);
+    /* 3D fossil structure */
+    transform-style: preserve-3d;
 }
 
-/* Hollow orbital cavity (eye socket) */
+/* Hollow orbital cavity (eye socket) - deep recess */
 .trex-skull::before {
     content: '';
     position: absolute;
@@ -758,6 +805,8 @@ body {
         inset 0 0 15px rgba(0,0,0,0.9),
         inset -5px -5px 20px rgba(0,0,0,0.8),
         0 2px 8px rgba(0,0,0,0.7);
+    /* Eye socket recedes into skull */
+    transform: translateZ(-20px);
 }
 
 /* Predatory teeth with serration lines */
@@ -816,8 +865,13 @@ body {
         inset 0 15px 30px rgba(255,255,255,0.3),
         inset 0 -10px 20px rgba(0,0,0,0.3),
         0 0 35px rgba(212,197,176,0.4),
-        0 8px 25px rgba(0,0,0,0.4);
+        0 8px 25px rgba(0,0,0,0.4),
+        /* 3D wing span depth */
+        -8px 10px 20px rgba(0,0,0,0.3),
+        -12px 15px 30px rgba(0,0,0,0.2);
     filter: contrast(1.05);
+    /* 3D skeleton structure */
+    transform-style: preserve-3d;
 }
 
 /* Long beak structure */
@@ -890,8 +944,13 @@ body {
         inset 18px 18px 35px rgba(255,255,255,0.4),
         /* Fossil density depth */
         inset 0 -8px 20px rgba(0,0,0,0.3),
-        0 10px 30px rgba(0,0,0,0.5);
+        0 10px 30px rgba(0,0,0,0.5),
+        /* 3D skull mass */
+        -12px 14px 35px rgba(0,0,0,0.4),
+        -18px 20px 50px rgba(0,0,0,0.3);
     filter: contrast(1.1) saturate(0.95);
+    /* 3D mammoth form */
+    transform-style: preserve-3d;
 }
 
 /* Large molar sockets */
@@ -1002,8 +1061,12 @@ body {
         /* Gold Renaissance frame reflection */
         inset 0 0 3px rgba(212,175,55,0.4),
         0 0 40px rgba(212,165,116,0.35),
-        0 10px 35px rgba(0,0,0,0.4);
+        0 10px 35px rgba(0,0,0,0.4),
+        /* 3D canvas depth */
+        -5px 8px 20px rgba(0,0,0,0.3);
     filter: contrast(1.05) saturate(0.9);
+    /* 3D painting layers */
+    transform-style: preserve-3d;
 }
 
 /* Subtle portrait silhouette suggestion */
@@ -1074,8 +1137,13 @@ body {
         inset 0 -15px 30px rgba(0,0,0,0.25),
         inset 0 15px 25px rgba(255,255,255,0.3),
         /* Outer pedestal shadow */
-        0 15px 45px rgba(0,0,0,0.5);
+        0 15px 45px rgba(0,0,0,0.5),
+        /* 3D sculptural volume */
+        -15px 18px 40px rgba(0,0,0,0.4),
+        -20px 25px 55px rgba(0,0,0,0.3);
     filter: contrast(1.08) brightness(1.05);
+    /* 3D marble form */
+    transform-style: preserve-3d;
 }
 
 /* Broken arm stumps - chips and fractures */
@@ -1173,8 +1241,12 @@ body {
         inset 0 0 5px rgba(139,111,77,0.3),
         /* Conservation frame */
         0 0 35px rgba(139,111,77,0.25),
-        0 12px 40px rgba(0,0,0,0.45);
+        0 12px 40px rgba(0,0,0,0.45),
+        /* 3D mural depth */
+        -6px 10px 25px rgba(0,0,0,0.3);
     filter: contrast(1.05) saturate(0.85);
+    /* 3D fresco perspective */
+    transform-style: preserve-3d;
 }
 
 /* Linear perspective to rear window - architectural depth */
