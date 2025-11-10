@@ -15,40 +15,40 @@ const state = {
 // Artifact Data
 const artifactData = {
     'death-mask': {
-        name: 'Egyptian Gold Death Mask',
-        description: 'Golden funerary mask adorned with lapis-blue stripes, inlaid turquoise, and obsidian eye inlays. Symbol of eternal afterlife and pharaoh divinity. Dating back to ancient Egypt, this magnificent piece represents the belief in life after death and the divine right of pharaohs to rule in both the mortal and spiritual realms.'
+        name: 'Egyptian Gold Funerary Mask',
+        description: 'Crafted from hammered and cast solid gold with lapis lazuli inlaid stripes, obsidian and quartz eyes. This masterwork (approx. 54-60 cm height) features delicate eyebrow ridge carving, subtle lip curve, pierced earlobes, braided ceremonial beard, and uraeus-vulture forehead crest. Surface shows fine chisel marks, subtle dents from hand-shaping, faint oxidation shadows on gold edges, and micro-scratches on cheek planes. The warm 24K gold with deep ultramarine lapis (with gold flecks) creates a polished yet aged patina. Symbolizes divine royalty, afterlife protection, and the unification of earthly king and god. Displayed on a matte black stone plinth with warm spotlight and soft back-rim glow emphasizing contours and gemstone reflections.'
     },
     'crown': {
-        name: 'Royal Crown of Medieval Empire',
-        description: 'A 14th-century ceremonial crown with a red velvet base, gold arches, sapphires and emeralds, cross and fleur-de-lis details. This crown symbolizing divine right and military power was worn by monarchs during coronations and important state ceremonies, representing the sacred bond between earthly rule and heavenly authority.'
+        name: 'Medieval Royal Crown',
+        description: '14th-century ceremonial masterpiece featuring a gold band with gothic arches, velvet inner cap, and claw-set sapphires, emeralds, rubies, and diamonds (approx. 20-22 cm diameter). The antique gold tone shows tarnished edges with micro chips in gemstones and hand-stitched gold thread slightly frayed inside rim. Deep royal velvet red exhibits slight sun-fading. Ornate details include fleur-de-lis motifs, central cross finial, and jewel settings with visible prongs. Symbolizes divine right of kings and military/spiritual authority. Displayed on a round silk-lined pedestal cushion with cool and warm mixed beams to enhance gem refractive sparkle.'
     },
     'scepter': {
         name: 'Ceremonial War Scepter',
-        description: 'High ruler\'s scepter used in coronation and battle blessings. Carved from ebony with a gold serpent head and red gemstone eyes. Represents command, law, and spiritual might. The serpent symbolizes wisdom and eternal power, while the staff represents the ruler\'s authority to govern and protect their people.'
+        description: 'Commanding authority piece (110-120 cm length) crafted from ebony shaft with sculpted gold serpent head, garnet inset eyes, and rope-wrapped grip. The polished wood grain reveals hairline cracks, faint tool marks on gold serpent scales, and fraying fiber threads. Deep black ebony contrasts with rich gold (mild dulling at edges) and blood-red garnet glint. The coiled serpent motif represents authority, protection, intimidation, and divine command. Features balanced ceremonial proportions on a long slate base with transparent dual armature supports. Side rim accent lighting reveals serpent relief and garnet reflection.'
     },
     'trex': {
-        name: 'Tyrannosaurus Rex Skull Fossil',
-        description: 'The apex predator of the Cretaceous period, approximately 68 million years old. This magnificent skull showcases the massive bone structure, cracked surfaces from millions of years of fossilization, broken teeth, and deep shadowed eye sockets. The T-Rex was one of the largest land carnivores ever to walk the Earth, reaching lengths of up to 40 feet.'
+        name: 'Tyrannosaurus Rex Skull',
+        description: 'Late Cretaceous apex predator (≈68 million years old). This fossilized bone skull (length 1.3-1.5 meters) features massive jaw hinge, predatory teeth with serration lines, and hollow orbital cavities. The surface displays erosion pits, porous bone texture, sediment filling cracks, and mineral deposits. Dark umber to ochre fossil tones show soil and calcite residue. Repaired fracture lines are visible throughout. Mounted on a matte steel frame with low side light and back glow for dramatic depth and shadows, emphasizing the power of Earth\'s most fearsome predator.'
     },
     'pterosaur': {
         name: 'Pteranodon Skeleton',
-        description: 'Ancient flying reptile with a wingspan reaching 7 meters. First dominators of the skies during the Late Cretaceous period. This specimen features thin, hollow bone wings, a long pointed beak, and a distinctive hollow skull structure designed for lightweight flight. Despite their impressive size, pterosaurs were remarkably light, weighing only about 50 pounds.'
+        description: 'Late Cretaceous flying reptile with wingspan approximately 6-7 meters. Light fossilized bone mounted with thin suspension wires showcases delicate bone pores, fragile wing phalanges, and patch repair seams. Pale tan to soft grey fossil hues with chalky matte finish reveal the hollow-bone aerodynamic structure. Features long beak and elongated wing bones designed for flight. First dominators of the skies, these magnificent creatures achieved flight through remarkably lightweight construction. Ceiling suspension with minimal ground anchors and top-down cool light enhances the "floating" silhouette effect.'
     },
     'mammoth': {
         name: 'Woolly Mammoth Skull',
-        description: 'Ice age giant with massive curved tusks used for defense and digging through snow to find vegetation. This skull exhibits thick bone structure and textured aging cracks from thousands of years of preservation in permafrost. Woolly mammoths roamed the northern tundra during the Pleistocene epoch and went extinct around 4,000 years ago.'
+        description: 'Pleistocene ice age giant featuring fossil bone and ivory tusks (skull width 0.9-1.1 m; tusk arc 1.5-2 m) with natural cracking and mineral staining. Layered dentine rings in tusks, weathered bone pores, and flaking calcified texture showcase millennia of preservation. Bone-toned grey-white with warm mineral streaks; ivory yellowed with age. Large molar sockets and curved tusks with smooth abrasion at tips demonstrate adaptation for defense and snow digging. Mounted on solid wood base with steel tusk brackets. Warm diagonal light emphasizes curvature and fossil density of this magnificent tundra dweller that went extinct around 4,000 years ago.'
     },
     'mona-lisa': {
         name: 'Mona Lisa',
-        description: 'Leonardo da Vinci\'s masterpiece, painted between 1503-1519. Renowned for the subject\'s mysterious expression and revolutionary realism. The painting demonstrates da Vinci\'s mastery of sfumato technique, creating soft, almost imperceptible transitions between colors and tones. The enigmatic smile has captivated viewers for centuries, making it the most famous painting in the world.'
+        description: 'Leonardo da Vinci\'s revolutionary masterpiece (1503-1519), oil on wood panel using sfumato technique. Fine craquelure cracking, subtle glaze layers, and soft tonal transitions create the enigmatic expression. Aged varnish tint adds warmth to skin tones against cool misty landscape and earthy garments. The ambiguous smile, crossed hands, and atmospheric perspective background showcase humanist ideals and psychological ambiguity. Displayed in a gold-carved Renaissance frame with museum-grade glass. Soft diffused frontal lighting ensures no harsh reflections on this most famous painting, allowing viewers to experience the mystery that has captivated the world for centuries.'
     },
     'venus': {
         name: 'Venus de Milo',
-        description: 'Ancient Greek sculpture created between 130 and 100 BC, carved from smooth white marble. Despite missing arms, this masterpiece symbolizes ideal beauty and divine femininity. The flowing Greek drapery demonstrates extraordinary skill in depicting fabric in stone. Believed to represent Aphrodite, the Greek goddess of love and beauty.'
+        description: 'Ancient Greek sculpture (130-100 BC) carved from white Parian marble, standing approximately 2.0-2.1 meters tall. Smooth classical polish with slight grain texture, warm white with subtle yellow patina and mineral flecks. Notable features include chips at nose and hair, fractured arm stumps, draped classical garment folds, idealized anatomy, and graceful head tilt. Symbolizes feminine beauty and divine grace as Aphrodite, Greek goddess of love. Displayed on a circular stone base with low cord barrier. High directional spotlight creates sculptural shadow drama, revealing the extraordinary skill in depicting flowing fabric in stone despite the passage of millennia.'
     },
     'last-supper': {
         name: 'The Last Supper',
-        description: 'Leonardo da Vinci\'s monumental fresco painted between 1495-1498. This masterwork depicts the moment Jesus announces that one of his disciples will betray him. The composition showcases da Vinci\'s genius in capturing human emotion, psychological drama, and the use of perspective to create architectural depth. A powerful story of faith, betrayal, and human emotion frozen in time.'
+        description: 'Leonardo da Vinci\'s monumental composition (1495-1498), mural recreation on treated canvas. Visible restoration seams, fine pigment aging, and micro crackle reveal centuries of preservation efforts. Earth pigments create muted blues and reds with aged brightness. Linear perspective to rear window creates remarkable architectural depth, while expressive apostles display symbolic gestures capturing the moment of betrayal prophecy. The textile pattern on tablecloth and careful composition demonstrate da Vinci\'s genius in human emotional drama. Museum hanging with conservation notes and even wall-washer lighting plus soft overhead strip to avoid glare, preserving this masterwork of faith, betrayal, and human emotion for future generations.'
     }
 };
 

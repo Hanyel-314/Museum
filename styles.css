@@ -508,212 +508,714 @@ body {
 /* History Artifacts */
 .death-mask {
     background:
-        radial-gradient(ellipse at center, #ffd700 0%, #d4af37 50%, #b8860b 100%);
+        /* 24K gold with patina and hand-shaping variations */
+        radial-gradient(ellipse at 35% 30%, #ffed4e 0%, #ffd700 20%, #d4af37 60%, #b8860b 100%),
+        /* Subtle oxidation shadows */
+        linear-gradient(135deg, transparent 0%, rgba(139,90,43,0.1) 50%, transparent 100%);
     clip-path: polygon(30% 0%, 70% 0%, 85% 20%, 90% 50%, 85% 80%, 70% 100%, 30% 100%, 15% 80%, 10% 50%, 15% 20%);
     box-shadow:
-        inset 0 -20px 30px rgba(0,0,0,0.3),
-        inset 0 20px 30px rgba(255,255,255,0.3),
-        0 0 40px rgba(255,215,0,0.5);
+        /* Warm spotlight with rim glow */
+        inset -15px -25px 40px rgba(139,90,43,0.4),
+        inset 15px 20px 35px rgba(255,255,255,0.4),
+        /* Contour emphasis */
+        inset 0 -5px 15px rgba(0,0,0,0.2),
+        /* Outer glow */
+        0 0 50px rgba(255,215,0,0.6),
+        0 5px 25px rgba(0,0,0,0.3);
+    /* Chisel marks texture simulation */
+    background-size: 100% 100%, 3px 3px;
+    filter: contrast(1.05) saturate(1.1);
 }
 
+/* Lapis lazuli stripes on nemes headdress */
 .death-mask::before {
     content: '';
     position: absolute;
-    width: 30%;
+    width: 32%;
     height: 8%;
-    background: linear-gradient(90deg, #4169e1, #1e90ff);
-    top: 15%;
-    left: 35%;
-    box-shadow: 0 0 10px rgba(30,144,255,0.8);
+    background:
+        linear-gradient(90deg,
+            #1e3a8a 0%, #1e40af 20%, #1e3a8a 40%,
+            #1e40af 60%, #1e3a8a 80%, #1e40af 100%
+        ),
+        /* Gold flecks in lapis */
+        radial-gradient(circle at 20% 50%, rgba(255,215,0,0.3) 0%, transparent 3%),
+        radial-gradient(circle at 60% 30%, rgba(255,215,0,0.2) 0%, transparent 2%),
+        radial-gradient(circle at 80% 70%, rgba(255,215,0,0.25) 0%, transparent 2.5%);
+    top: 12%;
+    left: 34%;
+    box-shadow:
+        0 0 15px rgba(30,58,138,0.8),
+        inset 0 2px 5px rgba(0,0,0,0.4);
+    border-radius: 2px;
+}
+
+/* Uraeus (cobra) and vulture forehead crest */
+.death-mask::after {
+    content: '𓆗';
+    position: absolute;
+    font-size: 28px;
+    top: 4%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #ffd700;
+    text-shadow:
+        0 2px 4px rgba(0,0,0,0.5),
+        0 0 10px rgba(255,215,0,0.6);
+    filter: drop-shadow(0 1px 2px rgba(139,90,43,0.4));
 }
 
 .royal-crown {
     background:
-        linear-gradient(to bottom, #ffd700 0%, #d4af37 70%, #8b0000 100%);
+        /* Antique gold with tarnished edges */
+        linear-gradient(to bottom,
+            #f4c430 0%, #ffd700 15%, #d4af37 60%, #b8860b 85%, #8b7355 100%
+        ),
+        /* Gothic arch details */
+        linear-gradient(90deg,
+            transparent 0%, transparent 18%,
+            rgba(139,115,85,0.3) 20%, transparent 22%,
+            transparent 30%, rgba(139,115,85,0.3) 32%, transparent 34%,
+            transparent 48%, rgba(139,115,85,0.3) 50%, transparent 52%,
+            transparent 66%, rgba(139,115,85,0.3) 68%, transparent 70%,
+            transparent 78%, rgba(139,115,85,0.3) 80%, transparent 82%
+        );
     clip-path: polygon(
         20% 100%, 25% 40%, 15% 35%, 20% 0%, 30% 35%, 35% 30%, 40% 0%,
         45% 30%, 50% 25%, 55% 30%, 60% 0%, 65% 30%, 70% 35%, 80% 0%,
         85% 35%, 75% 40%, 80% 100%
     );
     box-shadow:
-        inset 0 -30px 40px rgba(139,0,0,0.6),
-        0 0 40px rgba(255,215,0,0.6);
+        /* Red velvet inner cap shadow */
+        inset 0 -35px 50px rgba(139,0,0,0.7),
+        /* Tarnished edges */
+        inset 0 0 20px rgba(139,115,85,0.3),
+        /* Mixed lighting for gem sparkle */
+        -3px -3px 15px rgba(135,206,235,0.3),
+        3px 3px 20px rgba(255,215,0,0.5),
+        0 8px 30px rgba(0,0,0,0.4);
+    filter: contrast(1.1) brightness(0.95);
 }
 
-.royal-crown::after {
-    content: '💎';
+/* Fleur-de-lis motifs */
+.royal-crown::before {
+    content: '⚜';
     position: absolute;
-    font-size: 30px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    animation: sparkle 2s ease-in-out infinite;
+    font-size: 24px;
+    top: 15%;
+    left: 20%;
+    color: #d4af37;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+    opacity: 0.8;
 }
 
-@keyframes sparkle {
-    0%, 100% { opacity: 0.7; transform: translate(-50%, -50%) scale(1); }
-    50% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
+/* Central gemstones: sapphires, emeralds, rubies */
+.royal-crown::after {
+    content: '';
+    position: absolute;
+    width: 80%;
+    height: 50%;
+    top: 45%;
+    left: 10%;
+    background:
+        /* Sapphire */
+        radial-gradient(circle at 25% 40%, #1e40af 0%, #1e3a8a 40%, transparent 8%),
+        /* Emerald */
+        radial-gradient(circle at 50% 35%, #059669 0%, #047857 40%, transparent 9%),
+        /* Ruby */
+        radial-gradient(circle at 75% 40%, #dc2626 0%, #b91c1c 40%, transparent 7%),
+        /* Diamond accents */
+        radial-gradient(circle at 35% 55%, rgba(255,255,255,0.9) 0%, transparent 4%),
+        radial-gradient(circle at 65% 55%, rgba(255,255,255,0.85) 0%, transparent 3.5%);
+    animation: gemSparkle 3s ease-in-out infinite;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.6));
+}
+
+@keyframes gemSparkle {
+    0%, 100% { opacity: 0.85; filter: brightness(1) drop-shadow(0 2px 4px rgba(0,0,0,0.6)); }
+    50% { opacity: 1; filter: brightness(1.3) drop-shadow(0 0 8px rgba(255,255,255,0.5)); }
 }
 
 .ceremonial-scepter {
     background:
+        /* Gold serpent head with dulled edges */
         linear-gradient(to bottom,
-            #ffd700 0%, #ffd700 15%,
-            #2c1810 15%, #2c1810 85%,
-            #ffd700 85%, #ffd700 100%
+            #d4af37 0%, #ffd700 8%, #d4af37 15%,
+            /* Deep ebony shaft with polished wood grain */
+            #1a0f0a 15%, #2c1810 25%, #1a0f0a 40%,
+            #2c1810 60%, #1a0f0a 75%, #2c1810 85%,
+            /* Rope-wrapped grip section */
+            #8b7355 85%, #6b5d4f 88%, #8b7355 91%, #6b5d4f 94%,
+            #8b7355 97%, #d4af37 100%
+        ),
+        /* Wood grain texture */
+        repeating-linear-gradient(90deg,
+            transparent 0px,
+            rgba(44,24,16,0.3) 1px,
+            transparent 2px,
+            transparent 15px
         );
-    width: 30%;
-    border-radius: 50% 50% 10% 10%;
+    width: 28%;
+    border-radius: 45% 45% 8% 8%;
     box-shadow:
-        inset -5px 0 15px rgba(0,0,0,0.5),
-        0 0 30px rgba(255,215,0,0.4);
+        /* Side rim accent lighting */
+        inset -8px 0 20px rgba(0,0,0,0.7),
+        inset 4px 0 12px rgba(212,175,55,0.3),
+        /* Outer glow from gold */
+        0 0 25px rgba(255,215,0,0.3),
+        0 6px 18px rgba(0,0,0,0.5);
+    filter: contrast(1.1);
 }
 
+/* Gold serpent head with scale details */
 .ceremonial-scepter::before {
-    content: '🐍';
+    content: '';
     position: absolute;
-    font-size: 40px;
+    width: 70%;
+    height: 14%;
+    top: 2%;
+    left: 15%;
+    background:
+        /* Coiled serpent form */
+        radial-gradient(ellipse at 50% 50%, #ffd700 0%, #d4af37 60%, #b8860b 100%),
+        /* Scale texture pattern */
+        repeating-linear-gradient(45deg,
+            transparent 0px,
+            rgba(139,90,43,0.2) 1px,
+            transparent 2px,
+            transparent 6px
+        );
+    border-radius: 50% 50% 40% 40%;
+    box-shadow:
+        inset -3px -3px 8px rgba(0,0,0,0.4),
+        inset 2px 2px 6px rgba(255,255,255,0.3),
+        0 0 15px rgba(255,215,0,0.4);
+}
+
+/* Garnet eyes with blood-red glint */
+.ceremonial-scepter::after {
+    content: '◆';
+    position: absolute;
+    font-size: 12px;
     top: 5%;
     left: 50%;
     transform: translateX(-50%);
+    color: #dc2626;
+    text-shadow:
+        0 0 8px rgba(220,38,38,0.9),
+        0 2px 4px rgba(0,0,0,0.6);
+    animation: garnetGlow 2s ease-in-out infinite;
+}
+
+@keyframes garnetGlow {
+    0%, 100% { opacity: 0.8; text-shadow: 0 0 6px rgba(220,38,38,0.7), 0 2px 4px rgba(0,0,0,0.6); }
+    50% { opacity: 1; text-shadow: 0 0 12px rgba(220,38,38,1), 0 2px 4px rgba(0,0,0,0.6); }
 }
 
 /* Nature Artifacts */
 .trex-skull {
     background:
-        radial-gradient(ellipse at 30% 30%, #d4c5b0 0%, #a89980 50%, #7a6f5d 100%);
+        /* Dark umber to ochre fossil tones with mineral deposits */
+        radial-gradient(ellipse at 35% 28%, #c9b89a 0%, #a89980 30%, #7a6f5d 60%, #5c5449 100%),
+        /* Erosion pits and porous bone texture */
+        radial-gradient(circle at 20% 40%, rgba(26,20,16,0.6) 0%, transparent 3%),
+        radial-gradient(circle at 45% 55%, rgba(26,20,16,0.5) 0%, transparent 2.5%),
+        radial-gradient(circle at 65% 35%, rgba(26,20,16,0.4) 0%, transparent 3.5%),
+        radial-gradient(circle at 80% 60%, rgba(26,20,16,0.5) 0%, transparent 2%),
+        /* Sediment and calcite residue streaks */
+        linear-gradient(120deg,
+            transparent 0%, transparent 30%,
+            rgba(200,180,160,0.3) 35%, transparent 40%,
+            transparent 60%, rgba(180,160,140,0.2) 65%, transparent 70%
+        );
     clip-path: polygon(
         15% 40%, 5% 50%, 10% 65%, 25% 70%, 35% 65%, 40% 55%,
         50% 60%, 70% 55%, 80% 50%, 75% 35%, 65% 25%, 50% 20%,
         35% 25%, 25% 30%
     );
     box-shadow:
-        inset -20px -20px 40px rgba(0,0,0,0.6),
-        inset 20px 20px 40px rgba(255,255,255,0.2);
+        /* Low side light for dramatic depth */
+        inset -25px -25px 50px rgba(0,0,0,0.7),
+        inset 25px 20px 45px rgba(200,180,150,0.2),
+        /* Back glow for shadows */
+        inset 0 -10px 25px rgba(0,0,0,0.5),
+        0 10px 35px rgba(0,0,0,0.6);
+    filter: contrast(1.15) saturate(0.9);
 }
 
+/* Hollow orbital cavity (eye socket) */
 .trex-skull::before {
     content: '';
     position: absolute;
-    width: 20%;
-    height: 30%;
-    background: #1a1410;
+    width: 22%;
+    height: 32%;
+    background:
+        radial-gradient(ellipse at center, #0d0a08 0%, #1a1410 50%, #2c2419 100%);
     border-radius: 50%;
-    top: 30%;
-    right: 25%;
-    box-shadow: inset 0 0 10px rgba(0,0,0,0.8);
+    top: 28%;
+    right: 23%;
+    box-shadow:
+        inset 0 0 15px rgba(0,0,0,0.9),
+        inset -5px -5px 20px rgba(0,0,0,0.8),
+        0 2px 8px rgba(0,0,0,0.7);
+}
+
+/* Predatory teeth with serration lines */
+.trex-skull::after {
+    content: '';
+    position: absolute;
+    width: 40%;
+    height: 15%;
+    bottom: 15%;
+    left: 8%;
+    background:
+        /* Tooth serrations */
+        repeating-linear-gradient(90deg,
+            transparent 0%,
+            transparent 8%,
+            #d4c5b0 8%,
+            #a89980 9%,
+            #d4c5b0 10%,
+            transparent 10%,
+            transparent 18%
+        );
+    clip-path: polygon(
+        0% 100%, 5% 0%, 10% 100%, 15% 0%, 20% 100%, 25% 0%,
+        30% 100%, 35% 0%, 40% 100%, 45% 0%, 50% 100%, 55% 0%,
+        60% 100%, 65% 0%, 70% 100%, 75% 0%, 80% 100%, 85% 0%,
+        90% 100%, 95% 0%, 100% 100%
+    );
+    filter: drop-shadow(0 3px 6px rgba(0,0,0,0.5));
+    opacity: 0.9;
 }
 
 .pterosaur-skeleton {
     background:
-        linear-gradient(45deg, transparent 45%, #d4c5b0 45%, #d4c5b0 55%, transparent 55%),
-        linear-gradient(-45deg, transparent 45%, #d4c5b0 45%, #d4c5b0 55%, transparent 55%);
-    background-size: 100% 100%;
-    box-shadow: 0 0 30px rgba(212,197,176,0.5);
+        /* Pale tan to soft grey fossil hues with chalky matte finish */
+        linear-gradient(135deg,
+            #e8dcc8 0%, #d4c5b0 30%, #c0b5a3 60%, #a89984 100%
+        ),
+        /* Delicate wing phalanges structure - hollow bone aerodynamic pattern */
+        linear-gradient(45deg,
+            transparent 0%, transparent 47%,
+            rgba(180,170,155,0.4) 47%, rgba(180,170,155,0.4) 53%,
+            transparent 53%, transparent 100%
+        ),
+        linear-gradient(-45deg,
+            transparent 0%, transparent 47%,
+            rgba(180,170,155,0.4) 47%, rgba(180,170,155,0.4) 53%,
+            transparent 53%, transparent 100%
+        ),
+        /* Bone pore texture */
+        radial-gradient(circle at 25% 35%, rgba(150,140,125,0.3) 0%, transparent 2%),
+        radial-gradient(circle at 55% 60%, rgba(150,140,125,0.25) 0%, transparent 1.5%),
+        radial-gradient(circle at 75% 40%, rgba(150,140,125,0.3) 0%, transparent 2.5%);
+    background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+    box-shadow:
+        /* Top-down cool light for floating silhouette */
+        inset 0 15px 30px rgba(255,255,255,0.3),
+        inset 0 -10px 20px rgba(0,0,0,0.3),
+        0 0 35px rgba(212,197,176,0.4),
+        0 8px 25px rgba(0,0,0,0.4);
+    filter: contrast(1.05);
 }
 
+/* Long beak structure */
 .pterosaur-skeleton::before {
-    content: '🦴';
+    content: '';
     position: absolute;
-    font-size: 60px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(-15deg);
-    filter: drop-shadow(0 5px 10px rgba(0,0,0,0.5));
+    width: 35%;
+    height: 8%;
+    top: 35%;
+    left: 10%;
+    background:
+        linear-gradient(to right,
+            #d4c5b0 0%, #c0b5a3 50%, #a89984 100%
+        );
+    clip-path: polygon(0% 50%, 100% 30%, 100% 70%);
+    box-shadow:
+        inset 0 2px 5px rgba(0,0,0,0.3),
+        0 2px 6px rgba(0,0,0,0.4);
+    transform: rotate(-5deg);
+}
+
+/* Fragile wing bones with patch repair seams */
+.pterosaur-skeleton::after {
+    content: '';
+    position: absolute;
+    width: 70%;
+    height: 50%;
+    top: 25%;
+    left: 15%;
+    background:
+        /* Wing membrane bone structure */
+        repeating-linear-gradient(75deg,
+            transparent 0px,
+            transparent 35px,
+            rgba(180,170,155,0.5) 35px,
+            rgba(200,190,175,0.6) 37px,
+            transparent 37px,
+            transparent 75px
+        ),
+        /* Repair seams */
+        linear-gradient(90deg,
+            transparent 0%, transparent 48%,
+            rgba(140,130,115,0.4) 49%, rgba(140,130,115,0.4) 51%,
+            transparent 52%, transparent 100%
+        );
+    opacity: 0.8;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
 }
 
 .mammoth-skull {
     background:
-        radial-gradient(ellipse at center, #e8dcc8 0%, #c9b89a 50%, #a89980 100%);
+        /* Bone-toned grey-white with warm mineral streaks */
+        radial-gradient(ellipse at 45% 35%,
+            #f5ebe0 0%, #e8dcc8 25%, #c9b89a 55%, #a89980 85%, #8a7968 100%
+        ),
+        /* Mineral staining streaks */
+        linear-gradient(125deg,
+            transparent 0%, transparent 25%,
+            rgba(180,140,100,0.2) 30%, transparent 35%,
+            transparent 55%, rgba(160,120,80,0.25) 60%, transparent 65%
+        ),
+        /* Weathered bone pores and flaking calcified texture */
+        radial-gradient(circle at 30% 45%, rgba(138,121,104,0.4) 0%, transparent 3%),
+        radial-gradient(circle at 60% 55%, rgba(138,121,104,0.35) 0%, transparent 2.5%),
+        radial-gradient(circle at 75% 30%, rgba(138,121,104,0.3) 0%, transparent 4%);
     border-radius: 50% 50% 40% 40%;
     box-shadow:
-        inset -15px -15px 30px rgba(0,0,0,0.4),
-        inset 15px 15px 30px rgba(255,255,255,0.3);
+        /* Warm diagonal light emphasizing curvature */
+        inset -20px -20px 40px rgba(90,75,60,0.5),
+        inset 18px 18px 35px rgba(255,255,255,0.4),
+        /* Fossil density depth */
+        inset 0 -8px 20px rgba(0,0,0,0.3),
+        0 10px 30px rgba(0,0,0,0.5);
+    filter: contrast(1.1) saturate(0.95);
 }
 
+/* Large molar sockets */
+.mammoth-skull::before {
+    content: '';
+    position: absolute;
+    width: 25%;
+    height: 18%;
+    bottom: 25%;
+    left: 37.5%;
+    background:
+        radial-gradient(ellipse at center,
+            #3d342a 0%, #5c4f42 40%, #7a6f5d 100%
+        );
+    border-radius: 40%;
+    box-shadow:
+        inset 0 0 12px rgba(0,0,0,0.8),
+        inset -3px -3px 8px rgba(0,0,0,0.6);
+}
+
+/* Curved tusks with dentine rings and yellowed ivory aging */
 .mammoth-skull::after {
     content: '';
     position: absolute;
     width: 150%;
-    height: 40%;
+    height: 38%;
     background:
+        /* Left tusk with layered dentine rings */
+        radial-gradient(ellipse at 15% 50%,
+            #f5e6d3 0%, #e8d4b8 15%, #d4c5a8 30%, #c0b090 50%, transparent 18%
+        ),
+        /* Right tusk */
+        radial-gradient(ellipse at 85% 50%,
+            #f5e6d3 0%, #e8d4b8 15%, #d4c5a8 30%, #c0b090 50%, transparent 18%
+        ),
+        /* Dentine ring texture */
+        repeating-linear-gradient(100deg,
+            transparent 0px,
+            rgba(180,160,130,0.2) 8px,
+            transparent 10px,
+            transparent 20px
+        ),
+        repeating-linear-gradient(80deg,
+            transparent 0px,
+            rgba(180,160,130,0.2) 8px,
+            transparent 10px,
+            transparent 20px
+        ),
+        /* Base ivory color with age yellowing */
         linear-gradient(to right,
-            transparent 0%, transparent 10%,
-            #e8dcc8 10%, #c9b89a 15%,
-            transparent 15%, transparent 40%,
-            #c9b89a 40%, #e8dcc8 45%,
-            transparent 45%, transparent 55%,
-            #e8dcc8 55%, #c9b89a 60%,
-            transparent 60%, transparent 85%,
-            #c9b89a 85%, #e8dcc8 90%,
-            transparent 90%
+            #e8d4b8 0%, #e8d4b8 12%,
+            transparent 12%, transparent 88%,
+            #e8d4b8 88%, #e8d4b8 100%
         );
-    bottom: -15%;
+    bottom: -12%;
     left: -25%;
-    transform: rotate(-10deg);
+    transform: rotate(-8deg);
     border-radius: 50%;
+    box-shadow:
+        inset 0 3px 10px rgba(0,0,0,0.2),
+        inset 0 -3px 8px rgba(255,255,255,0.3),
+        0 6px 18px rgba(0,0,0,0.4);
+    /* Smooth abrasion at tips */
+    filter: brightness(1.05);
 }
 
 /* Art Artifacts */
 .mona-lisa {
     background:
+        /* Atmospheric perspective background - cool misty landscape */
         linear-gradient(to bottom,
-            #87ceeb 0%, #87ceeb 30%,
-            #d4a574 30%, #d4a574 40%,
-            #8b6f4d 40%, #8b6f4d 70%,
-            #4a4a4a 70%
+            #a8c8d8 0%, #9bb8c8 15%, #87a8b8 30%,
+            /* Warm skin tones with sfumato soft transitions */
+            #f4d4b4 30%, #e8c4a4 35%, #d4a584 42%,
+            /* Earthy garments - muted greens and browns */
+            #6b5d4f 42%, #5d4f41 50%, #4f4133 58%,
+            /* Darker lower garment */
+            #3d3329 58%, #2d231b 70%,
+            /* Folded hands area */
+            #d4a584 70%, #c09570 75%, #8b6f4d 82%,
+            /* Base shadow */
+            #3a3a3a 82%
+        ),
+        /* Fine craquelure cracking pattern from aging */
+        repeating-linear-gradient(45deg,
+            transparent 0px,
+            rgba(80,60,40,0.15) 0.5px,
+            transparent 1px,
+            transparent 40px
+        ),
+        repeating-linear-gradient(-45deg,
+            transparent 0px,
+            rgba(80,60,40,0.15) 0.5px,
+            transparent 1px,
+            transparent 38px
+        ),
+        /* Aged varnish tint - warm yellow overlay */
+        radial-gradient(ellipse at 50% 40%,
+            rgba(240,220,180,0.15) 0%,
+            rgba(220,200,160,0.1) 50%,
+            transparent 100%
         );
-    border-radius: 5px;
+    border-radius: 6px;
     box-shadow:
-        inset 0 0 50px rgba(0,0,0,0.3),
-        0 0 30px rgba(212,165,116,0.4);
+        /* Soft diffused frontal museum lighting */
+        inset 0 30px 60px rgba(255,255,255,0.1),
+        inset 0 -20px 40px rgba(0,0,0,0.25),
+        /* Gold Renaissance frame reflection */
+        inset 0 0 3px rgba(212,175,55,0.4),
+        0 0 40px rgba(212,165,116,0.35),
+        0 10px 35px rgba(0,0,0,0.4);
+    filter: contrast(1.05) saturate(0.9);
 }
 
+/* Subtle portrait silhouette suggestion */
 .mona-lisa::before {
-    content: '👤';
+    content: '';
     position: absolute;
-    font-size: 80px;
-    top: 35%;
-    left: 50%;
-    transform: translateX(-50%);
+    width: 45%;
+    height: 35%;
+    top: 32%;
+    left: 27.5%;
+    background:
+        /* Face shape with sfumato soft edges */
+        radial-gradient(ellipse at 50% 40%,
+            rgba(244,212,180,0.3) 0%,
+            rgba(228,196,164,0.2) 40%,
+            transparent 70%
+        );
+    border-radius: 50% 50% 60% 60%;
+}
+
+/* Ambiguous smile - subtle lip curve suggestion */
+.mona-lisa::after {
+    content: '';
+    position: absolute;
+    width: 18%;
+    height: 3%;
+    top: 54%;
+    left: 41%;
+    background:
+        radial-gradient(ellipse at center,
+            rgba(180,120,90,0.4) 0%,
+            rgba(160,100,70,0.3) 50%,
+            transparent 100%
+        );
+    border-radius: 50%;
     opacity: 0.7;
 }
 
 .venus-statue {
     background:
-        linear-gradient(135deg, #f5f5f5 0%, #dcdcdc 50%, #c0c0c0 100%);
+        /* White Parian marble with warm yellow patina */
+        linear-gradient(140deg,
+            #fffef8 0%, #f8f6f0 20%, #f0ede3 40%,
+            #e8e4d8 60%, #dcd8cc 80%, #c8c4b8 100%
+        ),
+        /* Smooth classical polish with mineral flecks */
+        radial-gradient(circle at 25% 30%, rgba(220,200,180,0.15) 0%, transparent 2%),
+        radial-gradient(circle at 55% 50%, rgba(210,190,170,0.12) 0%, transparent 1.5%),
+        radial-gradient(circle at 70% 65%, rgba(200,180,160,0.18) 0%, transparent 2.5%),
+        radial-gradient(circle at 40% 75%, rgba(215,195,175,0.14) 0%, transparent 2%),
+        /* Subtle grain texture */
+        repeating-linear-gradient(95deg,
+            transparent 0px,
+            rgba(200,190,180,0.05) 1px,
+            transparent 2px,
+            transparent 50px
+        );
     clip-path: polygon(
         45% 0%, 55% 0%, 60% 15%, 65% 25%, 70% 50%, 65% 70%,
         60% 85%, 55% 95%, 50% 100%, 45% 95%, 40% 85%, 35% 70%,
         30% 50%, 35% 25%, 40% 15%
     );
     box-shadow:
-        inset -20px 0 40px rgba(0,0,0,0.3),
-        inset 20px 0 40px rgba(255,255,255,0.5),
-        0 10px 40px rgba(0,0,0,0.5);
+        /* High directional spotlight for sculptural shadow drama */
+        inset -25px 0 50px rgba(0,0,0,0.35),
+        inset 25px 0 45px rgba(255,255,255,0.6),
+        /* Contour shadows for drapery */
+        inset 0 -15px 30px rgba(0,0,0,0.25),
+        inset 0 15px 25px rgba(255,255,255,0.3),
+        /* Outer pedestal shadow */
+        0 15px 45px rgba(0,0,0,0.5);
+    filter: contrast(1.08) brightness(1.05);
+}
+
+/* Broken arm stumps - chips and fractures */
+.venus-statue::before {
+    content: '';
+    position: absolute;
+    width: 12%;
+    height: 6%;
+    top: 38%;
+    right: 8%;
+    background:
+        radial-gradient(ellipse at center,
+            #c8c4b8 0%, #b8b4a8 50%, #a8a498 100%
+        );
+    clip-path: polygon(0% 30%, 40% 0%, 80% 20%, 100% 60%, 60% 100%, 20% 80%);
+    box-shadow:
+        inset -3px -3px 8px rgba(0,0,0,0.4),
+        0 2px 6px rgba(0,0,0,0.3);
+}
+
+/* Classical garment drapery folds - flowing fabric texture */
+.venus-statue::after {
+    content: '';
+    position: absolute;
+    width: 60%;
+    height: 45%;
+    bottom: 8%;
+    left: 20%;
+    background:
+        /* Vertical drapery pleats */
+        repeating-linear-gradient(90deg,
+            transparent 0%,
+            transparent 8%,
+            rgba(180,176,168,0.25) 9%,
+            rgba(200,196,188,0.15) 10%,
+            transparent 11%,
+            transparent 18%
+        ),
+        /* Shadow depth in folds */
+        linear-gradient(to bottom,
+            transparent 0%,
+            rgba(160,156,148,0.2) 30%,
+            rgba(140,136,128,0.3) 70%,
+            transparent 100%
+        );
+    opacity: 0.8;
 }
 
 .last-supper {
     background:
+        /* Earth pigments with aged muted brightness */
         linear-gradient(to bottom,
-            #2c1810 0%, #2c1810 20%,
-            #8b6f4d 20%, #8b6f4d 40%,
-            #654321 40%, #654321 85%,
-            #2c1810 85%
+            /* Rear windows - linear perspective depth */
+            #5c6a7a 0%, #4a5868 10%, #384656 20%,
+            /* Upper wall with restoration seams */
+            #6b5d4f 20%, #7a6f5d 25%, #6b5d4f 30%,
+            /* Middle apostles section - muted blues and reds */
+            #8b6f4d 30%, #9d8169 35%,
+            /* Table level with white cloth */
+            #a89980 35%, #c4b8a4 40%,
+            /* Tablecloth with textile pattern */
+            #d4c8b4 40%, #e0d4c0 45%, #d4c8b4 50%,
+            /* Lower garments and shadows */
+            #7a5d4a 50%, #654836 60%,
+            /* Deep floor shadows */
+            #4a3628 60%, #3d2e20 75%,
+            /* Base darkness */
+            #2c1f15 75%
+        ),
+        /* Fine pigment aging and micro crackle */
+        repeating-linear-gradient(60deg,
+            transparent 0px,
+            rgba(60,50,40,0.12) 0.5px,
+            transparent 1px,
+            transparent 45px
+        ),
+        repeating-linear-gradient(-60deg,
+            transparent 0px,
+            rgba(60,50,40,0.12) 0.5px,
+            transparent 1px,
+            transparent 43px
+        ),
+        /* Visible restoration seams - vertical repairs */
+        linear-gradient(90deg,
+            transparent 0%, transparent 32%,
+            rgba(100,85,70,0.15) 33%, transparent 34%,
+            transparent 65%, rgba(100,85,70,0.15) 66%, transparent 67%
         );
-    border-radius: 5px;
+    border-radius: 6px;
     box-shadow:
-        inset 0 0 50px rgba(0,0,0,0.4),
-        0 0 30px rgba(139,111,77,0.3);
+        /* Even wall-washer lighting to avoid glare */
+        inset 0 40px 70px rgba(255,255,255,0.08),
+        inset 0 -25px 45px rgba(0,0,0,0.35),
+        /* Soft overhead strip lighting */
+        inset 0 0 5px rgba(139,111,77,0.3),
+        /* Conservation frame */
+        0 0 35px rgba(139,111,77,0.25),
+        0 12px 40px rgba(0,0,0,0.45);
+    filter: contrast(1.05) saturate(0.85);
 }
 
+/* Linear perspective to rear window - architectural depth */
 .last-supper::before {
+    content: '';
+    position: absolute;
+    width: 35%;
+    height: 18%;
+    top: 5%;
+    left: 32.5%;
+    background:
+        /* Perspective vanishing point */
+        linear-gradient(to bottom,
+            rgba(120,140,160,0.4) 0%,
+            rgba(80,100,120,0.3) 50%,
+            rgba(60,80,100,0.2) 100%
+        ),
+        /* Window panes */
+        repeating-linear-gradient(90deg,
+            transparent 0%,
+            transparent 30%,
+            rgba(40,50,60,0.3) 31%,
+            transparent 32%,
+            transparent 68%,
+            rgba(40,50,60,0.3) 69%,
+            transparent 70%
+        );
+    clip-path: polygon(20% 0%, 80% 0%, 90% 100%, 10% 100%);
+    opacity: 0.6;
+}
+
+/* Symbolic gestures - chalice and bread at table center */
+.last-supper::after {
     content: '🍷';
     position: absolute;
-    font-size: 40px;
-    top: 60%;
+    font-size: 32px;
+    top: 42%;
     left: 50%;
     transform: translateX(-50%);
+    opacity: 0.75;
+    filter: drop-shadow(0 3px 6px rgba(0,0,0,0.5)) sepia(0.3);
 }
 
 .artifact-label {
