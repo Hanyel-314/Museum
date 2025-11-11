@@ -1,0 +1,9 @@
+如何添加蒙娜丽莎图片:
+
+1. 将您的图片重命名为: mona-lisa.jpg
+2. 放到此目录: /home/user/Museum/images/
+3. 刷新浏览器，点击 Mona Lisa 展台即可看到您的图片
+
+支持格式: JPG, PNG, WebP
+推荐尺寸: 1024x1536 或更高
+文件大小: < 5MB
