@@ -9,7 +9,8 @@ const state = {
     isDragging: false,
     lastMouseX: 0,
     lastMouseY: 0,
-    scale: 1
+    scale: 1,
+    renderer3D: null
 };
 
 // Artifact Data with Museum-Quality Specifications
@@ -408,28 +409,25 @@ function openArtifactViewer(artifactId) {
     const viewer = document.getElementById('artifact-viewer');
     const title = document.getElementById('viewer-title');
     const description = document.getElementById('viewer-description');
-    const artifact3d = document.getElementById('artifact-3d');
 
     const data = artifactData[artifactId];
     if (data) {
         title.textContent = data.name;
         description.textContent = data.description;
 
-        // Clone the artifact for 3D viewing
-        const originalArtifact = document.querySelector(`[data-artifact="${artifactId}"] .artifact`);
-        if (originalArtifact) {
-            artifact3d.innerHTML = '';
-            const clone = originalArtifact.cloneNode(true);
-            clone.style.width = '100%';
-            clone.style.height = '100%';
-            artifact3d.appendChild(clone);
+        // Initialize 3D renderer if not already done
+        if (!state.renderer3D) {
+            state.renderer3D = new Artifact3DRenderer('viewer-canvas');
         }
+
+        // Load the 3D model
+        state.renderer3D.loadArtifact(artifactId, data);
+        state.currentArtifact = artifactId;
 
         // Reset rotation
         state.rotationX = 0;
         state.rotationY = 0;
         state.scale = 1;
-        updateArtifact3D();
 
         viewer.classList.remove('hidden');
     }
@@ -439,6 +437,11 @@ function closeArtifactViewer() {
     const viewer = document.getElementById('artifact-viewer');
     viewer.classList.add('hidden');
     state.currentArtifact = null;
+
+    // Stop animation to save resources
+    if (state.renderer3D) {
+        state.renderer3D.stopAnimation();
+    }
 }
 
 // 3D Rotation Controls
@@ -458,16 +461,13 @@ function drag(e) {
     const deltaX = clientX - state.lastMouseX;
     const deltaY = clientY - state.lastMouseY;
 
-    state.rotationY += deltaX * 0.5;
-    state.rotationX -= deltaY * 0.5;
-
-    // Clamp X rotation
-    state.rotationX = Math.max(-90, Math.min(90, state.rotationX));
+    // Use 3D renderer's rotation method
+    if (state.renderer3D) {
+        state.renderer3D.rotateModel(deltaX, deltaY);
+    }
 
     state.lastMouseX = clientX;
     state.lastMouseY = clientY;
-
-    updateArtifact3D();
 }
 
 function endDrag() {
@@ -476,20 +476,11 @@ function endDrag() {
 
 function zoom(e) {
     e.preventDefault();
-    const delta = e.deltaY > 0 ? -0.1 : 0.1;
-    state.scale += delta;
-    state.scale = Math.max(0.5, Math.min(2, state.scale));
-    updateArtifact3D();
-}
+    const delta = e.deltaY > 0 ? 0.2 : -0.2;
 
-function updateArtifact3D() {
-    const artifact3d = document.getElementById('artifact-3d');
-    if (artifact3d) {
-        artifact3d.style.transform = `
-            scale(${state.scale})
-            rotateX(${state.rotationX}deg)
-            rotateY(${state.rotationY}deg)
-        `;
+    // Use 3D renderer's zoom method
+    if (state.renderer3D) {
+        state.renderer3D.zoomModel(delta);
     }
 }
 
@@ -517,15 +508,13 @@ function handleTouchMove(e) {
     const deltaX = touchX - state.lastMouseX;
     const deltaY = touchY - state.lastMouseY;
 
-    state.rotationY += deltaX * 0.5;
-    state.rotationX -= deltaY * 0.5;
-
-    state.rotationX = Math.max(-90, Math.min(90, state.rotationX));
+    // Use 3D renderer's rotation method
+    if (state.renderer3D) {
+        state.renderer3D.rotateModel(deltaX, deltaY);
+    }
 
     state.lastMouseX = touchX;
     state.lastMouseY = touchY;
-
-    updateArtifact3D();
 }
 
 // Audio System
