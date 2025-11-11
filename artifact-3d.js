@@ -473,23 +473,48 @@ class Artifact3DRenderer {
     createMonaLisa() {
         const group = new THREE.Group();
 
-        // Canvas
+        // Try to load real image texture, fallback to procedural if not available
+        const textureLoader = new THREE.TextureLoader();
+        let paintingMaterial;
+
+        // Attempt to load the uploaded Mona Lisa image
+        const imagePath = 'images/mona-lisa.jpg'; // Or .png
+        textureLoader.load(
+            imagePath,
+            // Success callback
+            (texture) => {
+                console.log('Mona Lisa texture loaded successfully');
+                paintingMaterial.map = texture;
+                paintingMaterial.needsUpdate = true;
+            },
+            // Progress callback
+            undefined,
+            // Error callback
+            (error) => {
+                console.log('Using procedural Mona Lisa (no image found at ' + imagePath + ')');
+            }
+        );
+
+        // Canvas with texture support
         const canvasGeometry = new THREE.PlaneGeometry(1.5, 2);
-        const canvasTexture = new THREE.MeshStandardMaterial({
-            color: 0x8B7355,
+        paintingMaterial = new THREE.MeshStandardMaterial({
+            color: 0xFFFFFF, // White for texture
             metalness: 0.0,
-            roughness: 0.6,
+            roughness: 0.3,
             side: THREE.DoubleSide
         });
-        const canvas = new THREE.Mesh(canvasGeometry, canvasTexture);
+        const canvas = new THREE.Mesh(canvasGeometry, paintingMaterial);
         group.add(canvas);
 
+        // Fallback procedural representation (will be visible if image doesn't load)
         // Face outline (simplified representation)
         const faceGeometry = new THREE.CircleGeometry(0.3, 32);
         const faceMaterial = new THREE.MeshStandardMaterial({
             color: 0xF5CBA7,
             metalness: 0.0,
-            roughness: 0.3
+            roughness: 0.3,
+            transparent: true,
+            opacity: 0.8
         });
         const face = new THREE.Mesh(faceGeometry, faceMaterial);
         face.position.set(0, 0.4, 0.01);
@@ -500,7 +525,9 @@ class Artifact3DRenderer {
         const hairMaterial = new THREE.MeshStandardMaterial({
             color: 0x3E2723,
             metalness: 0.0,
-            roughness: 0.8
+            roughness: 0.8,
+            transparent: true,
+            opacity: 0.8
         });
         const hair = new THREE.Mesh(hairGeometry, hairMaterial);
         hair.position.set(0, 0.65, 0.01);
@@ -511,7 +538,9 @@ class Artifact3DRenderer {
         const dressMaterial = new THREE.MeshStandardMaterial({
             color: 0x5D4E37,
             metalness: 0.0,
-            roughness: 0.7
+            roughness: 0.7,
+            transparent: true,
+            opacity: 0.8
         });
         const dress = new THREE.Mesh(dressGeometry, dressMaterial);
         dress.position.set(0, -0.5, 0.01);
@@ -522,7 +551,9 @@ class Artifact3DRenderer {
         const handMaterial = new THREE.MeshStandardMaterial({
             color: 0xF5CBA7,
             metalness: 0.0,
-            roughness: 0.4
+            roughness: 0.4,
+            transparent: true,
+            opacity: 0.8
         });
 
         const leftHand = new THREE.Mesh(handGeometry, handMaterial);
@@ -627,23 +658,54 @@ class Artifact3DRenderer {
     createLastSupper() {
         const group = new THREE.Group();
 
-        // Main canvas
+        // Try to load real image texture
+        const textureLoader = new THREE.TextureLoader();
+        let muralMaterial;
+
+        // Attempt to load the Last Supper image
+        const imagePath = 'images/last-supper.jpg';
+        textureLoader.load(
+            imagePath,
+            // Success callback
+            (texture) => {
+                console.log('Last Supper texture loaded successfully');
+                muralMaterial.map = texture;
+                muralMaterial.needsUpdate = true;
+                // Hide procedural elements when texture loads
+                table.visible = false;
+                wall.visible = false;
+                for (let i = 0; i < figures.length; i++) {
+                    figures[i].visible = false;
+                }
+            },
+            // Progress callback
+            undefined,
+            // Error callback
+            (error) => {
+                console.log('Using procedural Last Supper (no image found at ' + imagePath + ')');
+            }
+        );
+
+        // Main canvas with texture support
         const canvasGeometry = new THREE.PlaneGeometry(4, 2);
-        const canvasMaterial = new THREE.MeshStandardMaterial({
-            color: 0x8B7355,
+        muralMaterial = new THREE.MeshStandardMaterial({
+            color: 0xFFFFFF, // White for texture
             metalness: 0.0,
             roughness: 0.6,
             side: THREE.DoubleSide
         });
-        const canvas = new THREE.Mesh(canvasGeometry, canvasMaterial);
+        const canvas = new THREE.Mesh(canvasGeometry, muralMaterial);
         group.add(canvas);
 
+        // Fallback procedural elements
         // Table (simplified)
         const tableGeometry = new THREE.BoxGeometry(3.5, 0.15, 0.6);
         const tableMaterial = new THREE.MeshStandardMaterial({
             color: 0x5D4E37,
             metalness: 0.0,
-            roughness: 0.7
+            roughness: 0.7,
+            transparent: true,
+            opacity: 0.8
         });
         const table = new THREE.Mesh(tableGeometry, tableMaterial);
         table.position.set(0, -0.3, 0.01);
@@ -653,9 +715,12 @@ class Artifact3DRenderer {
         const figureMaterial = new THREE.MeshStandardMaterial({
             color: 0x6B4423,
             metalness: 0.0,
-            roughness: 0.6
+            roughness: 0.6,
+            transparent: true,
+            opacity: 0.8
         });
 
+        const figures = [];
         for (let i = 0; i < 13; i++) {
             const figureGeometry = new THREE.BoxGeometry(0.25, 0.6, 0.05);
             const figure = new THREE.Mesh(figureGeometry, figureMaterial);
@@ -667,10 +732,13 @@ class Artifact3DRenderer {
                 figure.material = new THREE.MeshStandardMaterial({
                     color: 0x8B6914,
                     metalness: 0.0,
-                    roughness: 0.5
+                    roughness: 0.5,
+                    transparent: true,
+                    opacity: 0.8
                 });
             }
 
+            figures.push(figure);
             group.add(figure);
         }
 
@@ -679,7 +747,9 @@ class Artifact3DRenderer {
         const wallMaterial = new THREE.MeshStandardMaterial({
             color: 0x9E7D5A,
             metalness: 0.0,
-            roughness: 0.8
+            roughness: 0.8,
+            transparent: true,
+            opacity: 0.8
         });
         const wall = new THREE.Mesh(wallGeometry, wallMaterial);
         wall.position.set(0, 0.5, -0.01);
