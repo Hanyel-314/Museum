@@ -530,7 +530,7 @@ body {
 /* History Artifacts */
 .death-mask {
     background-image: url('images/egyptian-mask.jpg');
-    background-size: contain;
+    background-size: 85% 85%;
     background-position: center;
     background-repeat: no-repeat;
     border-radius: 6px;
@@ -550,7 +550,7 @@ body {
 
 .rosetta-stone {
     background-image: url('images/rosetta-stone.jpg');
-    background-size: contain;
+    background-size: 85% 85%;
     background-position: center;
     background-repeat: no-repeat;
     border-radius: 3px;
@@ -647,7 +647,7 @@ body {
 /* Nature Artifacts */
 .trex-skull {
     background-image: url('images/trex-skull.jpg');
-    background-size: contain;
+    background-size: 85% 85%;
     background-position: center;
     background-repeat: no-repeat;
     border-radius: 6px;
@@ -665,7 +665,7 @@ body {
 
 .pterosaur-skeleton {
     background-image: url('images/pteranodon-skeleton.jpg');
-    background-size: contain;
+    background-size: 85% 85%;
     background-position: center;
     background-repeat: no-repeat;
     border-radius: 6px;
@@ -682,7 +682,7 @@ body {
 
 .mammoth-skull {
     background-image: url('images/mammoth-skull.jpg');
-    background-size: contain;
+    background-size: 85% 85%;
     background-position: center;
     background-repeat: no-repeat;
     border-radius: 6px;
@@ -701,7 +701,7 @@ body {
 /* Art Artifacts */
 .mona-lisa {
     background-image: url('images/mona-lisa.jpg');
-    background-size: contain;
+    background-size: 85% 85%;
     background-position: center;
     background-repeat: no-repeat;
     border-radius: 6px;
@@ -719,7 +719,7 @@ body {
 
 .venus-statue {
     background-image: url('images/venus.jpg');
-    background-size: contain;
+    background-size: 85% 85%;
     background-position: center;
     background-repeat: no-repeat;
     border-radius: 6px;
@@ -739,7 +739,7 @@ body {
 
 .last-supper {
     background-image: url('images/last-supper.jpg');
-    background-size: contain;
+    background-size: 85% 85%;
     background-position: center;
     background-repeat: no-repeat;
     border-radius: 6px;
