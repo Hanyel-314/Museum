@@ -739,27 +739,11 @@ body {
 }
 
 .pterosaur-skeleton {
-    background:
-        /* Pale tan to soft grey fossil hues with chalky matte finish */
-        linear-gradient(135deg,
-            #e8dcc8 0%, #d4c5b0 30%, #c0b5a3 60%, #a89984 100%
-        ),
-        /* Delicate wing phalanges structure - hollow bone aerodynamic pattern */
-        linear-gradient(45deg,
-            transparent 0%, transparent 47%,
-            rgba(180,170,155,0.4) 47%, rgba(180,170,155,0.4) 53%,
-            transparent 53%, transparent 100%
-        ),
-        linear-gradient(-45deg,
-            transparent 0%, transparent 47%,
-            rgba(180,170,155,0.4) 47%, rgba(180,170,155,0.4) 53%,
-            transparent 53%, transparent 100%
-        ),
-        /* Bone pore texture */
-        radial-gradient(circle at 25% 35%, rgba(150,140,125,0.3) 0%, transparent 2%),
-        radial-gradient(circle at 55% 60%, rgba(150,140,125,0.25) 0%, transparent 1.5%),
-        radial-gradient(circle at 75% 40%, rgba(150,140,125,0.3) 0%, transparent 2.5%);
-    background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+    background-image: url('images/pteranodon-skeleton.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 6px;
     box-shadow:
         /* Top-down cool light for floating silhouette */
         inset 0 15px 30px rgba(255,255,255,0.3),
@@ -769,75 +753,14 @@ body {
         /* 3D wing span depth */
         -8px 10px 20px rgba(0,0,0,0.3),
         -12px 15px 30px rgba(0,0,0,0.2);
-    filter: contrast(1.05);
-    /* 3D skeleton structure */
-    transform-style: preserve-3d;
-}
-
-/* Long beak structure */
-.pterosaur-skeleton::before {
-    content: '';
-    position: absolute;
-    width: 35%;
-    height: 8%;
-    top: 35%;
-    left: 10%;
-    background:
-        linear-gradient(to right,
-            #d4c5b0 0%, #c0b5a3 50%, #a89984 100%
-        );
-    clip-path: polygon(0% 50%, 100% 30%, 100% 70%);
-    box-shadow:
-        inset 0 2px 5px rgba(0,0,0,0.3),
-        0 2px 6px rgba(0,0,0,0.4);
-    transform: rotate(-5deg);
-}
-
-/* Fragile wing bones with patch repair seams */
-.pterosaur-skeleton::after {
-    content: '';
-    position: absolute;
-    width: 70%;
-    height: 50%;
-    top: 25%;
-    left: 15%;
-    background:
-        /* Wing membrane bone structure */
-        repeating-linear-gradient(75deg,
-            transparent 0px,
-            transparent 35px,
-            rgba(180,170,155,0.5) 35px,
-            rgba(200,190,175,0.6) 37px,
-            transparent 37px,
-            transparent 75px
-        ),
-        /* Repair seams */
-        linear-gradient(90deg,
-            transparent 0%, transparent 48%,
-            rgba(140,130,115,0.4) 49%, rgba(140,130,115,0.4) 51%,
-            transparent 52%, transparent 100%
-        );
-    opacity: 0.8;
-    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
 }
 
 .mammoth-skull {
-    background:
-        /* Bone-toned grey-white with warm mineral streaks */
-        radial-gradient(ellipse at 45% 35%,
-            #f5ebe0 0%, #e8dcc8 25%, #c9b89a 55%, #a89980 85%, #8a7968 100%
-        ),
-        /* Mineral staining streaks */
-        linear-gradient(125deg,
-            transparent 0%, transparent 25%,
-            rgba(180,140,100,0.2) 30%, transparent 35%,
-            transparent 55%, rgba(160,120,80,0.25) 60%, transparent 65%
-        ),
-        /* Weathered bone pores and flaking calcified texture */
-        radial-gradient(circle at 30% 45%, rgba(138,121,104,0.4) 0%, transparent 3%),
-        radial-gradient(circle at 60% 55%, rgba(138,121,104,0.35) 0%, transparent 2.5%),
-        radial-gradient(circle at 75% 30%, rgba(138,121,104,0.3) 0%, transparent 4%);
-    border-radius: 50% 50% 40% 40%;
+    background-image: url('images/mammoth-skull.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 6px;
     box-shadow:
         /* Warm diagonal light emphasizing curvature */
         inset -20px -20px 40px rgba(90,75,60,0.5),
@@ -848,73 +771,6 @@ body {
         /* 3D skull mass */
         -12px 14px 35px rgba(0,0,0,0.4),
         -18px 20px 50px rgba(0,0,0,0.3);
-    filter: contrast(1.1) saturate(0.95);
-    /* 3D mammoth form */
-    transform-style: preserve-3d;
-}
-
-/* Large molar sockets */
-.mammoth-skull::before {
-    content: '';
-    position: absolute;
-    width: 25%;
-    height: 18%;
-    bottom: 25%;
-    left: 37.5%;
-    background:
-        radial-gradient(ellipse at center,
-            #3d342a 0%, #5c4f42 40%, #7a6f5d 100%
-        );
-    border-radius: 40%;
-    box-shadow:
-        inset 0 0 12px rgba(0,0,0,0.8),
-        inset -3px -3px 8px rgba(0,0,0,0.6);
-}
-
-/* Curved tusks with dentine rings and yellowed ivory aging */
-.mammoth-skull::after {
-    content: '';
-    position: absolute;
-    width: 150%;
-    height: 38%;
-    background:
-        /* Left tusk with layered dentine rings */
-        radial-gradient(ellipse at 15% 50%,
-            #f5e6d3 0%, #e8d4b8 15%, #d4c5a8 30%, #c0b090 50%, transparent 18%
-        ),
-        /* Right tusk */
-        radial-gradient(ellipse at 85% 50%,
-            #f5e6d3 0%, #e8d4b8 15%, #d4c5a8 30%, #c0b090 50%, transparent 18%
-        ),
-        /* Dentine ring texture */
-        repeating-linear-gradient(100deg,
-            transparent 0px,
-            rgba(180,160,130,0.2) 8px,
-            transparent 10px,
-            transparent 20px
-        ),
-        repeating-linear-gradient(80deg,
-            transparent 0px,
-            rgba(180,160,130,0.2) 8px,
-            transparent 10px,
-            transparent 20px
-        ),
-        /* Base ivory color with age yellowing */
-        linear-gradient(to right,
-            #e8d4b8 0%, #e8d4b8 12%,
-            transparent 12%, transparent 88%,
-            #e8d4b8 88%, #e8d4b8 100%
-        );
-    bottom: -12%;
-    left: -25%;
-    transform: rotate(-8deg);
-    border-radius: 50%;
-    box-shadow:
-        inset 0 3px 10px rgba(0,0,0,0.2),
-        inset 0 -3px 8px rgba(255,255,255,0.3),
-        0 6px 18px rgba(0,0,0,0.4);
-    /* Smooth abrasion at tips */
-    filter: brightness(1.05);
 }
 
 /* Art Artifacts */

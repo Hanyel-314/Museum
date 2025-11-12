@@ -440,6 +440,24 @@ class Artifact3DRenderer {
     createPteranodonSkeleton() {
         const group = new THREE.Group();
 
+        // Try to load real image texture
+        const textureLoader = new THREE.TextureLoader();
+        let imageMaterial;
+
+        // Array to track procedural elements for hiding when texture loads
+        const proceduralElements = [];
+
+        // Image display plane
+        const imageGeometry = new THREE.PlaneGeometry(3.5, 2.5);
+        imageMaterial = new THREE.MeshStandardMaterial({
+            color: 0xFFFFFF,
+            metalness: 0.0,
+            roughness: 0.85,
+            side: THREE.DoubleSide
+        });
+        const imagePlane = new THREE.Mesh(imageGeometry, imageMaterial);
+        group.add(imagePlane);
+
         const boneMaterial = new THREE.MeshStandardMaterial({
             color: 0xC8B895,
             metalness: 0.0,
@@ -450,6 +468,7 @@ class Artifact3DRenderer {
         const bodyGeometry = new THREE.CylinderGeometry(0.15, 0.2, 0.8, 16);
         const body = new THREE.Mesh(bodyGeometry, boneMaterial);
         group.add(body);
+        proceduralElements.push(body);
 
         // Head with crest
         const headGeometry = new THREE.SphereGeometry(0.2, 16, 16);
@@ -457,6 +476,7 @@ class Artifact3DRenderer {
         head.position.y = 0.6;
         head.scale.set(0.8, 1.0, 0.7);
         group.add(head);
+        proceduralElements.push(head);
 
         // Crest
         const crestGeometry = new THREE.ConeGeometry(0.1, 0.6, 8);
@@ -464,6 +484,7 @@ class Artifact3DRenderer {
         crest.position.set(0, 0.9, -0.1);
         crest.rotation.x = -Math.PI / 4;
         group.add(crest);
+        proceduralElements.push(crest);
 
         // Beak
         const beakGeometry = new THREE.ConeGeometry(0.05, 0.5, 8);
@@ -471,6 +492,7 @@ class Artifact3DRenderer {
         beak.position.set(0, 0.6, 0.4);
         beak.rotation.x = Math.PI / 2;
         group.add(beak);
+        proceduralElements.push(beak);
 
         // Wings
         const wingBoneGeometry = new THREE.CylinderGeometry(0.03, 0.03, 3, 8);
@@ -480,22 +502,48 @@ class Artifact3DRenderer {
         leftWingUpper.position.set(-1.5, 0.3, 0);
         leftWingUpper.rotation.z = Math.PI / 3;
         group.add(leftWingUpper);
+        proceduralElements.push(leftWingUpper);
 
         const leftWingLower = new THREE.Mesh(wingBoneGeometry, boneMaterial);
         leftWingLower.position.set(-3.5, -0.5, 0);
         leftWingLower.rotation.z = -Math.PI / 6;
         group.add(leftWingLower);
+        proceduralElements.push(leftWingLower);
 
         // Right wing
         const rightWingUpper = new THREE.Mesh(wingBoneGeometry, boneMaterial);
         rightWingUpper.position.set(1.5, 0.3, 0);
         rightWingUpper.rotation.z = -Math.PI / 3;
         group.add(rightWingUpper);
+        proceduralElements.push(rightWingUpper);
 
         const rightWingLower = new THREE.Mesh(wingBoneGeometry, boneMaterial);
         rightWingLower.position.set(3.5, -0.5, 0);
         rightWingLower.rotation.z = Math.PI / 6;
         group.add(rightWingLower);
+        proceduralElements.push(rightWingLower);
+
+        // Attempt to load the Pteranodon Skeleton image
+        const imagePath = 'images/pteranodon-skeleton.jpg';
+        textureLoader.load(
+            imagePath,
+            // Success callback
+            (texture) => {
+                console.log('Pteranodon Skeleton texture loaded successfully');
+                imageMaterial.map = texture;
+                imageMaterial.needsUpdate = true;
+                // Hide procedural elements when real image loads
+                for (let i = 0; i < proceduralElements.length; i++) {
+                    proceduralElements[i].visible = false;
+                }
+            },
+            // Progress callback
+            undefined,
+            // Error callback
+            (error) => {
+                console.log('Using procedural Pteranodon Skeleton (no image found at ' + imagePath + ')');
+            }
+        );
 
         group.scale.set(0.3, 0.3, 0.3);
         return group;
@@ -503,6 +551,24 @@ class Artifact3DRenderer {
 
     createMammothSkull() {
         const group = new THREE.Group();
+
+        // Try to load real image texture
+        const textureLoader = new THREE.TextureLoader();
+        let imageMaterial;
+
+        // Array to track procedural elements for hiding when texture loads
+        const proceduralElements = [];
+
+        // Image display plane
+        const imageGeometry = new THREE.PlaneGeometry(3, 2.5);
+        imageMaterial = new THREE.MeshStandardMaterial({
+            color: 0xFFFFFF,
+            metalness: 0.0,
+            roughness: 0.8,
+            side: THREE.DoubleSide
+        });
+        const imagePlane = new THREE.Mesh(imageGeometry, imageMaterial);
+        group.add(imagePlane);
 
         const boneMaterial = new THREE.MeshStandardMaterial({
             color: 0xD8D0C0,
@@ -514,6 +580,7 @@ class Artifact3DRenderer {
         const skullGeometry = new THREE.BoxGeometry(1.5, 1.2, 1.0);
         const skull = new THREE.Mesh(skullGeometry, boneMaterial);
         group.add(skull);
+        proceduralElements.push(skull);
 
         // Tusks
         const tuskCurve = new THREE.CatmullRomCurve3([
@@ -534,12 +601,14 @@ class Artifact3DRenderer {
         const leftTusk = new THREE.Mesh(tuskGeometry, ivoryMaterial);
         leftTusk.position.set(-0.3, -0.3, 0.5);
         group.add(leftTusk);
+        proceduralElements.push(leftTusk);
 
         // Right tusk (mirrored)
         const rightTusk = new THREE.Mesh(tuskGeometry, ivoryMaterial);
         rightTusk.position.set(0.3, -0.3, 0.5);
         rightTusk.scale.z = -1;
         group.add(rightTusk);
+        proceduralElements.push(rightTusk);
 
         // Eye sockets
         const socketGeometry = new THREE.SphereGeometry(0.15, 16, 16);
@@ -552,10 +621,34 @@ class Artifact3DRenderer {
         const leftSocket = new THREE.Mesh(socketGeometry, socketMaterial);
         leftSocket.position.set(-0.5, 0.3, 0.4);
         group.add(leftSocket);
+        proceduralElements.push(leftSocket);
 
         const rightSocket = new THREE.Mesh(socketGeometry, socketMaterial);
         rightSocket.position.set(0.5, 0.3, 0.4);
         group.add(rightSocket);
+        proceduralElements.push(rightSocket);
+
+        // Attempt to load the Mammoth Skull image
+        const imagePath = 'images/mammoth-skull.jpg';
+        textureLoader.load(
+            imagePath,
+            // Success callback
+            (texture) => {
+                console.log('Mammoth Skull texture loaded successfully');
+                imageMaterial.map = texture;
+                imageMaterial.needsUpdate = true;
+                // Hide procedural elements when real image loads
+                for (let i = 0; i < proceduralElements.length; i++) {
+                    proceduralElements[i].visible = false;
+                }
+            },
+            // Progress callback
+            undefined,
+            // Error callback
+            (error) => {
+                console.log('Using procedural Mammoth Skull (no image found at ' + imagePath + ')');
+            }
+        );
 
         group.scale.set(0.6, 0.6, 0.6);
         return group;
