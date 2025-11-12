@@ -477,23 +477,8 @@ class Artifact3DRenderer {
         const textureLoader = new THREE.TextureLoader();
         let paintingMaterial;
 
-        // Attempt to load the uploaded Mona Lisa image
-        const imagePath = 'images/mona-lisa.jpg'; // Or .png
-        textureLoader.load(
-            imagePath,
-            // Success callback
-            (texture) => {
-                console.log('Mona Lisa texture loaded successfully');
-                paintingMaterial.map = texture;
-                paintingMaterial.needsUpdate = true;
-            },
-            // Progress callback
-            undefined,
-            // Error callback
-            (error) => {
-                console.log('Using procedural Mona Lisa (no image found at ' + imagePath + ')');
-            }
-        );
+        // Array to track procedural elements for hiding when texture loads
+        const proceduralElements = [];
 
         // Canvas with texture support
         const canvasGeometry = new THREE.PlaneGeometry(1.5, 2);
@@ -519,6 +504,7 @@ class Artifact3DRenderer {
         const face = new THREE.Mesh(faceGeometry, faceMaterial);
         face.position.set(0, 0.4, 0.01);
         group.add(face);
+        proceduralElements.push(face);
 
         // Hair
         const hairGeometry = new THREE.CircleGeometry(0.35, 32, 0, Math.PI);
@@ -532,6 +518,7 @@ class Artifact3DRenderer {
         const hair = new THREE.Mesh(hairGeometry, hairMaterial);
         hair.position.set(0, 0.65, 0.01);
         group.add(hair);
+        proceduralElements.push(hair);
 
         // Dress
         const dressGeometry = new THREE.PlaneGeometry(0.8, 1.0);
@@ -545,6 +532,7 @@ class Artifact3DRenderer {
         const dress = new THREE.Mesh(dressGeometry, dressMaterial);
         dress.position.set(0, -0.5, 0.01);
         group.add(dress);
+        proceduralElements.push(dress);
 
         // Hands
         const handGeometry = new THREE.BoxGeometry(0.15, 0.1, 0.05);
@@ -559,10 +547,34 @@ class Artifact3DRenderer {
         const leftHand = new THREE.Mesh(handGeometry, handMaterial);
         leftHand.position.set(-0.2, -0.3, 0.02);
         group.add(leftHand);
+        proceduralElements.push(leftHand);
 
         const rightHand = new THREE.Mesh(handGeometry, handMaterial);
         rightHand.position.set(0.15, -0.35, 0.02);
         group.add(rightHand);
+        proceduralElements.push(rightHand);
+
+        // Attempt to load the uploaded Mona Lisa image
+        const imagePath = 'images/mona-lisa.jpg'; // Or .png
+        textureLoader.load(
+            imagePath,
+            // Success callback
+            (texture) => {
+                console.log('Mona Lisa texture loaded successfully');
+                paintingMaterial.map = texture;
+                paintingMaterial.needsUpdate = true;
+                // Hide procedural elements when real image loads
+                for (let i = 0; i < proceduralElements.length; i++) {
+                    proceduralElements[i].visible = false;
+                }
+            },
+            // Progress callback
+            undefined,
+            // Error callback
+            (error) => {
+                console.log('Using procedural Mona Lisa (no image found at ' + imagePath + ')');
+            }
+        );
 
         // Ornate frame
         const frameThickness = 0.15;
