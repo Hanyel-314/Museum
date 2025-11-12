@@ -89,100 +89,481 @@ body {
     padding: 0 10%;
 }
 
+/* ===== GUARDIAN STONE LIONS ===== */
 .lion {
-    width: 150px;
-    height: 180px;
+    width: 180px;
+    height: 220px;
     position: relative;
     transform-style: preserve-3d;
 }
 
-/* Stone base/pedestal */
-.lion::before {
+.lion.left {
+    transform: perspective(800px) rotateY(-8deg);
+}
+
+.lion.right {
+    transform: perspective(800px) rotateY(8deg);
+}
+
+/* Pedestal base */
+.lion-pedestal {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 160px;
+    height: 45px;
+    background:
+        linear-gradient(180deg,
+            #7a7a7a 0%, #656565 25%, #5a5a5a 50%, #4f4f4f 75%, #454545 100%);
+    border-radius: 6px 6px 2px 2px;
+    box-shadow:
+        inset 0 -8px 15px rgba(0,0,0,0.6),
+        inset 0 8px 15px rgba(255,255,255,0.15),
+        inset 0 0 0 2px rgba(0,0,0,0.3),
+        0 12px 30px rgba(0,0,0,0.8),
+        0 5px 15px rgba(0,0,0,0.6);
+    z-index: 1;
+}
+
+/* Decorative pedestal engraving */
+.lion-pedestal::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    height: 60%;
+    background: repeating-linear-gradient(
+        90deg,
+        transparent 0px,
+        rgba(0,0,0,0.15) 1px,
+        transparent 2px,
+        transparent 12px
+    );
+    border-radius: 3px;
+}
+
+/* Sacred ball under paw */
+.lion-ball {
+    position: absolute;
+    bottom: 40px;
+    left: 25%;
+    transform: translateX(-50%);
+    width: 35px;
+    height: 35px;
+    background:
+        radial-gradient(circle at 30% 30%,
+            #b5b5b5 0%, #9a9a9a 30%, #808080 60%, #6a6a6a 100%);
+    border-radius: 50%;
+    box-shadow:
+        inset -5px -5px 10px rgba(0,0,0,0.5),
+        inset 3px 3px 8px rgba(255,255,255,0.3),
+        0 8px 15px rgba(0,0,0,0.6),
+        0 3px 6px rgba(0,0,0,0.4);
+    z-index: 3;
+}
+
+/* Ball decorative patterns */
+.lion-ball::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    height: 70%;
+    background:
+        repeating-linear-gradient(45deg,
+            transparent 0px, rgba(0,0,0,0.1) 1px,
+            transparent 2px, transparent 5px),
+        repeating-linear-gradient(-45deg,
+            transparent 0px, rgba(0,0,0,0.1) 1px,
+            transparent 2px, transparent 5px);
+    border-radius: 50%;
+}
+
+/* Lion body (main torso) */
+.lion-body {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 80px;
+    background:
+        linear-gradient(135deg,
+            #a8a8a8 0%, #c0c0c0 15%, #ababab 30%,
+            #909090 50%, #9d9d9d 70%, #8a8a8a 100%),
+        repeating-linear-gradient(30deg,
+            transparent 0px, rgba(0,0,0,0.03) 1px,
+            transparent 2px, transparent 10px);
+    border-radius: 50% 50% 45% 45% / 35% 35% 65% 65%;
+    box-shadow:
+        inset -20px -15px 30px rgba(0,0,0,0.45),
+        inset 20px 15px 30px rgba(255,255,255,0.35),
+        inset 0 -10px 20px rgba(0,0,0,0.25),
+        0 18px 40px rgba(0,0,0,0.65),
+        -10px 12px 25px rgba(0,0,0,0.45);
+    z-index: 2;
+}
+
+/* Chest/breast plate detail */
+.lion-chest {
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 45px;
+    background:
+        radial-gradient(ellipse at center,
+            rgba(180,180,180,0.4) 0%,
+            rgba(140,140,140,0.3) 50%,
+            transparent 70%);
+    border-radius: 50%;
+}
+
+/* Front legs */
+.lion-leg.front-left,
+.lion-leg.front-right {
+    position: absolute;
+    bottom: -35px;
+    width: 28px;
+    height: 75px;
+    background:
+        linear-gradient(180deg,
+            #9d9d9d 0%, #ababab 20%, #959595 50%, #878787 100%);
+    border-radius: 8px 8px 4px 4px;
+    box-shadow:
+        inset -5px 0 10px rgba(0,0,0,0.4),
+        inset 5px 0 10px rgba(255,255,255,0.25),
+        3px 5px 12px rgba(0,0,0,0.5);
+    z-index: 4;
+}
+
+.lion-leg.front-left {
+    left: 20px;
+}
+
+.lion-leg.front-right {
+    right: 20px;
+}
+
+/* Paw details */
+.lion-leg.front-left::after,
+.lion-leg.front-right::after {
     content: '';
     position: absolute;
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 140px;
-    height: 40px;
-    background: linear-gradient(180deg,
-        #6b6b6b 0%, #555555 50%, #4a4a4a 100%);
-    border-radius: 4px;
+    width: 32px;
+    height: 12px;
+    background:
+        radial-gradient(ellipse at bottom,
+            #858585 0%, #757575 50%, #656565 100%);
+    border-radius: 50% 50% 5px 5px / 40% 40% 60% 60%;
     box-shadow:
-        inset 0 -5px 10px rgba(0,0,0,0.5),
-        inset 0 5px 10px rgba(255,255,255,0.1),
-        0 10px 25px rgba(0,0,0,0.7);
+        inset 0 -3px 5px rgba(0,0,0,0.5),
+        0 2px 4px rgba(0,0,0,0.4);
 }
 
-/* Lion body (seated position) */
-.lion::after {
-    content: '';
+/* Back legs (partially visible) */
+.lion-leg.back-left,
+.lion-leg.back-right {
     position: absolute;
-    bottom: 35px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 85px;
+    bottom: -20px;
+    width: 35px;
+    height: 60px;
     background:
-        /* Main stone texture */
-        linear-gradient(135deg,
-            #9b9b9b 0%, #b8b8b8 20%, #a5a5a5 40%,
-            #8a8a8a 60%, #959595 80%, #888888 100%),
-        /* Stone grain */
-        repeating-linear-gradient(45deg,
-            transparent 0px, rgba(0,0,0,0.05) 1px,
-            transparent 2px, transparent 8px);
-    border-radius: 45% 45% 30% 30% / 40% 40% 60% 60%;
+        linear-gradient(160deg,
+            #8a8a8a 0%, #9a9a9a 30%, #858585 70%, #757575 100%);
+    border-radius: 45% 45% 25% 25% / 30% 30% 70% 70%;
     box-shadow:
-        /* Volume shadows */
-        inset -15px -10px 25px rgba(0,0,0,0.4),
-        inset 15px 10px 25px rgba(255,255,255,0.3),
-        /* Outer shadow */
-        0 15px 35px rgba(0,0,0,0.6),
-        -8px 10px 20px rgba(0,0,0,0.4);
-    position: relative;
+        inset -8px -5px 15px rgba(0,0,0,0.5),
+        inset 5px 3px 12px rgba(255,255,255,0.2),
+        2px 8px 15px rgba(0,0,0,0.4);
     z-index: 1;
 }
 
-/* Lion head and mane - using gradients and shadows */
-.lion.left::after,
-.lion.right::after {
-    /* Adding head details with multiple box-shadows to create layered effect */
+.lion-leg.back-left {
+    left: 15px;
+    transform: rotate(-10deg);
+}
+
+.lion-leg.back-right {
+    right: 15px;
+    transform: rotate(10deg);
+}
+
+/* Lion head */
+.lion-head {
+    position: absolute;
+    top: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 85px;
+    height: 75px;
+    background:
+        radial-gradient(ellipse at 50% 40%,
+            #b8b8b8 0%, #a5a5a5 25%, #959595 50%, #888888 100%);
+    border-radius: 50% 50% 45% 45% / 55% 55% 45% 45%;
     box-shadow:
-        /* Main body shadows */
-        inset -15px -10px 25px rgba(0,0,0,0.4),
-        inset 15px 10px 25px rgba(255,255,255,0.3),
-        0 15px 35px rgba(0,0,0,0.6),
-        -8px 10px 20px rgba(0,0,0,0.4),
-        /* Lion head (positioned above body) */
-        0px -60px 0px 35px #a0a0a0,
-        0px -60px 0px 36px rgba(0,0,0,0.3),
-        /* Mane effect (larger circle behind head) */
-        0px -65px 0px 55px rgba(120,120,120,0.6),
-        0px -65px 0px 56px rgba(0,0,0,0.3),
-        /* Mane detail layers */
-        -15px -70px 0px 50px rgba(110,110,110,0.5),
-        15px -70px 0px 50px rgba(110,110,110,0.5),
-        /* Eyes (small dark spots) */
-        -12px -68px 0px 3px rgba(40,40,40,0.9),
-        12px -68px 0px 3px rgba(40,40,40,0.9),
-        /* Nose */
-        0px -55px 0px 5px rgba(70,70,70,0.8),
-        /* Front legs */
-        -30px 20px 0px 18px rgba(140,140,140,0.8),
-        30px 20px 0px 18px rgba(140,140,140,0.8),
-        -30px 20px 0px 19px rgba(0,0,0,0.2),
-        30px 20px 0px 19px rgba(0,0,0,0.2);
+        inset -12px -10px 20px rgba(0,0,0,0.4),
+        inset 12px 10px 20px rgba(255,255,255,0.35),
+        0 15px 30px rgba(0,0,0,0.6),
+        0 8px 15px rgba(0,0,0,0.4);
+    z-index: 5;
 }
 
-/* Sitting pose enhancement for left lion */
-.lion.left {
-    transform: rotateY(-5deg);
+/* Majestic mane */
+.lion-mane {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 110px;
+    height: 95px;
+    background:
+        radial-gradient(ellipse at center,
+            rgba(130,130,130,0.8) 0%,
+            rgba(115,115,115,0.7) 30%,
+            rgba(105,105,105,0.6) 50%,
+            rgba(95,95,95,0.4) 70%,
+            transparent 85%);
+    border-radius: 50%;
+    z-index: -1;
 }
 
-/* Sitting pose enhancement for right lion */
-.lion.right {
-    transform: rotateY(5deg);
+/* Mane texture details */
+.lion-mane::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 95%;
+    height: 95%;
+    background:
+        repeating-linear-gradient(25deg,
+            transparent 0px, rgba(0,0,0,0.15) 1px,
+            transparent 3px, transparent 8px),
+        repeating-linear-gradient(-25deg,
+            transparent 0px, rgba(0,0,0,0.15) 1px,
+            transparent 3px, transparent 8px),
+        repeating-linear-gradient(85deg,
+            transparent 0px, rgba(0,0,0,0.1) 1px,
+            transparent 2px, transparent 6px);
+    border-radius: 50%;
+}
+
+/* Face details container */
+.lion-face {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+}
+
+/* Eyes - fierce and alert */
+.lion-eye {
+    position: absolute;
+    top: 28px;
+    width: 12px;
+    height: 14px;
+    background:
+        radial-gradient(circle at 35% 35%,
+            #3a3a3a 0%, #2a2a2a 40%, #1a1a1a 70%, #0a0a0a 100%);
+    border-radius: 50% 50% 50% 50% / 45% 45% 55% 55%;
+    box-shadow:
+        inset -2px -2px 4px rgba(0,0,0,0.8),
+        inset 1px 1px 2px rgba(255,255,255,0.3),
+        0 2px 4px rgba(0,0,0,0.6);
+}
+
+.lion-eye.left {
+    left: 22px;
+}
+
+.lion-eye.right {
+    right: 22px;
+}
+
+/* Eye highlight - alert gaze */
+.lion-eye::before {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 4px;
+    height: 4px;
+    background: radial-gradient(circle,
+        rgba(255,255,255,0.8) 0%,
+        rgba(255,255,255,0.4) 50%,
+        transparent 100%);
+    border-radius: 50%;
+}
+
+/* Nose - prominent and strong */
+.lion-nose {
+    position: absolute;
+    top: 45px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 18px;
+    height: 14px;
+    background:
+        linear-gradient(180deg,
+            #5a5a5a 0%, #4a4a4a 50%, #3a3a3a 100%);
+    border-radius: 50% 50% 45% 45% / 35% 35% 65% 65%;
+    box-shadow:
+        inset -3px -2px 5px rgba(0,0,0,0.6),
+        inset 2px 1px 3px rgba(255,255,255,0.2),
+        0 3px 6px rgba(0,0,0,0.5);
+}
+
+/* Nostrils */
+.lion-nose::before,
+.lion-nose::after {
+    content: '';
+    position: absolute;
+    bottom: 3px;
+    width: 4px;
+    height: 5px;
+    background: radial-gradient(ellipse,
+        #1a1a1a 0%, #000000 70%);
+    border-radius: 50%;
+    box-shadow: inset 0 -1px 2px rgba(0,0,0,0.8);
+}
+
+.lion-nose::before {
+    left: 3px;
+}
+
+.lion-nose::after {
+    right: 3px;
+}
+
+/* Mouth - powerful and majestic */
+.lion-mouth {
+    position: absolute;
+    top: 52px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 20px;
+    background:
+        radial-gradient(ellipse at top,
+            #3a3a3a 0%, #2a2a2a 40%, #1a1a1a 100%);
+    border-radius: 50% 50% 50% 50% / 30% 30% 70% 70%;
+    box-shadow:
+        inset 0 -5px 10px rgba(0,0,0,0.8),
+        inset 0 2px 5px rgba(255,255,255,0.1);
+}
+
+/* Teeth details */
+.lion-teeth {
+    position: absolute;
+    top: 55px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 35px;
+    height: 8px;
+    background:
+        linear-gradient(90deg,
+            transparent 0%, transparent 10%,
+            rgba(220,220,220,0.9) 12%, rgba(200,200,200,0.9) 18%,
+            transparent 20%, transparent 30%,
+            rgba(220,220,220,0.9) 32%, rgba(200,200,200,0.9) 38%,
+            transparent 40%, transparent 60%,
+            rgba(220,220,220,0.9) 62%, rgba(200,200,200,0.9) 68%,
+            transparent 70%, transparent 80%,
+            rgba(220,220,220,0.9) 82%, rgba(200,200,200,0.9) 88%,
+            transparent 90%, transparent 100%);
+    box-shadow: 0 2px 3px rgba(0,0,0,0.4);
+}
+
+/* Ears */
+.lion-ear {
+    position: absolute;
+    top: 8px;
+    width: 20px;
+    height: 22px;
+    background:
+        linear-gradient(45deg,
+            #9a9a9a 0%, #ababab 40%, #959595 100%);
+    border-radius: 50% 50% 20% 20% / 60% 60% 40% 40%;
+    box-shadow:
+        inset -4px -3px 8px rgba(0,0,0,0.4),
+        inset 3px 2px 6px rgba(255,255,255,0.3),
+        2px 3px 8px rgba(0,0,0,0.4);
+}
+
+.lion-ear.left {
+    left: 5px;
+    transform: rotate(-25deg);
+}
+
+.lion-ear.right {
+    right: 5px;
+    transform: rotate(25deg);
+}
+
+/* Inner ear detail */
+.lion-ear::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    height: 65%;
+    background:
+        radial-gradient(ellipse,
+            rgba(70,70,70,0.6) 0%,
+            rgba(80,80,80,0.4) 50%,
+            transparent 80%);
+    border-radius: 50%;
+}
+
+/* Tail - curled and majestic */
+.lion-tail {
+    position: absolute;
+    bottom: 60px;
+    right: -5px;
+    width: 45px;
+    height: 60px;
+    background:
+        linear-gradient(135deg,
+            #959595 0%, #a5a5a5 30%, #8a8a8a 70%, #7a7a7a 100%);
+    border-radius: 60% 40% 30% 70% / 40% 50% 50% 60%;
+    transform: rotate(-15deg);
+    box-shadow:
+        inset -5px -5px 12px rgba(0,0,0,0.4),
+        inset 3px 3px 10px rgba(255,255,255,0.25),
+        3px 5px 12px rgba(0,0,0,0.45);
+    z-index: 1;
+}
+
+/* Tail tuft */
+.lion-tail::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    right: 5px;
+    width: 22px;
+    height: 22px;
+    background:
+        radial-gradient(circle,
+            rgba(120,120,120,0.8) 0%,
+            rgba(110,110,110,0.6) 40%,
+            rgba(100,100,100,0.4) 70%,
+            transparent 90%);
+    border-radius: 50%;
 }
 
 .entrance-door {
