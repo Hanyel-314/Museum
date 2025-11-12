@@ -322,7 +322,7 @@ class Artifact3DRenderer {
         const proceduralElements = [];
 
         // Canvas with texture support - Starry Night painting (landscape)
-        const canvasGeometry = new THREE.PlaneGeometry(2.6, 2.1);
+        const canvasGeometry = new THREE.PlaneGeometry(2.3, 1.85);
         paintingMaterial = new THREE.MeshStandardMaterial({
             color: 0xFFFFFF,
             metalness: 0.0,
@@ -426,26 +426,26 @@ class Artifact3DRenderer {
             roughness: 0.35
         });
 
-        // Frame pieces for landscape painting
-        const topFrame = new THREE.BoxGeometry(3.1, frameThickness, frameDepth);
-        const bottomFrame = new THREE.BoxGeometry(3.1, frameThickness, frameDepth);
-        const leftFrame = new THREE.BoxGeometry(frameThickness, 2.5, frameDepth);
-        const rightFrame = new THREE.BoxGeometry(frameThickness, 2.5, frameDepth);
+        // Frame pieces for landscape painting (canvas 2.3x1.85)
+        const topFrame = new THREE.BoxGeometry(2.66, frameThickness, frameDepth);
+        const bottomFrame = new THREE.BoxGeometry(2.66, frameThickness, frameDepth);
+        const leftFrame = new THREE.BoxGeometry(frameThickness, 2.21, frameDepth);
+        const rightFrame = new THREE.BoxGeometry(frameThickness, 2.21, frameDepth);
 
         const top = new THREE.Mesh(topFrame, frameMaterial);
-        top.position.set(0, 1.15, -0.06);
+        top.position.set(0, 1.015, -0.06);
         group.add(top);
 
         const bottom = new THREE.Mesh(bottomFrame, frameMaterial);
-        bottom.position.set(0, -1.15, -0.06);
+        bottom.position.set(0, -1.015, -0.06);
         group.add(bottom);
 
         const left = new THREE.Mesh(leftFrame, frameMaterial);
-        left.position.set(-1.45, 0, -0.06);
+        left.position.set(-1.24, 0, -0.06);
         group.add(left);
 
         const right = new THREE.Mesh(rightFrame, frameMaterial);
-        right.position.set(1.45, 0, -0.06);
+        right.position.set(1.24, 0, -0.06);
         group.add(right);
 
         group.scale.set(0.9, 0.9, 0.9);
@@ -1057,7 +1057,7 @@ class Artifact3DRenderer {
         );
 
         // Main canvas with texture support - Last Supper (wide mural)
-        const canvasGeometry = new THREE.PlaneGeometry(5.5, 2.7);
+        const canvasGeometry = new THREE.PlaneGeometry(6.0, 3.0);
         muralMaterial = new THREE.MeshStandardMaterial({
             color: 0xFFFFFF, // White for texture
             metalness: 0.0,
@@ -1134,26 +1134,26 @@ class Artifact3DRenderer {
             roughness: 0.5
         });
 
-        // Frame pieces (properly sized to surround 5.5x2.7 canvas)
-        const topFrame = new THREE.BoxGeometry(5.9, frameThickness, frameDepth);
-        const bottomFrame = new THREE.BoxGeometry(5.9, frameThickness, frameDepth);
-        const leftFrame = new THREE.BoxGeometry(frameThickness, 3.1, frameDepth);
-        const rightFrame = new THREE.BoxGeometry(frameThickness, 3.1, frameDepth);
+        // Frame pieces (properly sized to surround 6.0x3.0 canvas)
+        const topFrame = new THREE.BoxGeometry(6.4, frameThickness, frameDepth);
+        const bottomFrame = new THREE.BoxGeometry(6.4, frameThickness, frameDepth);
+        const leftFrame = new THREE.BoxGeometry(frameThickness, 3.4, frameDepth);
+        const rightFrame = new THREE.BoxGeometry(frameThickness, 3.4, frameDepth);
 
         const top = new THREE.Mesh(topFrame, frameMaterial);
-        top.position.set(0, 1.45, -0.15);
+        top.position.set(0, 1.6, -0.15);
         group.add(top);
 
         const bottom = new THREE.Mesh(bottomFrame, frameMaterial);
-        bottom.position.set(0, -1.45, -0.15);
+        bottom.position.set(0, -1.6, -0.15);
         group.add(bottom);
 
         const left = new THREE.Mesh(leftFrame, frameMaterial);
-        left.position.set(-2.85, 0, -0.15);
+        left.position.set(-3.1, 0, -0.15);
         group.add(left);
 
         const right = new THREE.Mesh(rightFrame, frameMaterial);
-        right.position.set(2.85, 0, -0.15);
+        right.position.set(3.1, 0, -0.15);
         group.add(right);
 
         group.scale.set(0.5, 0.5, 0.5);
@@ -1179,7 +1179,7 @@ class Artifact3DRenderer {
                 break;
             case 'starry-night':
                 model = this.createStarryNight();
-                this.camera.position.set(0, 0, 3.0);
+                this.camera.position.set(0, 0, 2.7);
                 break;
             case 'trex':
                 model = this.createTRexSkull();
@@ -1203,7 +1203,7 @@ class Artifact3DRenderer {
                 break;
             case 'last-supper':
                 model = this.createLastSupper();
-                this.camera.position.set(0, 0, 6.0);
+                this.camera.position.set(0, 0, 6.5);
                 break;
             default:
                 console.error('Unknown artifact:', artifactId);
