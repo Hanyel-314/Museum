@@ -463,7 +463,7 @@ class Artifact3DRenderer {
         const proceduralElements = [];
 
         // Image display plane - T-Rex skull (landscape orientation, large)
-        const imageGeometry = new THREE.PlaneGeometry(5.0, 3.4);
+        const imageGeometry = new THREE.PlaneGeometry(6.5, 4.4);
         imageMaterial = new THREE.MeshStandardMaterial({
             color: 0xFFFFFF,
             metalness: 0.0,
@@ -576,7 +576,7 @@ class Artifact3DRenderer {
         const proceduralElements = [];
 
         // Image display plane - Pteranodon skeleton (wide wingspan)
-        const imageGeometry = new THREE.PlaneGeometry(6.0, 4.2);
+        const imageGeometry = new THREE.PlaneGeometry(7.8, 5.5);
         imageMaterial = new THREE.MeshStandardMaterial({
             color: 0xFFFFFF,
             metalness: 0.0,
@@ -1183,11 +1183,11 @@ class Artifact3DRenderer {
                 break;
             case 'trex':
                 model = this.createTRexSkull();
-                this.camera.position.set(0, 0, 5.8);
+                this.camera.position.set(0, 0, 7.5);
                 break;
             case 'pterosaur':
                 model = this.createPteranodonSkeleton();
-                this.camera.position.set(0, 0, 7.0);
+                this.camera.position.set(0, 0, 9.0);
                 break;
             case 'mammoth':
                 model = this.createMammothSkull();
