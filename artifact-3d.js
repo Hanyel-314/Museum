@@ -311,65 +311,113 @@ class Artifact3DRenderer {
         return group;
     }
 
-    createCeremonialScepter() {
+    createStarryNight() {
         const group = new THREE.Group();
 
-        // Ebony shaft
-        const shaftGeometry = new THREE.CylinderGeometry(0.08, 0.08, 4, 32);
-        const ebonyMaterial = new THREE.MeshStandardMaterial({
-            color: 0x1A1A1A,
-            metalness: 0.1,
-            roughness: 0.45
-        });
-        const shaft = new THREE.Mesh(shaftGeometry, ebonyMaterial);
-        shaft.rotation.z = Math.PI / 2;
-        group.add(shaft);
+        // Try to load real image texture
+        const textureLoader = new THREE.TextureLoader();
+        let paintingMaterial;
 
-        // Gold serpent head
-        const headGeometry = new THREE.SphereGeometry(0.25, 32, 32);
-        const goldMaterial = new THREE.MeshStandardMaterial({
-            color: 0xFFD700,
-            metalness: 1.0,
-            roughness: 0.3
-        });
-        const head = new THREE.Mesh(headGeometry, goldMaterial);
-        head.position.x = 2.2;
-        head.scale.set(1.2, 1.0, 0.8);
-        group.add(head);
+        // Array to track procedural elements for hiding when texture loads
+        const proceduralElements = [];
 
-        // Serpent eyes (garnets)
-        const eyeGeometry = new THREE.SphereGeometry(0.06, 16, 16);
-        const garnetMaterial = new THREE.MeshStandardMaterial({
-            color: 0x6A0F17,
+        // Canvas with texture support - Starry Night painting (landscape)
+        const canvasGeometry = new THREE.PlaneGeometry(2.8, 2.2);
+        paintingMaterial = new THREE.MeshStandardMaterial({
+            color: 0xFFFFFF,
             metalness: 0.0,
-            roughness: 0.2,
-            transparent: true,
-            opacity: 0.8
+            roughness: 0.6,
+            side: THREE.DoubleSide
+        });
+        const canvas = new THREE.Mesh(canvasGeometry, paintingMaterial);
+        group.add(canvas);
+
+        // Procedural representation of Starry Night
+        // Deep blue night sky background
+        const skyGeometry = new THREE.PlaneGeometry(2.6, 2.0);
+        const skyMaterial = new THREE.MeshStandardMaterial({
+            color: 0x1E3A5F,  // Deep blue night
+            metalness: 0.0,
+            roughness: 0.8
+        });
+        const sky = new THREE.Mesh(skyGeometry, skyMaterial);
+        sky.position.z = -0.01;
+        proceduralElements.push(sky);
+        group.add(sky);
+
+        // Swirling stars and moon (procedural circles)
+        const starMaterial = new THREE.MeshStandardMaterial({
+            color: 0xFFF68F,
+            metalness: 0.0,
+            roughness: 0.3,
+            emissive: 0xFFDD44,
+            emissiveIntensity: 0.4
         });
 
-        const leftEye = new THREE.Mesh(eyeGeometry, garnetMaterial);
-        leftEye.position.set(2.3, 0.1, 0.15);
-        group.add(leftEye);
+        // Moon
+        const moonGeometry = new THREE.CircleGeometry(0.15, 32);
+        const moon = new THREE.Mesh(moonGeometry, starMaterial);
+        moon.position.set(0.8, 0.5, 0.02);
+        proceduralElements.push(moon);
+        group.add(moon);
 
-        const rightEye = new THREE.Mesh(eyeGeometry, garnetMaterial);
-        rightEye.position.set(2.3, 0.1, -0.15);
-        group.add(rightEye);
-
-        // Hemp wrap grip
-        for (let i = 0; i < 10; i++) {
-            const wrapGeometry = new THREE.TorusGeometry(0.1, 0.02, 8, 16);
-            const hempMaterial = new THREE.MeshStandardMaterial({
-                color: 0x8B7355,
-                metalness: 0.0,
-                roughness: 0.8
-            });
-            const wrap = new THREE.Mesh(wrapGeometry, hempMaterial);
-            wrap.position.x = -0.5 + (i * 0.1);
-            wrap.rotation.y = Math.PI / 2;
-            group.add(wrap);
+        // Stars
+        for (let i = 0; i < 11; i++) {
+            const starGeometry = new THREE.CircleGeometry(0.08, 32);
+            const star = new THREE.Mesh(starGeometry, starMaterial);
+            const x = -1.0 + (i % 4) * 0.6;
+            const y = 0.3 + Math.floor(i / 4) * 0.3;
+            star.position.set(x, y, 0.02);
+            proceduralElements.push(star);
+            group.add(star);
         }
 
-        group.scale.set(0.4, 0.4, 0.4);
+        // Dark cypress tree (left side)
+        const treeGeometry = new THREE.BoxGeometry(0.3, 1.2, 0.02);
+        const treeMaterial = new THREE.MeshStandardMaterial({
+            color: 0x0A0F0A,
+            metalness: 0.0,
+            roughness: 0.9
+        });
+        const tree = new THREE.Mesh(treeGeometry, treeMaterial);
+        tree.position.set(-0.8, -0.2, 0.02);
+        proceduralElements.push(tree);
+        group.add(tree);
+
+        // Village houses (small rectangles at bottom)
+        const villageMaterial = new THREE.MeshStandardMaterial({
+            color: 0x4A4A4A,
+            metalness: 0.0,
+            roughness: 0.7
+        });
+        for (let i = 0; i < 5; i++) {
+            const houseGeometry = new THREE.BoxGeometry(0.2, 0.15, 0.02);
+            const house = new THREE.Mesh(houseGeometry, villageMaterial);
+            house.position.set(-0.5 + i * 0.3, -0.7, 0.02);
+            proceduralElements.push(house);
+            group.add(house);
+        }
+
+        // Attempt to load Starry Night image
+        const imagePath = 'images/starry-night.jpg';
+        textureLoader.load(
+            imagePath,
+            (texture) => {
+                console.log('Starry Night texture loaded successfully');
+                paintingMaterial.map = texture;
+                paintingMaterial.needsUpdate = true;
+                // Hide procedural elements when real image loads
+                for (let i = 0; i < proceduralElements.length; i++) {
+                    proceduralElements[i].visible = false;
+                }
+            },
+            undefined,
+            (error) => {
+                console.log('Using procedural Starry Night (no image found at ' + imagePath + ')');
+            }
+        );
+
+        group.scale.set(0.9, 0.9, 0.9);
         return group;
     }
 
@@ -1097,9 +1145,9 @@ class Artifact3DRenderer {
                 model = this.createRosettaStone();
                 this.camera.position.set(0, 1, 3);
                 break;
-            case 'scepter':
-                model = this.createCeremonialScepter();
-                this.camera.position.set(0, 0, 4);
+            case 'starry-night':
+                model = this.createStarryNight();
+                this.camera.position.set(0, 0, 3.5);
                 break;
             case 'trex':
                 model = this.createTRexSkull();

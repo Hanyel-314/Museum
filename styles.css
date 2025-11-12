@@ -557,91 +557,76 @@ body {
     box-shadow: 0 8px 25px rgba(0,0,0,0.6);
 }
 
-.ceremonial-scepter {
-    background:
-        /* Gold serpent head with dulled edges */
-        linear-gradient(to bottom,
-            #d4af37 0%, #ffd700 8%, #d4af37 15%,
-            /* Deep ebony shaft with polished wood grain */
-            #1a0f0a 15%, #2c1810 25%, #1a0f0a 40%,
-            #2c1810 60%, #1a0f0a 75%, #2c1810 85%,
-            /* Rope-wrapped grip section */
-            #8b7355 85%, #6b5d4f 88%, #8b7355 91%, #6b5d4f 94%,
-            #8b7355 97%, #d4af37 100%
-        ),
-        /* Wood grain texture */
-        repeating-linear-gradient(90deg,
-            transparent 0px,
-            rgba(44,24,16,0.3) 1px,
-            transparent 2px,
-            transparent 15px
-        );
-    width: 28%;
-    border-radius: 45% 45% 8% 8%;
+.starry-night {
+    background-image: url('images/starry-night.jpg');
+    background-size: 85% 85%;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 6px;
     box-shadow:
-        /* Side rim accent lighting */
-        inset -8px 0 20px rgba(0,0,0,0.7),
-        inset 4px 0 12px rgba(212,175,55,0.3),
-        /* Outer glow from gold */
-        0 0 25px rgba(255,215,0,0.3),
-        0 6px 18px rgba(0,0,0,0.5),
-        /* 3D cylindrical depth */
-        5px 8px 15px rgba(0,0,0,0.4),
-        8px 12px 25px rgba(0,0,0,0.3);
-    filter: contrast(1.1);
-    /* 3D rod form */
-    transform-style: preserve-3d;
+        /* Soft diffused frontal museum lighting */
+        inset 0 30px 60px rgba(255,255,255,0.1),
+        inset 0 -20px 40px rgba(0,0,0,0.25),
+        /* Gold frame reflection */
+        inset 0 0 3px rgba(212,175,55,0.4),
+        0 0 40px rgba(30,58,95,0.35),
+        0 10px 35px rgba(0,0,0,0.4),
+        /* 3D canvas depth */
+        -5px 8px 20px rgba(0,0,0,0.3);
 }
 
-/* Gold serpent head with scale details - sculpted 3D */
-.ceremonial-scepter::before {
-    content: '';
+/* Swirling stars effect */
+.starry-night::before {
+    content: '★';
     position: absolute;
-    width: 70%;
-    height: 14%;
-    top: 2%;
-    left: 15%;
-    background:
-        /* Coiled serpent form */
-        radial-gradient(ellipse at 50% 50%, #ffd700 0%, #d4af37 60%, #b8860b 100%),
-        /* Scale texture pattern */
-        repeating-linear-gradient(45deg,
-            transparent 0px,
-            rgba(139,90,43,0.2) 1px,
-            transparent 2px,
-            transparent 6px
-        );
-    border-radius: 50% 50% 40% 40%;
-    box-shadow:
-        inset -3px -3px 8px rgba(0,0,0,0.4),
-        inset 2px 2px 6px rgba(255,255,255,0.3),
-        0 0 15px rgba(255,215,0,0.4),
-        /* 3D serpent projection */
-        0 4px 10px rgba(0,0,0,0.5);
-    /* Serpent head extends forward */
-    transform: translateZ(12px);
-}
-
-/* Garnet eyes with blood-red glint - faceted gemstone */
-.ceremonial-scepter::after {
-    content: '◆';
-    position: absolute;
-    font-size: 12px;
-    top: 5%;
-    left: 50%;
-    transform: translateX(-50%) translateZ(15px);
-    color: #dc2626;
+    font-size: 20px;
+    top: 15%;
+    left: 70%;
+    color: #FFF68F;
     text-shadow:
-        0 0 8px rgba(220,38,38,0.9),
-        0 2px 4px rgba(0,0,0,0.6),
-        /* 3D gem facet */
-        -1px -1px 0 rgba(255,100,100,0.4);
-    animation: garnetGlow 2s ease-in-out infinite;
+        0 0 12px rgba(255,246,143,0.9),
+        0 0 20px rgba(255,221,68,0.6),
+        0 2px 4px rgba(0,0,0,0.3);
+    animation: starTwinkle 3s ease-in-out infinite;
+    opacity: 0.8;
 }
 
-@keyframes garnetGlow {
-    0%, 100% { opacity: 0.8; text-shadow: 0 0 6px rgba(220,38,38,0.7), 0 2px 4px rgba(0,0,0,0.6); }
-    50% { opacity: 1; text-shadow: 0 0 12px rgba(220,38,38,1), 0 2px 4px rgba(0,0,0,0.6); }
+/* Moon glow */
+.starry-night::after {
+    content: '●';
+    position: absolute;
+    font-size: 24px;
+    top: 20%;
+    right: 15%;
+    color: #FFE87C;
+    text-shadow:
+        0 0 15px rgba(255,246,143,1),
+        0 0 30px rgba(255,232,124,0.7),
+        0 2px 4px rgba(0,0,0,0.3);
+    animation: moonGlow 4s ease-in-out infinite;
+    opacity: 0.9;
+}
+
+@keyframes starTwinkle {
+    0%, 100% {
+        opacity: 0.6;
+        text-shadow: 0 0 8px rgba(255,246,143,0.7), 0 0 15px rgba(255,221,68,0.4), 0 2px 4px rgba(0,0,0,0.3);
+    }
+    50% {
+        opacity: 1;
+        text-shadow: 0 0 15px rgba(255,246,143,1), 0 0 25px rgba(255,221,68,0.8), 0 2px 4px rgba(0,0,0,0.3);
+    }
+}
+
+@keyframes moonGlow {
+    0%, 100% {
+        opacity: 0.8;
+        text-shadow: 0 0 12px rgba(255,246,143,0.8), 0 0 25px rgba(255,232,124,0.6), 0 2px 4px rgba(0,0,0,0.3);
+    }
+    50% {
+        opacity: 1;
+        text-shadow: 0 0 18px rgba(255,246,143,1), 0 0 35px rgba(255,232,124,0.8), 0 2px 4px rgba(0,0,0,0.3);
+    }
 }
 
 /* Nature Artifacts */

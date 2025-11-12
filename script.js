@@ -67,31 +67,29 @@ const artifactData = {
         interaction: '旋转/缩放；点击文字区域显示三种文字对照与翻译',
         description: 'Ancient Egyptian granodiorite stele (196 BC) featuring the same decree in three scripts: hieroglyphic Egyptian (14 lines), Demotic script (32 lines), and ancient Greek (54 lines). Discovered in 1799 near Rosetta (Rashid), Egypt. The stone is dark gray to black basalt-like rock, measuring 112.3 cm high, 75.7 cm wide, and 28.4 cm thick, with the top right corner broken off. The inscriptions are deeply carved (1-2mm depth) with slight weathering. This artifact became the key to deciphering Egyptian hieroglyphs through comparison of the three parallel texts. Displayed on a black pedestal with directional lighting to emphasize the carved inscriptions.'
     },
-    'scepter': {
-        name: 'Ceremonial War Scepter',
-        category: 'History/Regalia',
-        scale_real_world: {length_cm: 118, shaft_diameter_cm: 3.2, head_length_cm: 14},
-        proportions: '杆身与蛇首体积比约9:1；蛇首微俯视2°',
+    'starry-night': {
+        name: 'The Starry Night',
+        category: 'Fine Art/Painting',
+        scale_real_world: {height_cm: 73.7, width_cm: 92.1},
+        proportions: '标准画布比例约4:5；构图动态，漩涡与柏树主导视线',
         materials: [
-            {type: 'ebony_wood', pbr: {roughness: 0.45, specular: 0.35, normal: 'tight grain'}},
-            {type: 'gold_serpent_head', pbr: {metallic: 1.0, roughness: 0.3}},
-            {type: 'garnet_inlays', pbr: {ior: 1.83, absorption: 'deep red'}},
-            {type: 'hemp_wrap', pbr: {roughness: 0.8}}
+            {type: 'oil_on_canvas', pbr: {roughness: 0.6, normal: 'impasto thick'}},
+            {type: 'wooden_frame', pbr: {roughness: 0.7}}
         ],
-        colors_finish: '黑檀近黑(#1A1A1A)带油光；金色中亮；榴石酒红(#6A0F17)',
+        colors_finish: '深蓝(#1E3A5F)、靛青、钴蓝主导；黄色(#FFF68F)星光；暗绿柏树',
         micro_details: [
-            '木材纵纹清晰，端部干裂0.2–0.5mm',
-            '蛇鳞浮雕间可见打磨方向性',
-            '麻绳纤维毛刺可见，末端胶封略泛黄'
+            '厚涂笔触清晰可见，形成漩涡状纹理',
+            '星月有明显堆叠质感，高度达2-3mm',
+            '色层间可见调色板刀痕与笔触方向'
         ],
-        iconography_meaning: '守护与威慑，权力与号令的外化',
-        geometry_notes: '杆身细长圆柱；蛇首NURBS样条形成连续曲面；眼窝镶嵌槽0.8mm倒角',
-        texture_notes: '木材使用三层贴图：基色+法线(细纹) + 光泽变化遮罩；金件添加微凹坑与拉丝混合',
-        lighting_notes: '侧逆光5600K加强轮廓；低位暖点光在蛇眼制造高光点',
-        display_mount: '长条岩板+透明双臂支撑夹杆',
-        camera_turntable: {pivot: '杆身几何中心', radius_cm: 140, elevation_deg: 8, step_deg: 8},
-        interaction: '旋转/缩放；点击蛇眼触发红宝石折射放大视图',
-        description: 'Commanding authority piece (110-120 cm length) crafted from ebony shaft with sculpted gold serpent head, garnet inset eyes, and rope-wrapped grip. The polished wood grain reveals hairline cracks, faint tool marks on gold serpent scales, and fraying fiber threads. Deep black ebony contrasts with rich gold (mild dulling at edges) and blood-red garnet glint. The coiled serpent motif represents authority, protection, intimidation, and divine command. Features balanced ceremonial proportions on a long slate base with transparent dual armature supports. Side rim accent lighting reveals serpent relief and garnet reflection.'
+        iconography_meaning: '精神世界的骚动与宇宙的永恒运动',
+        geometry_notes: '平面画作，使用法线贴图表现厚涂质感；漩涡构图引导视线流动',
+        texture_notes: '基础色彩层+厚涂法线图+光泽变化图；星月区域增强高光反射',
+        lighting_notes: '柔和顶光避免眩光；侧光凸显厚涂浮雕效果',
+        display_mount: '金色木框+保护玻璃罩；恒温恒湿展柜',
+        camera_turntable: {pivot: '画面中心', radius_cm: 150, elevation_deg: 0, step_deg: 10},
+        interaction: '旋转/缩放；热点：漩涡星空/柏树/村庄，显示笔触细节与创作背景',
+        description: 'Vincent van Gogh\'s iconic Post-Impressionist masterpiece painted in June 1889 from his asylum room in Saint-Rémy-de-Provence. Oil on canvas (73.7 × 92.1 cm) featuring swirling night sky with eleven prominent stars and crescent moon, rendered in thick impasto technique with visible brushstrokes. Dominant deep blues and vibrant yellows create dramatic contrast, while a towering dark cypress tree anchors the left composition. The small village below remains peaceful under the turbulent cosmos. Van Gogh\'s bold, expressive brushwork captures emotional intensity and the eternal movement of the universe. Displayed in an ornate gold frame with protective glass in climate-controlled environment, with soft overhead lighting to reveal the painting\'s extraordinary textural depth without glare.'
     },
     'trex': {
         name: 'Tyrannosaurus Rex Skull',
