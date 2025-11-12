@@ -102,7 +102,7 @@ class Artifact3DRenderer {
         const proceduralElements = [];
 
         // Image display plane - Egyptian mask (portrait orientation)
-        const imageGeometry = new THREE.PlaneGeometry(2.4, 3.0);
+        const imageGeometry = new THREE.PlaneGeometry(2.6, 3.2);
         imageMaterial = new THREE.MeshStandardMaterial({
             color: 0xFFFFFF,
             metalness: 0.0,
@@ -206,7 +206,7 @@ class Artifact3DRenderer {
         const proceduralElements = [];
 
         // Image display plane - Rosetta Stone (tall stone tablet)
-        const imageGeometry = new THREE.PlaneGeometry(2.6, 3.6);
+        const imageGeometry = new THREE.PlaneGeometry(2.8, 3.8);
         imageMaterial = new THREE.MeshStandardMaterial({
             color: 0xFFFFFF,
             metalness: 0.0,
@@ -322,7 +322,7 @@ class Artifact3DRenderer {
         const proceduralElements = [];
 
         // Canvas with texture support - Starry Night painting (landscape)
-        const canvasGeometry = new THREE.PlaneGeometry(2.8, 2.2);
+        const canvasGeometry = new THREE.PlaneGeometry(3.0, 2.4);
         paintingMaterial = new THREE.MeshStandardMaterial({
             color: 0xFFFFFF,
             metalness: 0.0,
@@ -432,7 +432,7 @@ class Artifact3DRenderer {
         const proceduralElements = [];
 
         // Image display plane - T-Rex skull (landscape orientation, large)
-        const imageGeometry = new THREE.PlaneGeometry(3.6, 2.4);
+        const imageGeometry = new THREE.PlaneGeometry(3.8, 2.6);
         imageMaterial = new THREE.MeshStandardMaterial({
             color: 0xFFFFFF,
             metalness: 0.0,
@@ -545,7 +545,7 @@ class Artifact3DRenderer {
         const proceduralElements = [];
 
         // Image display plane - Pteranodon skeleton (wide wingspan)
-        const imageGeometry = new THREE.PlaneGeometry(4.2, 3.0);
+        const imageGeometry = new THREE.PlaneGeometry(4.5, 3.2);
         imageMaterial = new THREE.MeshStandardMaterial({
             color: 0xFFFFFF,
             metalness: 0.0,
@@ -657,7 +657,7 @@ class Artifact3DRenderer {
         const proceduralElements = [];
 
         // Image display plane - Mammoth skull (large, slightly landscape)
-        const imageGeometry = new THREE.PlaneGeometry(3.6, 3.0);
+        const imageGeometry = new THREE.PlaneGeometry(3.8, 3.2);
         imageMaterial = new THREE.MeshStandardMaterial({
             color: 0xFFFFFF,
             metalness: 0.0,
@@ -762,7 +762,7 @@ class Artifact3DRenderer {
         const proceduralElements = [];
 
         // Canvas with texture support - Mona Lisa painting (portrait)
-        const canvasGeometry = new THREE.PlaneGeometry(2.1, 2.8);
+        const canvasGeometry = new THREE.PlaneGeometry(2.3, 3.0);
         paintingMaterial = new THREE.MeshStandardMaterial({
             color: 0xFFFFFF, // White for texture
             metalness: 0.0,
@@ -903,7 +903,7 @@ class Artifact3DRenderer {
         const proceduralElements = [];
 
         // Image display plane - Venus statue (tall portrait, elegant)
-        const imageGeometry = new THREE.PlaneGeometry(2.0, 3.5);
+        const imageGeometry = new THREE.PlaneGeometry(2.2, 3.7);
         imageMaterial = new THREE.MeshStandardMaterial({
             color: 0xFFFFFF,
             metalness: 0.0,
@@ -1026,7 +1026,7 @@ class Artifact3DRenderer {
         );
 
         // Main canvas with texture support - Last Supper (wide mural)
-        const canvasGeometry = new THREE.PlaneGeometry(5.0, 2.5);
+        const canvasGeometry = new THREE.PlaneGeometry(5.5, 2.7);
         muralMaterial = new THREE.MeshStandardMaterial({
             color: 0xFFFFFF, // White for texture
             metalness: 0.0,
@@ -1139,11 +1139,11 @@ class Artifact3DRenderer {
         switch(artifactId) {
             case 'death-mask':
                 model = this.createEgyptianMask();
-                this.camera.position.set(0, 0, 3);
+                this.camera.position.set(0, 0, 3.8);
                 break;
             case 'rosetta-stone':
                 model = this.createRosettaStone();
-                this.camera.position.set(0, 1, 3);
+                this.camera.position.set(0, 0, 4.2);
                 break;
             case 'starry-night':
                 model = this.createStarryNight();
@@ -1151,27 +1151,27 @@ class Artifact3DRenderer {
                 break;
             case 'trex':
                 model = this.createTRexSkull();
-                this.camera.position.set(2, 1, 4);
+                this.camera.position.set(0, 0, 4.5);
                 break;
             case 'pterosaur':
                 model = this.createPteranodonSkeleton();
-                this.camera.position.set(0, 1, 5);
+                this.camera.position.set(0, 0, 5.2);
                 break;
             case 'mammoth':
                 model = this.createMammothSkull();
-                this.camera.position.set(0, 0, 4);
+                this.camera.position.set(0, 0, 4.5);
                 break;
             case 'mona-lisa':
                 model = this.createMonaLisa();
-                this.camera.position.set(0, 0, 3);
+                this.camera.position.set(0, 0, 3.5);
                 break;
             case 'venus':
                 model = this.createVenusStatue();
-                this.camera.position.set(0, 0.5, 4);
+                this.camera.position.set(0, 0, 4.2);
                 break;
             case 'last-supper':
                 model = this.createLastSupper();
-                this.camera.position.set(0, 0, 4);
+                this.camera.position.set(0, 0, 6.0);
                 break;
             default:
                 console.error('Unknown artifact:', artifactId);
