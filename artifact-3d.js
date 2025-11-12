@@ -904,19 +904,19 @@ class Artifact3DRenderer {
         const rightFrame = new THREE.BoxGeometry(frameThickness, 2.3, frameDepth);
 
         const top = new THREE.Mesh(topFrame, frameMaterial);
-        top.position.set(0, 1.075, -0.05);
+        top.position.set(0, 1.075, -0.1);
         group.add(top);
 
         const bottom = new THREE.Mesh(bottomFrame, frameMaterial);
-        bottom.position.set(0, -1.075, -0.05);
+        bottom.position.set(0, -1.075, -0.1);
         group.add(bottom);
 
         const left = new THREE.Mesh(leftFrame, frameMaterial);
-        left.position.set(-0.825, 0, -0.05);
+        left.position.set(-0.825, 0, -0.1);
         group.add(left);
 
         const right = new THREE.Mesh(rightFrame, frameMaterial);
-        right.position.set(0.825, 0, -0.05);
+        right.position.set(0.825, 0, -0.1);
         group.add(right);
 
         group.scale.set(0.7, 0.7, 0.7);
@@ -1140,19 +1140,19 @@ class Artifact3DRenderer {
         const rightFrame = new THREE.BoxGeometry(frameThickness, 2.4, frameDepth);
 
         const top = new THREE.Mesh(topFrame, frameMaterial);
-        top.position.set(0, 1.1, -0.08);
+        top.position.set(0, 1.1, -0.15);
         group.add(top);
 
         const bottom = new THREE.Mesh(bottomFrame, frameMaterial);
-        bottom.position.set(0, -1.1, -0.08);
+        bottom.position.set(0, -1.1, -0.15);
         group.add(bottom);
 
         const left = new THREE.Mesh(leftFrame, frameMaterial);
-        left.position.set(-2.1, 0, -0.08);
+        left.position.set(-2.1, 0, -0.15);
         group.add(left);
 
         const right = new THREE.Mesh(rightFrame, frameMaterial);
-        right.position.set(2.1, 0, -0.08);
+        right.position.set(2.1, 0, -0.15);
         group.add(right);
 
         group.scale.set(0.5, 0.5, 0.5);
