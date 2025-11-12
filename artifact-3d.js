@@ -198,6 +198,24 @@ class Artifact3DRenderer {
     createRosettaStone() {
         const group = new THREE.Group();
 
+        // Try to load real image texture
+        const textureLoader = new THREE.TextureLoader();
+        let imageMaterial;
+
+        // Array to track procedural elements for hiding when texture loads
+        const proceduralElements = [];
+
+        // Image display plane
+        const imageGeometry = new THREE.PlaneGeometry(2.5, 3.2);
+        imageMaterial = new THREE.MeshStandardMaterial({
+            color: 0xFFFFFF,
+            metalness: 0.0,
+            roughness: 0.9,
+            side: THREE.DoubleSide
+        });
+        const imagePlane = new THREE.Mesh(imageGeometry, imageMaterial);
+        group.add(imagePlane);
+
         // Main stone tablet
         const stoneGeometry = new THREE.BoxGeometry(1.5, 2.0, 0.3);
         const stoneMaterial = new THREE.MeshStandardMaterial({
@@ -206,6 +224,7 @@ class Artifact3DRenderer {
             roughness: 0.85
         });
         const stone = new THREE.Mesh(stoneGeometry, stoneMaterial);
+        proceduralElements.push(stone);
         group.add(stone);
 
         // Inscription lines (hieroglyphics section)
@@ -221,6 +240,7 @@ class Artifact3DRenderer {
             const line = new THREE.Mesh(lineGeometry, linesMaterial);
             line.position.y = 0.8 - (i * 0.06);
             line.position.z = 0.16;
+            proceduralElements.push(line);
             group.add(line);
         }
 
@@ -230,6 +250,7 @@ class Artifact3DRenderer {
             const line = new THREE.Mesh(lineGeometry, linesMaterial);
             line.position.y = 0.0 - (i * 0.035);
             line.position.z = 0.16;
+            proceduralElements.push(line);
             group.add(line);
         }
 
@@ -239,6 +260,7 @@ class Artifact3DRenderer {
             const line = new THREE.Mesh(lineGeometry, linesMaterial);
             line.position.y = -1.1 + (i * 0.025);
             line.position.z = 0.16;
+            proceduralElements.push(line);
             group.add(line);
         }
 
@@ -247,6 +269,7 @@ class Artifact3DRenderer {
         const chip = new THREE.Mesh(chipGeometry, stoneMaterial);
         chip.position.set(0.6, 0.85, 0);
         chip.rotation.z = Math.PI / 4;
+        proceduralElements.push(chip);
         group.add(chip);
 
         // Weathering cracks
@@ -261,8 +284,28 @@ class Artifact3DRenderer {
             crack.position.y = -0.2 + (Math.random() * 0.4);
             crack.position.z = 0.16;
             crack.rotation.z = (Math.random() - 0.5) * 0.3;
+            proceduralElements.push(crack);
             group.add(crack);
         }
+
+        // Attempt to load the Rosetta Stone image
+        const imagePath = 'images/rosetta-stone.jpg';
+        textureLoader.load(
+            imagePath,
+            (texture) => {
+                console.log('Rosetta Stone texture loaded successfully');
+                imageMaterial.map = texture;
+                imageMaterial.needsUpdate = true;
+                // Hide procedural elements when real image loads
+                for (let i = 0; i < proceduralElements.length; i++) {
+                    proceduralElements[i].visible = false;
+                }
+            },
+            undefined,
+            (error) => {
+                console.log('Using procedural Rosetta Stone (no image found at ' + imagePath + ')');
+            }
+        );
 
         group.scale.set(0.7, 0.7, 0.7);
         return group;

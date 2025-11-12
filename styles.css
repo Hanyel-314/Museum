@@ -549,83 +549,12 @@ body {
 }
 
 .rosetta-stone {
-    background:
-        /* Dark granodiorite stone texture */
-        linear-gradient(135deg,
-            #2a2a2a 0%, #2c2c2c 30%, #323232 60%, #282828 100%
-        ),
-        /* Stone grain and weathering */
-        radial-gradient(circle at 20% 30%, rgba(60,60,60,0.3) 0%, transparent 2%),
-        radial-gradient(circle at 55% 50%, rgba(50,50,50,0.2) 0%, transparent 1.5%),
-        radial-gradient(circle at 75% 70%, rgba(55,55,55,0.25) 0%, transparent 2.5%);
-    border-radius: 3px;
-    box-shadow:
-        /* Side lighting emphasizing inscriptions */
-        inset -15px 0 30px rgba(0,0,0,0.5),
-        inset 15px 0 25px rgba(80,80,80,0.3),
-        /* Stone depth */
-        inset 0 -10px 20px rgba(0,0,0,0.4),
-        0 8px 25px rgba(0,0,0,0.6),
-        /* 3D stone thickness */
-        -8px 10px 20px rgba(0,0,0,0.5),
-        -12px 15px 30px rgba(0,0,0,0.4);
-    filter: contrast(1.05);
-    /* 3D stone tablet */
-    transform-style: preserve-3d;
-}
-
-/* Top broken corner - damaged section */
-.rosetta-stone::before {
-    content: '';
-    position: absolute;
-    width: 25%;
-    height: 20%;
-    top: 0;
-    right: 0;
-    background:
-        linear-gradient(135deg,
-            transparent 0%, transparent 40%,
-            rgba(20,20,20,0.8) 50%, transparent 100%
-        );
-    clip-path: polygon(50% 0%, 100% 0%, 100% 100%);
-    opacity: 0.9;
-}
-
-/* Inscribed text lines - three script sections */
-.rosetta-stone::after {
-    content: '';
-    position: absolute;
-    width: 85%;
-    height: 90%;
-    top: 5%;
-    left: 7.5%;
-    background:
-        /* Hieroglyphic section (top) */
-        repeating-linear-gradient(0deg,
-            transparent 0%,
-            transparent calc(5% - 1px),
-            rgba(80,80,80,0.4) 5%,
-            transparent calc(5% + 1px),
-            transparent 10%
-        ) top / 100% 25%,
-        /* Demotic script (middle) */
-        repeating-linear-gradient(0deg,
-            transparent 0%,
-            transparent calc(3.5% - 0.5px),
-            rgba(80,80,80,0.35) 3.5%,
-            transparent calc(3.5% + 0.5px),
-            transparent 7%
-        ) center / 100% 40%,
-        /* Greek text (bottom) */
-        repeating-linear-gradient(0deg,
-            transparent 0%,
-            transparent calc(2.5% - 0.5px),
-            rgba(80,80,80,0.3) 2.5%,
-            transparent calc(2.5% + 0.5px),
-            transparent 5%
-        ) bottom / 100% 35%;
+    background-image: url('images/rosetta-stone.jpg');
+    background-size: contain;
+    background-position: center;
     background-repeat: no-repeat;
-    opacity: 0.8;
+    border-radius: 3px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.6);
 }
 
 .ceremonial-scepter {
