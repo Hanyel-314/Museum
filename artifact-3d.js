@@ -897,26 +897,26 @@ class Artifact3DRenderer {
             roughness: 0.3
         });
 
-        // Frame pieces
-        const topFrame = new THREE.BoxGeometry(1.8, frameThickness, frameDepth);
-        const bottomFrame = new THREE.BoxGeometry(1.8, frameThickness, frameDepth);
-        const leftFrame = new THREE.BoxGeometry(frameThickness, 2.3, frameDepth);
-        const rightFrame = new THREE.BoxGeometry(frameThickness, 2.3, frameDepth);
+        // Frame pieces (properly sized to surround 2.3x3.0 canvas)
+        const topFrame = new THREE.BoxGeometry(2.6, frameThickness, frameDepth);
+        const bottomFrame = new THREE.BoxGeometry(2.6, frameThickness, frameDepth);
+        const leftFrame = new THREE.BoxGeometry(frameThickness, 3.3, frameDepth);
+        const rightFrame = new THREE.BoxGeometry(frameThickness, 3.3, frameDepth);
 
         const top = new THREE.Mesh(topFrame, frameMaterial);
-        top.position.set(0, 1.075, -0.1);
+        top.position.set(0, 1.575, -0.1);
         group.add(top);
 
         const bottom = new THREE.Mesh(bottomFrame, frameMaterial);
-        bottom.position.set(0, -1.075, -0.1);
+        bottom.position.set(0, -1.575, -0.1);
         group.add(bottom);
 
         const left = new THREE.Mesh(leftFrame, frameMaterial);
-        left.position.set(-0.825, 0, -0.1);
+        left.position.set(-1.225, 0, -0.1);
         group.add(left);
 
         const right = new THREE.Mesh(rightFrame, frameMaterial);
-        right.position.set(0.825, 0, -0.1);
+        right.position.set(1.225, 0, -0.1);
         group.add(right);
 
         group.scale.set(0.7, 0.7, 0.7);
@@ -1134,25 +1134,26 @@ class Artifact3DRenderer {
             roughness: 0.5
         });
 
-        const topFrame = new THREE.BoxGeometry(4.4, frameThickness, frameDepth);
-        const bottomFrame = new THREE.BoxGeometry(4.4, frameThickness, frameDepth);
-        const leftFrame = new THREE.BoxGeometry(frameThickness, 2.4, frameDepth);
-        const rightFrame = new THREE.BoxGeometry(frameThickness, 2.4, frameDepth);
+        // Frame pieces (properly sized to surround 5.5x2.7 canvas)
+        const topFrame = new THREE.BoxGeometry(5.9, frameThickness, frameDepth);
+        const bottomFrame = new THREE.BoxGeometry(5.9, frameThickness, frameDepth);
+        const leftFrame = new THREE.BoxGeometry(frameThickness, 3.1, frameDepth);
+        const rightFrame = new THREE.BoxGeometry(frameThickness, 3.1, frameDepth);
 
         const top = new THREE.Mesh(topFrame, frameMaterial);
-        top.position.set(0, 1.1, -0.15);
+        top.position.set(0, 1.45, -0.15);
         group.add(top);
 
         const bottom = new THREE.Mesh(bottomFrame, frameMaterial);
-        bottom.position.set(0, -1.1, -0.15);
+        bottom.position.set(0, -1.45, -0.15);
         group.add(bottom);
 
         const left = new THREE.Mesh(leftFrame, frameMaterial);
-        left.position.set(-2.1, 0, -0.15);
+        left.position.set(-2.85, 0, -0.15);
         group.add(left);
 
         const right = new THREE.Mesh(rightFrame, frameMaterial);
-        right.position.set(2.1, 0, -0.15);
+        right.position.set(2.85, 0, -0.15);
         group.add(right);
 
         group.scale.set(0.5, 0.5, 0.5);
