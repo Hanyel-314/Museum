@@ -1037,29 +1037,11 @@ body {
 }
 
 .venus-statue {
-    background:
-        /* White Parian marble with warm yellow patina */
-        linear-gradient(140deg,
-            #fffef8 0%, #f8f6f0 20%, #f0ede3 40%,
-            #e8e4d8 60%, #dcd8cc 80%, #c8c4b8 100%
-        ),
-        /* Smooth classical polish with mineral flecks */
-        radial-gradient(circle at 25% 30%, rgba(220,200,180,0.15) 0%, transparent 2%),
-        radial-gradient(circle at 55% 50%, rgba(210,190,170,0.12) 0%, transparent 1.5%),
-        radial-gradient(circle at 70% 65%, rgba(200,180,160,0.18) 0%, transparent 2.5%),
-        radial-gradient(circle at 40% 75%, rgba(215,195,175,0.14) 0%, transparent 2%),
-        /* Subtle grain texture */
-        repeating-linear-gradient(95deg,
-            transparent 0px,
-            rgba(200,190,180,0.05) 1px,
-            transparent 2px,
-            transparent 50px
-        );
-    clip-path: polygon(
-        45% 0%, 55% 0%, 60% 15%, 65% 25%, 70% 50%, 65% 70%,
-        60% 85%, 55% 95%, 50% 100%, 45% 95%, 40% 85%, 35% 70%,
-        30% 50%, 35% 25%, 40% 15%
-    );
+    background-image: url('images/venus.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 6px;
     box-shadow:
         /* High directional spotlight for sculptural shadow drama */
         inset -25px 0 50px rgba(0,0,0,0.35),
@@ -1072,55 +1054,6 @@ body {
         /* 3D sculptural volume */
         -15px 18px 40px rgba(0,0,0,0.4),
         -20px 25px 55px rgba(0,0,0,0.3);
-    filter: contrast(1.08) brightness(1.05);
-    /* 3D marble form */
-    transform-style: preserve-3d;
-}
-
-/* Broken arm stumps - chips and fractures */
-.venus-statue::before {
-    content: '';
-    position: absolute;
-    width: 12%;
-    height: 6%;
-    top: 38%;
-    right: 8%;
-    background:
-        radial-gradient(ellipse at center,
-            #c8c4b8 0%, #b8b4a8 50%, #a8a498 100%
-        );
-    clip-path: polygon(0% 30%, 40% 0%, 80% 20%, 100% 60%, 60% 100%, 20% 80%);
-    box-shadow:
-        inset -3px -3px 8px rgba(0,0,0,0.4),
-        0 2px 6px rgba(0,0,0,0.3);
-}
-
-/* Classical garment drapery folds - flowing fabric texture */
-.venus-statue::after {
-    content: '';
-    position: absolute;
-    width: 60%;
-    height: 45%;
-    bottom: 8%;
-    left: 20%;
-    background:
-        /* Vertical drapery pleats */
-        repeating-linear-gradient(90deg,
-            transparent 0%,
-            transparent 8%,
-            rgba(180,176,168,0.25) 9%,
-            rgba(200,196,188,0.15) 10%,
-            transparent 11%,
-            transparent 18%
-        ),
-        /* Shadow depth in folds */
-        linear-gradient(to bottom,
-            transparent 0%,
-            rgba(160,156,148,0.2) 30%,
-            rgba(140,136,128,0.3) 70%,
-            transparent 100%
-        );
-    opacity: 0.8;
 }
 
 .last-supper {

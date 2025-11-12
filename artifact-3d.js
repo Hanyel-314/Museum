@@ -614,6 +614,24 @@ class Artifact3DRenderer {
     createVenusStatue() {
         const group = new THREE.Group();
 
+        // Try to load real image texture
+        const textureLoader = new THREE.TextureLoader();
+        let imageMaterial;
+
+        // Array to track procedural elements for hiding when texture loads
+        const proceduralElements = [];
+
+        // Image display plane
+        const imageGeometry = new THREE.PlaneGeometry(1.5, 2.5);
+        imageMaterial = new THREE.MeshStandardMaterial({
+            color: 0xFFFFFF,
+            metalness: 0.0,
+            roughness: 0.35,
+            side: THREE.DoubleSide
+        });
+        const imagePlane = new THREE.Mesh(imageGeometry, imageMaterial);
+        group.add(imagePlane);
+
         const marbleMaterial = new THREE.MeshStandardMaterial({
             color: 0xF5F5DC,
             metalness: 0.0,
@@ -625,6 +643,7 @@ class Artifact3DRenderer {
         const torso = new THREE.Mesh(torsoGeometry, marbleMaterial);
         torso.position.y = 0.5;
         group.add(torso);
+        proceduralElements.push(torso);
 
         // Head
         const headGeometry = new THREE.SphereGeometry(0.25, 32, 32);
@@ -632,12 +651,14 @@ class Artifact3DRenderer {
         head.position.y = 1.35;
         head.scale.set(0.9, 1.1, 0.9);
         group.add(head);
+        proceduralElements.push(head);
 
         // Neck
         const neckGeometry = new THREE.CylinderGeometry(0.15, 0.18, 0.25, 16);
         const neck = new THREE.Mesh(neckGeometry, marbleMaterial);
         neck.position.y = 1.15;
         group.add(neck);
+        proceduralElements.push(neck);
 
         // Hips/Lower body
         const hipsGeometry = new THREE.SphereGeometry(0.5, 32, 32, 0, Math.PI * 2, 0, Math.PI * 0.6);
@@ -645,12 +666,14 @@ class Artifact3DRenderer {
         hips.position.y = -0.2;
         hips.rotation.x = Math.PI;
         group.add(hips);
+        proceduralElements.push(hips);
 
         // Draped cloth
         const clothGeometry = new THREE.CylinderGeometry(0.48, 0.52, 0.8, 32);
         const cloth = new THREE.Mesh(clothGeometry, marbleMaterial);
         cloth.position.y = -0.5;
         group.add(cloth);
+        proceduralElements.push(cloth);
 
         // Base
         const baseGeometry = new THREE.CylinderGeometry(0.6, 0.65, 0.3, 32);
@@ -662,6 +685,29 @@ class Artifact3DRenderer {
         const base = new THREE.Mesh(baseGeometry, baseMaterial);
         base.position.y = -1.0;
         group.add(base);
+        proceduralElements.push(base);
+
+        // Attempt to load the Venus image
+        const imagePath = 'images/venus.jpg';
+        textureLoader.load(
+            imagePath,
+            // Success callback
+            (texture) => {
+                console.log('Venus texture loaded successfully');
+                imageMaterial.map = texture;
+                imageMaterial.needsUpdate = true;
+                // Hide procedural elements when real image loads
+                for (let i = 0; i < proceduralElements.length; i++) {
+                    proceduralElements[i].visible = false;
+                }
+            },
+            // Progress callback
+            undefined,
+            // Error callback
+            (error) => {
+                console.log('Using procedural Venus (no image found at ' + imagePath + ')');
+            }
+        );
 
         group.scale.set(0.6, 0.6, 0.6);
         return group;
