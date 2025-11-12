@@ -463,7 +463,7 @@ class Artifact3DRenderer {
         const proceduralElements = [];
 
         // Image display plane - T-Rex skull (landscape orientation, large)
-        const imageGeometry = new THREE.PlaneGeometry(3.8, 2.6);
+        const imageGeometry = new THREE.PlaneGeometry(5.0, 3.4);
         imageMaterial = new THREE.MeshStandardMaterial({
             color: 0xFFFFFF,
             metalness: 0.0,
@@ -576,7 +576,7 @@ class Artifact3DRenderer {
         const proceduralElements = [];
 
         // Image display plane - Pteranodon skeleton (wide wingspan)
-        const imageGeometry = new THREE.PlaneGeometry(4.5, 3.2);
+        const imageGeometry = new THREE.PlaneGeometry(6.0, 4.2);
         imageMaterial = new THREE.MeshStandardMaterial({
             color: 0xFFFFFF,
             metalness: 0.0,
@@ -688,7 +688,7 @@ class Artifact3DRenderer {
         const proceduralElements = [];
 
         // Image display plane - Mammoth skull (large, slightly landscape)
-        const imageGeometry = new THREE.PlaneGeometry(3.8, 3.2);
+        const imageGeometry = new THREE.PlaneGeometry(5.0, 4.2);
         imageMaterial = new THREE.MeshStandardMaterial({
             color: 0xFFFFFF,
             metalness: 0.0,
@@ -1182,15 +1182,15 @@ class Artifact3DRenderer {
                 break;
             case 'trex':
                 model = this.createTRexSkull();
-                this.camera.position.set(0, 0, 4.5);
+                this.camera.position.set(0, 0, 5.8);
                 break;
             case 'pterosaur':
                 model = this.createPteranodonSkeleton();
-                this.camera.position.set(0, 0, 5.2);
+                this.camera.position.set(0, 0, 7.0);
                 break;
             case 'mammoth':
                 model = this.createMammothSkull();
-                this.camera.position.set(0, 0, 4.5);
+                this.camera.position.set(0, 0, 5.8);
                 break;
             case 'mona-lisa':
                 model = this.createMonaLisa();
