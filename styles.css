@@ -559,74 +559,56 @@ body {
 
 .starry-night {
     background-image: url('images/starry-night.jpg');
-    background-size: 85% 85%;
+    background-size: 72% 72%;
     background-position: center;
     background-repeat: no-repeat;
-    border-radius: 6px;
+    border-radius: 3px;
+    /* Classic gold museum frame */
+    border: 18px solid;
+    border-image: linear-gradient(135deg,
+        #b8860b 0%, #ffd700 20%, #d4af37 40%,
+        #ffd700 60%, #b8860b 80%, #d4af37 100%) 1;
     box-shadow:
+        /* Inner frame shadow */
+        inset 0 0 18px rgba(139,90,43,0.5),
+        inset 0 0 35px rgba(212,175,55,0.3),
         /* Soft diffused frontal museum lighting */
-        inset 0 30px 60px rgba(255,255,255,0.1),
-        inset 0 -20px 40px rgba(0,0,0,0.25),
-        /* Gold frame reflection */
-        inset 0 0 3px rgba(212,175,55,0.4),
-        0 0 40px rgba(30,58,95,0.35),
-        0 10px 35px rgba(0,0,0,0.4),
-        /* 3D canvas depth */
-        -5px 8px 20px rgba(0,0,0,0.3);
+        inset 0 30px 60px rgba(255,255,255,0.08),
+        inset 0 -20px 40px rgba(0,0,0,0.2),
+        /* Outer frame glow with blue tint from painting */
+        0 0 45px rgba(30,58,95,0.4),
+        0 10px 40px rgba(0,0,0,0.5),
+        /* 3D frame depth */
+        -8px 12px 30px rgba(0,0,0,0.4);
+    position: relative;
 }
 
-/* Swirling stars effect */
+/* Frame corner accent - top left */
 .starry-night::before {
-    content: '★';
-    position: absolute;
-    font-size: 20px;
-    top: 15%;
-    left: 70%;
-    color: #FFF68F;
-    text-shadow:
-        0 0 12px rgba(255,246,143,0.9),
-        0 0 20px rgba(255,221,68,0.6),
-        0 2px 4px rgba(0,0,0,0.3);
-    animation: starTwinkle 3s ease-in-out infinite;
-    opacity: 0.8;
-}
-
-/* Moon glow */
-.starry-night::after {
-    content: '●';
+    content: '✦';
     position: absolute;
     font-size: 24px;
-    top: 20%;
-    right: 15%;
-    color: #FFE87C;
+    color: #ffd700;
     text-shadow:
-        0 0 15px rgba(255,246,143,1),
-        0 0 30px rgba(255,232,124,0.7),
-        0 2px 4px rgba(0,0,0,0.3);
-    animation: moonGlow 4s ease-in-out infinite;
-    opacity: 0.9;
+        0 0 10px rgba(255,215,0,0.8),
+        2px 2px 4px rgba(0,0,0,0.6);
+    top: -10px;
+    left: -10px;
+    z-index: 1;
 }
 
-@keyframes starTwinkle {
-    0%, 100% {
-        opacity: 0.6;
-        text-shadow: 0 0 8px rgba(255,246,143,0.7), 0 0 15px rgba(255,221,68,0.4), 0 2px 4px rgba(0,0,0,0.3);
-    }
-    50% {
-        opacity: 1;
-        text-shadow: 0 0 15px rgba(255,246,143,1), 0 0 25px rgba(255,221,68,0.8), 0 2px 4px rgba(0,0,0,0.3);
-    }
-}
-
-@keyframes moonGlow {
-    0%, 100% {
-        opacity: 0.8;
-        text-shadow: 0 0 12px rgba(255,246,143,0.8), 0 0 25px rgba(255,232,124,0.6), 0 2px 4px rgba(0,0,0,0.3);
-    }
-    50% {
-        opacity: 1;
-        text-shadow: 0 0 18px rgba(255,246,143,1), 0 0 35px rgba(255,232,124,0.8), 0 2px 4px rgba(0,0,0,0.3);
-    }
+/* Frame corner accent - bottom right */
+.starry-night::after {
+    content: '✦';
+    position: absolute;
+    font-size: 24px;
+    color: #ffd700;
+    text-shadow:
+        0 0 10px rgba(255,215,0,0.8),
+        2px 2px 4px rgba(0,0,0,0.6);
+    bottom: -10px;
+    right: -10px;
+    z-index: 1;
 }
 
 /* Nature Artifacts */
@@ -686,20 +668,55 @@ body {
 /* Art Artifacts */
 .mona-lisa {
     background-image: url('images/mona-lisa.jpg');
-    background-size: 85% 85%;
+    background-size: 70% 70%;
     background-position: center;
     background-repeat: no-repeat;
-    border-radius: 6px;
+    border-radius: 3px;
+    /* Ornate gold Renaissance frame */
+    border: 20px solid;
+    border-image: linear-gradient(135deg,
+        #d4af37 0%, #ffd700 25%, #b8860b 50%,
+        #ffd700 75%, #d4af37 100%) 1;
     box-shadow:
+        /* Inner frame shadow */
+        inset 0 0 20px rgba(139,90,43,0.6),
+        inset 0 0 40px rgba(212,175,55,0.3),
         /* Soft diffused frontal museum lighting */
-        inset 0 30px 60px rgba(255,255,255,0.1),
-        inset 0 -20px 40px rgba(0,0,0,0.25),
-        /* Gold Renaissance frame reflection */
-        inset 0 0 3px rgba(212,175,55,0.4),
-        0 0 40px rgba(212,165,116,0.35),
-        0 10px 35px rgba(0,0,0,0.4),
-        /* 3D canvas depth */
-        -5px 8px 20px rgba(0,0,0,0.3);
+        inset 0 30px 60px rgba(255,255,255,0.08),
+        inset 0 -20px 40px rgba(0,0,0,0.2),
+        /* Outer frame glow */
+        0 0 50px rgba(212,175,55,0.5),
+        0 10px 40px rgba(0,0,0,0.5),
+        /* 3D frame depth */
+        -8px 12px 30px rgba(0,0,0,0.4);
+    position: relative;
+}
+
+/* Decorative corner ornaments for Mona Lisa frame */
+.mona-lisa::before {
+    content: '❖';
+    position: absolute;
+    font-size: 28px;
+    color: #ffd700;
+    text-shadow:
+        0 0 10px rgba(255,215,0,0.8),
+        2px 2px 4px rgba(0,0,0,0.6);
+    top: -12px;
+    left: -12px;
+    z-index: 1;
+}
+
+.mona-lisa::after {
+    content: '❖';
+    position: absolute;
+    font-size: 28px;
+    color: #ffd700;
+    text-shadow:
+        0 0 10px rgba(255,215,0,0.8),
+        2px 2px 4px rgba(0,0,0,0.6);
+    bottom: -12px;
+    right: -12px;
+    z-index: 1;
 }
 
 .venus-statue {
@@ -724,21 +741,58 @@ body {
 
 .last-supper {
     background-image: url('images/last-supper.jpg');
-    background-size: 85% 85%;
+    background-size: 68% 68%;
     background-position: center;
     background-repeat: no-repeat;
-    border-radius: 6px;
+    border-radius: 3px;
+    /* Rich dark wood conservation frame */
+    border: 22px solid;
+    border-image: linear-gradient(135deg,
+        #3d2817 0%, #5a3e2b 25%, #4a3426 50%,
+        #5a3e2b 75%, #3d2817 100%) 1;
     box-shadow:
+        /* Inner frame shadow */
+        inset 0 0 25px rgba(61,40,23,0.8),
+        inset 0 0 45px rgba(90,62,43,0.4),
         /* Even wall-washer lighting to avoid glare */
-        inset 0 40px 70px rgba(255,255,255,0.08),
-        inset 0 -25px 45px rgba(0,0,0,0.35),
-        /* Soft overhead strip lighting */
-        inset 0 0 5px rgba(139,111,77,0.3),
-        /* Conservation frame */
-        0 0 35px rgba(139,111,77,0.25),
-        0 12px 40px rgba(0,0,0,0.45),
-        /* 3D mural depth */
-        -6px 10px 25px rgba(0,0,0,0.3);
+        inset 0 40px 70px rgba(255,255,255,0.06),
+        inset 0 -25px 45px rgba(0,0,0,0.3),
+        /* Outer frame shadow */
+        0 0 40px rgba(90,62,43,0.3),
+        0 12px 45px rgba(0,0,0,0.5),
+        /* 3D frame depth */
+        -10px 14px 35px rgba(0,0,0,0.45);
+    position: relative;
+}
+
+/* Conservation plaque accent - top */
+.last-supper::before {
+    content: '⚜';
+    position: absolute;
+    font-size: 22px;
+    color: #8b7355;
+    text-shadow:
+        0 0 8px rgba(139,115,85,0.6),
+        2px 2px 4px rgba(0,0,0,0.7);
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+/* Conservation plaque accent - bottom */
+.last-supper::after {
+    content: '⚜';
+    position: absolute;
+    font-size: 22px;
+    color: #8b7355;
+    text-shadow:
+        0 0 8px rgba(139,115,85,0.6),
+        2px 2px 4px rgba(0,0,0,0.7);
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
 }
 
 .artifact-label {
