@@ -195,70 +195,76 @@ class Artifact3DRenderer {
         return group;
     }
 
-    createMedievalCrown() {
+    createRosettaStone() {
         const group = new THREE.Group();
 
-        // Crown band
-        const bandGeometry = new THREE.CylinderGeometry(1, 1, 0.3, 32);
-        const goldMaterial = new THREE.MeshStandardMaterial({
-            color: 0xC7A45A,
-            metalness: 1.0,
-            roughness: 0.28
+        // Main stone tablet
+        const stoneGeometry = new THREE.BoxGeometry(1.5, 2.0, 0.3);
+        const stoneMaterial = new THREE.MeshStandardMaterial({
+            color: 0x2C2C2C,  // Dark gray/black basalt
+            metalness: 0.1,
+            roughness: 0.85
         });
-        const band = new THREE.Mesh(bandGeometry, goldMaterial);
-        group.add(band);
+        const stone = new THREE.Mesh(stoneGeometry, stoneMaterial);
+        group.add(stone);
 
-        // Crown arches
-        const archGeometry = new THREE.TorusGeometry(0.7, 0.05, 16, 32, Math.PI);
-        for (let i = 0; i < 4; i++) {
-            const arch = new THREE.Mesh(archGeometry, goldMaterial);
-            arch.rotation.z = (i * Math.PI / 2);
-            arch.position.y = 0.3;
-            group.add(arch);
-        }
-
-        // Cross on top
-        const crossVertical = new THREE.BoxGeometry(0.08, 0.5, 0.08);
-        const crossHorizontal = new THREE.BoxGeometry(0.3, 0.08, 0.08);
-        const crossV = new THREE.Mesh(crossVertical, goldMaterial);
-        const crossH = new THREE.Mesh(crossHorizontal, goldMaterial);
-        crossV.position.y = 1.0;
-        crossH.position.y = 1.1;
-        group.add(crossV);
-        group.add(crossH);
-
-        // Gemstones around the band
-        const gemColors = [0x0000ff, 0x00ff00, 0xff0000, 0xffffff];
-        for (let i = 0; i < 8; i++) {
-            const gemGeometry = new THREE.SphereGeometry(0.1, 16, 16);
-            const gemMaterial = new THREE.MeshStandardMaterial({
-                color: gemColors[i % 4],
-                metalness: 0.0,
-                roughness: 0.1,
-                transparent: true,
-                opacity: 0.9,
-                envMapIntensity: 2.0
-            });
-            const gem = new THREE.Mesh(gemGeometry, gemMaterial);
-            const angle = (i / 8) * Math.PI * 2;
-            gem.position.x = Math.cos(angle) * 1.1;
-            gem.position.z = Math.sin(angle) * 1.1;
-            gem.position.y = 0;
-            group.add(gem);
-        }
-
-        // Red velvet inner cap
-        const velvetGeometry = new THREE.CylinderGeometry(0.9, 0.9, 0.2, 32);
-        const velvetMaterial = new THREE.MeshStandardMaterial({
-            color: 0x7B0E1A,
+        // Inscription lines (hieroglyphics section)
+        const linesMaterial = new THREE.MeshStandardMaterial({
+            color: 0x505050,
             metalness: 0.0,
             roughness: 0.9
         });
-        const velvet = new THREE.Mesh(velvetGeometry, velvetMaterial);
-        velvet.position.y = -0.1;
-        group.add(velvet);
 
-        group.scale.set(0.6, 0.6, 0.6);
+        // Top section - hieroglyphics (14 lines)
+        for (let i = 0; i < 14; i++) {
+            const lineGeometry = new THREE.BoxGeometry(1.2, 0.03, 0.01);
+            const line = new THREE.Mesh(lineGeometry, linesMaterial);
+            line.position.y = 0.8 - (i * 0.06);
+            line.position.z = 0.16;
+            group.add(line);
+        }
+
+        // Middle section - Demotic script (32 lines)
+        for (let i = 0; i < 32; i++) {
+            const lineGeometry = new THREE.BoxGeometry(1.2, 0.02, 0.01);
+            const line = new THREE.Mesh(lineGeometry, linesMaterial);
+            line.position.y = 0.0 - (i * 0.035);
+            line.position.z = 0.16;
+            group.add(line);
+        }
+
+        // Bottom section - Greek text (54 lines)
+        for (let i = 0; i < 20; i++) {  // Simplified to 20 lines for visibility
+            const lineGeometry = new THREE.BoxGeometry(1.2, 0.015, 0.01);
+            const line = new THREE.Mesh(lineGeometry, linesMaterial);
+            line.position.y = -1.1 + (i * 0.025);
+            line.position.z = 0.16;
+            group.add(line);
+        }
+
+        // Broken corner (top right)
+        const chipGeometry = new THREE.BoxGeometry(0.3, 0.3, 0.3);
+        const chip = new THREE.Mesh(chipGeometry, stoneMaterial);
+        chip.position.set(0.6, 0.85, 0);
+        chip.rotation.z = Math.PI / 4;
+        group.add(chip);
+
+        // Weathering cracks
+        for (let i = 0; i < 5; i++) {
+            const crackGeometry = new THREE.BoxGeometry(0.02, 0.8, 0.01);
+            const crack = new THREE.Mesh(crackGeometry, new THREE.MeshStandardMaterial({
+                color: 0x1A1A1A,
+                metalness: 0.0,
+                roughness: 1.0
+            }));
+            crack.position.x = -0.6 + (i * 0.3);
+            crack.position.y = -0.2 + (Math.random() * 0.4);
+            crack.position.z = 0.16;
+            crack.rotation.z = (Math.random() - 0.5) * 0.3;
+            group.add(crack);
+        }
+
+        group.scale.set(0.7, 0.7, 0.7);
         return group;
     }
 
@@ -1044,8 +1050,8 @@ class Artifact3DRenderer {
                 model = this.createEgyptianMask();
                 this.camera.position.set(0, 0, 3);
                 break;
-            case 'crown':
-                model = this.createMedievalCrown();
+            case 'rosetta-stone':
+                model = this.createRosettaStone();
                 this.camera.position.set(0, 1, 3);
                 break;
             case 'scepter':

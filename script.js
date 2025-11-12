@@ -43,30 +43,29 @@ const artifactData = {
         interaction: '鼠标拖拽全向旋转；滚轮±80%缩放；热点：额饰/假胡子/眼部，悬停显示注解',
         description: 'Crafted from hammered and cast solid gold with lapis lazuli inlaid stripes, obsidian and quartz eyes. This masterwork (approx. 54-60 cm height) features delicate eyebrow ridge carving, subtle lip curve, pierced earlobes, braided ceremonial beard, and uraeus-vulture forehead crest. Surface shows fine chisel marks, subtle dents from hand-shaping, faint oxidation shadows on gold edges, and micro-scratches on cheek planes. The warm 24K gold with deep ultramarine lapis (with gold flecks) creates a polished yet aged patina. Symbolizes divine royalty, afterlife protection, and the unification of earthly king and god. Displayed on a matte black stone plinth with warm spotlight and soft back-rim glow emphasizing contours and gemstone reflections.'
     },
-    'crown': {
-        name: 'Medieval Royal Crown',
-        category: 'History/Regalia',
-        scale_real_world: {diameter_cm: 21, height_cm: 24},
-        proportions: '四弓交汇上顶十字；弓宽约冠径的12%；宝石均匀环排',
+    'rosetta-stone': {
+        name: 'Rosetta Stone',
+        category: 'History/Ancient Artifact',
+        scale_real_world: {height_cm: 112.3, width_cm: 75.7, thickness_cm: 28.4},
+        proportions: '比例约3:2:0.75；顶部残缺约1/3；左侧略有缺损',
         materials: [
-            {type: 'gold_alloy', pbr: {metallic: 1.0, roughness: 0.28}},
-            {type: 'velvet_inner_cap', pbr: {sheen: 0.6, roughness: 0.55, subsurface: 0.2}},
-            {type: 'gem_claw_settings', list: ['sapphire','emerald','ruby','diamond'], pbr: {ior: 2.4, dispersion: 0.02}}
+            {type: 'granodiorite', pbr: {metallic: 0.1, roughness: 0.85}},
+            {type: 'inscribed_surface', pbr: {roughness: 0.9, normal: 'carved deep'}}
         ],
-        colors_finish: '古金(#C7A45A)；内衬深绯红(#7B0E1A)轻褪色；宝石蓝/绿/红与白钻火彩',
+        colors_finish: '深灰至黑色(#2C2C2C)；铭文浅灰(#505050)；部分区域褐色风化',
         micro_details: [
-            '爪镶端部微磨平，爪肩处有细微划痕',
-            '丝绒内侧汗渍色斑，绒毛起伏不均',
-            '浮雕百合花边角圆化半径0.6–0.8mm'
+            '顶部右角破损呈不规则碎片状',
+            '铭文雕刻深度1-2mm，边缘略有磨损',
+            '表面有细微裂纹与古代风化痕迹'
         ],
-        iconography_meaning: '神授王权与勇武纯洁的象征',
-        geometry_notes: '冠圈厚度2.2mm；弓形条带为抛物线截面；十字顶部球形榫接',
-        texture_notes: '金面多通道遮罩：指触高频划痕(周向) + 低频氧化晕；丝绒采用纤维向量贴图+法线微纤维',
-        lighting_notes: '冷暖混合：5600K顶光强调宝石火彩；3200K辅光勾边浮雕',
-        display_mount: '缎面圆垫+亚克力防护罩',
-        camera_turntable: {pivot: '冠圈中心', radius_cm: 90, elevation_deg: 15, step_deg: 6},
-        interaction: '旋转/缩放；点击宝石触发折射高亮与材质标签',
-        description: '14th-century ceremonial masterpiece featuring a gold band with gothic arches, velvet inner cap, and claw-set sapphires, emeralds, rubies, and diamonds (approx. 20-22 cm diameter). The antique gold tone shows tarnished edges with micro chips in gemstones and hand-stitched gold thread slightly frayed inside rim. Deep royal velvet red exhibits slight sun-fading. Ornate details include fleur-de-lis motifs, central cross finial, and jewel settings with visible prongs. Symbolizes divine right of kings and military/spiritual authority. Displayed on a round silk-lined pedestal cushion with cool and warm mixed beams to enhance gem refractive sparkle.'
+        iconography_meaning: '解密古埃及文字的钥匙；三种文字记载托勒密五世诏书',
+        geometry_notes: '不规则矩形石碑；厚度不均；刻面略凹；三段文字区域明显',
+        texture_notes: '玄武岩基底+雕刻法线贴图；顶部14行象形文字+中部32行通俗体+底部54行希腊文',
+        lighting_notes: '侧光强调铭文阴影与浮雕深度；顶部柔光减少反光',
+        display_mount: '黑色展台+玻璃防护罩',
+        camera_turntable: {pivot: '石碑中心', radius_cm: 150, elevation_deg: 10, step_deg: 6},
+        interaction: '旋转/缩放；点击文字区域显示三种文字对照与翻译',
+        description: 'Ancient Egyptian granodiorite stele (196 BC) featuring the same decree in three scripts: hieroglyphic Egyptian (14 lines), Demotic script (32 lines), and ancient Greek (54 lines). Discovered in 1799 near Rosetta (Rashid), Egypt. The stone is dark gray to black basalt-like rock, measuring 112.3 cm high, 75.7 cm wide, and 28.4 cm thick, with the top right corner broken off. The inscriptions are deeply carved (1-2mm depth) with slight weathering. This artifact became the key to deciphering Egyptian hieroglyphs through comparison of the three parallel texts. Displayed on a black pedestal with directional lighting to emphasize the carved inscriptions.'
     },
     'scepter': {
         name: 'Ceremonial War Scepter',
