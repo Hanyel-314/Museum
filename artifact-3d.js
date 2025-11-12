@@ -327,6 +327,24 @@ class Artifact3DRenderer {
     createTRexSkull() {
         const group = new THREE.Group();
 
+        // Try to load real image texture
+        const textureLoader = new THREE.TextureLoader();
+        let imageMaterial;
+
+        // Array to track procedural elements for hiding when texture loads
+        const proceduralElements = [];
+
+        // Image display plane
+        const imageGeometry = new THREE.PlaneGeometry(3, 2);
+        imageMaterial = new THREE.MeshStandardMaterial({
+            color: 0xFFFFFF,
+            metalness: 0.0,
+            roughness: 0.9,
+            side: THREE.DoubleSide
+        });
+        const imagePlane = new THREE.Mesh(imageGeometry, imageMaterial);
+        group.add(imagePlane);
+
         // Main skull shape
         const skullGeometry = new THREE.BoxGeometry(2.5, 1.2, 1.5);
         const fossilMaterial = new THREE.MeshStandardMaterial({
@@ -337,6 +355,7 @@ class Artifact3DRenderer {
         const skull = new THREE.Mesh(skullGeometry, fossilMaterial);
         skull.position.x = 0.5;
         group.add(skull);
+        proceduralElements.push(skull);
 
         // Upper jaw
         const upperJawGeometry = new THREE.ConeGeometry(0.6, 1.5, 4);
@@ -344,6 +363,7 @@ class Artifact3DRenderer {
         upperJaw.rotation.z = -Math.PI / 2;
         upperJaw.position.set(1.5, 0.3, 0);
         group.add(upperJaw);
+        proceduralElements.push(upperJaw);
 
         // Lower jaw
         const lowerJawGeometry = new THREE.ConeGeometry(0.5, 1.3, 4);
@@ -351,6 +371,7 @@ class Artifact3DRenderer {
         lowerJaw.rotation.z = -Math.PI / 2;
         lowerJaw.position.set(1.4, -0.4, 0);
         group.add(lowerJaw);
+        proceduralElements.push(lowerJaw);
 
         // Teeth
         const toothGeometry = new THREE.ConeGeometry(0.05, 0.3, 8);
@@ -369,6 +390,7 @@ class Artifact3DRenderer {
             );
             tooth.rotation.z = i % 2 === 0 ? Math.PI : 0;
             group.add(tooth);
+            proceduralElements.push(tooth);
         }
 
         // Eye sockets
@@ -382,10 +404,34 @@ class Artifact3DRenderer {
         const leftSocket = new THREE.Mesh(socketGeometry, socketMaterial);
         leftSocket.position.set(0.8, 0.5, 0.6);
         group.add(leftSocket);
+        proceduralElements.push(leftSocket);
 
         const rightSocket = new THREE.Mesh(socketGeometry, socketMaterial);
         rightSocket.position.set(0.8, 0.5, -0.6);
         group.add(rightSocket);
+        proceduralElements.push(rightSocket);
+
+        // Attempt to load the T-Rex Skull image
+        const imagePath = 'images/trex-skull.jpg';
+        textureLoader.load(
+            imagePath,
+            // Success callback
+            (texture) => {
+                console.log('T-Rex Skull texture loaded successfully');
+                imageMaterial.map = texture;
+                imageMaterial.needsUpdate = true;
+                // Hide procedural elements when real image loads
+                for (let i = 0; i < proceduralElements.length; i++) {
+                    proceduralElements[i].visible = false;
+                }
+            },
+            // Progress callback
+            undefined,
+            // Error callback
+            (error) => {
+                console.log('Using procedural T-Rex Skull (no image found at ' + imagePath + ')');
+            }
+        );
 
         group.scale.set(0.5, 0.5, 0.5);
         return group;
