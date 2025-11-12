@@ -417,6 +417,37 @@ class Artifact3DRenderer {
             }
         );
 
+        // Classic gold museum frame
+        const frameThickness = 0.18;
+        const frameDepth = 0.12;
+        const frameMaterial = new THREE.MeshStandardMaterial({
+            color: 0xDAA520, // Gold
+            metalness: 0.7,
+            roughness: 0.35
+        });
+
+        // Frame pieces for landscape painting
+        const topFrame = new THREE.BoxGeometry(3.5, frameThickness, frameDepth);
+        const bottomFrame = new THREE.BoxGeometry(3.5, frameThickness, frameDepth);
+        const leftFrame = new THREE.BoxGeometry(frameThickness, 2.8, frameDepth);
+        const rightFrame = new THREE.BoxGeometry(frameThickness, 2.8, frameDepth);
+
+        const top = new THREE.Mesh(topFrame, frameMaterial);
+        top.position.set(0, 1.3, -0.06);
+        group.add(top);
+
+        const bottom = new THREE.Mesh(bottomFrame, frameMaterial);
+        bottom.position.set(0, -1.3, -0.06);
+        group.add(bottom);
+
+        const left = new THREE.Mesh(leftFrame, frameMaterial);
+        left.position.set(-1.65, 0, -0.06);
+        group.add(left);
+
+        const right = new THREE.Mesh(rightFrame, frameMaterial);
+        right.position.set(1.65, 0, -0.06);
+        group.add(right);
+
         group.scale.set(0.9, 0.9, 0.9);
         return group;
     }
