@@ -101,8 +101,8 @@ class Artifact3DRenderer {
         // Array to track procedural elements for hiding when texture loads
         const proceduralElements = [];
 
-        // Image display plane
-        const imageGeometry = new THREE.PlaneGeometry(2, 2.5);
+        // Image display plane - Egyptian mask (portrait orientation)
+        const imageGeometry = new THREE.PlaneGeometry(2.4, 3.0);
         imageMaterial = new THREE.MeshStandardMaterial({
             color: 0xFFFFFF,
             metalness: 0.0,
@@ -205,8 +205,8 @@ class Artifact3DRenderer {
         // Array to track procedural elements for hiding when texture loads
         const proceduralElements = [];
 
-        // Image display plane
-        const imageGeometry = new THREE.PlaneGeometry(2.5, 3.2);
+        // Image display plane - Rosetta Stone (tall stone tablet)
+        const imageGeometry = new THREE.PlaneGeometry(2.6, 3.6);
         imageMaterial = new THREE.MeshStandardMaterial({
             color: 0xFFFFFF,
             metalness: 0.0,
@@ -383,8 +383,8 @@ class Artifact3DRenderer {
         // Array to track procedural elements for hiding when texture loads
         const proceduralElements = [];
 
-        // Image display plane
-        const imageGeometry = new THREE.PlaneGeometry(3, 2);
+        // Image display plane - T-Rex skull (landscape orientation, large)
+        const imageGeometry = new THREE.PlaneGeometry(3.6, 2.4);
         imageMaterial = new THREE.MeshStandardMaterial({
             color: 0xFFFFFF,
             metalness: 0.0,
@@ -496,8 +496,8 @@ class Artifact3DRenderer {
         // Array to track procedural elements for hiding when texture loads
         const proceduralElements = [];
 
-        // Image display plane
-        const imageGeometry = new THREE.PlaneGeometry(3.5, 2.5);
+        // Image display plane - Pteranodon skeleton (wide wingspan)
+        const imageGeometry = new THREE.PlaneGeometry(4.2, 3.0);
         imageMaterial = new THREE.MeshStandardMaterial({
             color: 0xFFFFFF,
             metalness: 0.0,
@@ -608,8 +608,8 @@ class Artifact3DRenderer {
         // Array to track procedural elements for hiding when texture loads
         const proceduralElements = [];
 
-        // Image display plane
-        const imageGeometry = new THREE.PlaneGeometry(3, 2.5);
+        // Image display plane - Mammoth skull (large, slightly landscape)
+        const imageGeometry = new THREE.PlaneGeometry(3.6, 3.0);
         imageMaterial = new THREE.MeshStandardMaterial({
             color: 0xFFFFFF,
             metalness: 0.0,
@@ -713,8 +713,8 @@ class Artifact3DRenderer {
         // Array to track procedural elements for hiding when texture loads
         const proceduralElements = [];
 
-        // Canvas with texture support
-        const canvasGeometry = new THREE.PlaneGeometry(1.5, 2);
+        // Canvas with texture support - Mona Lisa painting (portrait)
+        const canvasGeometry = new THREE.PlaneGeometry(2.1, 2.8);
         paintingMaterial = new THREE.MeshStandardMaterial({
             color: 0xFFFFFF, // White for texture
             metalness: 0.0,
@@ -854,8 +854,8 @@ class Artifact3DRenderer {
         // Array to track procedural elements for hiding when texture loads
         const proceduralElements = [];
 
-        // Image display plane
-        const imageGeometry = new THREE.PlaneGeometry(1.5, 2.5);
+        // Image display plane - Venus statue (tall portrait, elegant)
+        const imageGeometry = new THREE.PlaneGeometry(2.0, 3.5);
         imageMaterial = new THREE.MeshStandardMaterial({
             color: 0xFFFFFF,
             metalness: 0.0,
@@ -977,8 +977,8 @@ class Artifact3DRenderer {
             }
         );
 
-        // Main canvas with texture support
-        const canvasGeometry = new THREE.PlaneGeometry(4, 2);
+        // Main canvas with texture support - Last Supper (wide mural)
+        const canvasGeometry = new THREE.PlaneGeometry(5.0, 2.5);
         muralMaterial = new THREE.MeshStandardMaterial({
             color: 0xFFFFFF, // White for texture
             metalness: 0.0,
