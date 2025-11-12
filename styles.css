@@ -530,7 +530,7 @@ body {
 /* History Artifacts */
 .death-mask {
     background-image: url('images/egyptian-mask.jpg');
-    background-size: cover;
+    background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
     border-radius: 6px;
@@ -722,7 +722,7 @@ body {
 /* Nature Artifacts */
 .trex-skull {
     background-image: url('images/trex-skull.jpg');
-    background-size: cover;
+    background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
     border-radius: 6px;
@@ -740,7 +740,7 @@ body {
 
 .pterosaur-skeleton {
     background-image: url('images/pteranodon-skeleton.jpg');
-    background-size: cover;
+    background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
     border-radius: 6px;
@@ -757,7 +757,7 @@ body {
 
 .mammoth-skull {
     background-image: url('images/mammoth-skull.jpg');
-    background-size: cover;
+    background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
     border-radius: 6px;
@@ -776,7 +776,7 @@ body {
 /* Art Artifacts */
 .mona-lisa {
     background-image: url('images/mona-lisa.jpg');
-    background-size: cover;
+    background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
     border-radius: 6px;
@@ -794,7 +794,7 @@ body {
 
 .venus-statue {
     background-image: url('images/venus.jpg');
-    background-size: cover;
+    background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
     border-radius: 6px;
@@ -814,7 +814,7 @@ body {
 
 .last-supper {
     background-image: url('images/last-supper.jpg');
-    background-size: cover;
+    background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
     border-radius: 6px;
