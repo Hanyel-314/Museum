@@ -529,12 +529,11 @@ body {
 
 /* History Artifacts */
 .death-mask {
-    background:
-        /* 24K gold with patina and hand-shaping variations */
-        radial-gradient(ellipse at 35% 30%, #ffed4e 0%, #ffd700 20%, #d4af37 60%, #b8860b 100%),
-        /* Subtle oxidation shadows */
-        linear-gradient(135deg, transparent 0%, rgba(139,90,43,0.1) 50%, transparent 100%);
-    clip-path: polygon(30% 0%, 70% 0%, 85% 20%, 90% 50%, 85% 80%, 70% 100%, 30% 100%, 15% 80%, 10% 50%, 15% 20%);
+    background-image: url('images/egyptian-mask.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 6px;
     box-shadow:
         /* Warm spotlight with rim glow */
         inset -15px -25px 40px rgba(139,90,43,0.4),
@@ -547,39 +546,6 @@ body {
         /* 3D depth shadow */
         -8px 8px 20px rgba(0,0,0,0.3),
         -12px 12px 30px rgba(0,0,0,0.2);
-    /* Chisel marks texture simulation */
-    background-size: 100% 100%, 3px 3px;
-    filter: contrast(1.05) saturate(1.1);
-    /* 3D mask contour */
-    transform-style: preserve-3d;
-}
-
-/* Lapis lazuli stripes on nemes headdress - raised inlay */
-.death-mask::before {
-    content: '';
-    position: absolute;
-    width: 32%;
-    height: 8%;
-    background:
-        linear-gradient(90deg,
-            #1e3a8a 0%, #1e40af 20%, #1e3a8a 40%,
-            #1e40af 60%, #1e3a8a 80%, #1e40af 100%
-        ),
-        /* Gold flecks in lapis */
-        radial-gradient(circle at 20% 50%, rgba(255,215,0,0.3) 0%, transparent 3%),
-        radial-gradient(circle at 60% 30%, rgba(255,215,0,0.2) 0%, transparent 2%),
-        radial-gradient(circle at 80% 70%, rgba(255,215,0,0.25) 0%, transparent 2.5%);
-    top: 12%;
-    left: 34%;
-    box-shadow:
-        0 0 15px rgba(30,58,138,0.8),
-        inset 0 2px 5px rgba(0,0,0,0.4),
-        /* 3D raised effect */
-        0 3px 6px rgba(0,0,0,0.5),
-        inset 0 -1px 3px rgba(255,255,255,0.3);
-    border-radius: 2px;
-    /* Lift lapis stripe forward in 3D space */
-    transform: translateZ(8px);
 }
 
 .royal-crown {

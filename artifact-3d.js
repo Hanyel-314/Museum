@@ -94,6 +94,24 @@ class Artifact3DRenderer {
     createEgyptianMask() {
         const group = new THREE.Group();
 
+        // Try to load real image texture
+        const textureLoader = new THREE.TextureLoader();
+        let imageMaterial;
+
+        // Array to track procedural elements for hiding when texture loads
+        const proceduralElements = [];
+
+        // Image display plane
+        const imageGeometry = new THREE.PlaneGeometry(2, 2.5);
+        imageMaterial = new THREE.MeshStandardMaterial({
+            color: 0xFFFFFF,
+            metalness: 0.0,
+            roughness: 0.25,
+            side: THREE.DoubleSide
+        });
+        const imagePlane = new THREE.Mesh(imageGeometry, imageMaterial);
+        group.add(imagePlane);
+
         // Main face geometry
         const faceGeometry = new THREE.SphereGeometry(1, 64, 64, 0, Math.PI * 2, 0, Math.PI * 0.5);
         faceGeometry.scale(0.8, 1.0, 0.6);
@@ -108,6 +126,7 @@ class Artifact3DRenderer {
 
         const face = new THREE.Mesh(faceGeometry, goldMaterial);
         group.add(face);
+        proceduralElements.push(face);
 
         // Headdress stripes (lapis lazuli)
         for (let i = 0; i < 8; i++) {
@@ -121,6 +140,7 @@ class Artifact3DRenderer {
             stripe.position.y = 1.0 + (i * 0.12);
             stripe.rotation.x = -0.2;
             group.add(stripe);
+            proceduralElements.push(stripe);
         }
 
         // Eyes
@@ -134,10 +154,12 @@ class Artifact3DRenderer {
         const leftEye = new THREE.Mesh(eyeGeometry, eyeMaterial);
         leftEye.position.set(-0.25, 0.3, 0.5);
         group.add(leftEye);
+        proceduralElements.push(leftEye);
 
         const rightEye = new THREE.Mesh(eyeGeometry, eyeMaterial);
         rightEye.position.set(0.25, 0.3, 0.5);
         group.add(rightEye);
+        proceduralElements.push(rightEye);
 
         // Ceremonial beard
         const beardGeometry = new THREE.BoxGeometry(0.15, 0.6, 0.15);
@@ -145,6 +167,29 @@ class Artifact3DRenderer {
         beard.position.set(0, -0.5, 0.4);
         beard.rotation.x = 0.2;
         group.add(beard);
+        proceduralElements.push(beard);
+
+        // Attempt to load the Egyptian Mask image
+        const imagePath = 'images/egyptian-mask.jpg';
+        textureLoader.load(
+            imagePath,
+            // Success callback
+            (texture) => {
+                console.log('Egyptian Mask texture loaded successfully');
+                imageMaterial.map = texture;
+                imageMaterial.needsUpdate = true;
+                // Hide procedural elements when real image loads
+                for (let i = 0; i < proceduralElements.length; i++) {
+                    proceduralElements[i].visible = false;
+                }
+            },
+            // Progress callback
+            undefined,
+            // Error callback
+            (error) => {
+                console.log('Using procedural Egyptian Mask (no image found at ' + imagePath + ')');
+            }
+        );
 
         group.scale.set(0.8, 0.8, 0.8);
         return group;
