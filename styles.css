@@ -89,169 +89,379 @@ body {
     padding: 0 10%;
 }
 
-/* ===== GUARDIAN STONE LIONS ===== */
+/* ===== GUARDIAN STONE LIONS - 威严守护石狮 ===== */
 .lion {
-    width: 180px;
-    height: 220px;
+    width: 200px;
+    height: 240px;
     position: relative;
     transform-style: preserve-3d;
+    filter: contrast(1.05) brightness(0.95);
 }
 
-.lion.left {
-    transform: perspective(800px) rotateY(-8deg);
+.lion.left.male {
+    transform: perspective(1000px) rotateY(-10deg);
 }
 
-.lion.right {
-    transform: perspective(800px) rotateY(8deg);
+.lion.right.female {
+    transform: perspective(1000px) rotateY(10deg);
 }
 
-/* Pedestal base */
+/* ===== PEDESTAL BASE - 青灰色花岗岩基座 ===== */
 .lion-pedestal {
     position: absolute;
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 160px;
-    height: 45px;
+    width: 175px;
+    height: 50px;
+    /* 青灰色花岗岩质感 */
     background:
+        /* 细砂颗粒表面纹理 */
+        repeating-linear-gradient(0deg,
+            transparent 0px, rgba(0,0,0,0.02) 0.5px,
+            transparent 1px, transparent 2px),
+        repeating-linear-gradient(90deg,
+            transparent 0px, rgba(0,0,0,0.02) 0.5px,
+            transparent 1px, transparent 2px),
+        /* 青灰色花岗岩主色调 */
         linear-gradient(180deg,
-            #7a7a7a 0%, #656565 25%, #5a5a5a 50%, #4f4f4f 75%, #454545 100%);
-    border-radius: 6px 6px 2px 2px;
+            #707a85 0%, #6b7280 20%, #5f6875 40%,
+            #545b68 60%, #4b525e 80%, #414852 100%);
+    border-radius: 8px 8px 3px 3px;
     box-shadow:
-        inset 0 -8px 15px rgba(0,0,0,0.6),
-        inset 0 8px 15px rgba(255,255,255,0.15),
-        inset 0 0 0 2px rgba(0,0,0,0.3),
-        0 12px 30px rgba(0,0,0,0.8),
-        0 5px 15px rgba(0,0,0,0.6);
+        /* 内部深度 */
+        inset 0 -10px 20px rgba(0,0,0,0.5),
+        inset 0 10px 15px rgba(255,255,255,0.08),
+        inset 0 0 0 2px rgba(0,0,0,0.4),
+        /* 外部阴影 */
+        0 15px 35px rgba(0,0,0,0.7),
+        0 8px 20px rgba(0,0,0,0.5);
     z-index: 1;
 }
 
-/* Decorative pedestal engraving */
-.lion-pedestal::before {
-    content: '';
+/* 基座雕刻纹路与风化痕迹 */
+.pedestal-carving {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 90%;
-    height: 60%;
-    background: repeating-linear-gradient(
-        90deg,
-        transparent 0px,
-        rgba(0,0,0,0.15) 1px,
-        transparent 2px,
-        transparent 12px
-    );
-    border-radius: 3px;
+    width: 88%;
+    height: 55%;
+    background:
+        /* 云纹装饰 */
+        repeating-linear-gradient(90deg,
+            transparent 0px, rgba(0,0,0,0.12) 1px,
+            transparent 2px, transparent 15px),
+        /* 岁月风化的细微崩痕 */
+        repeating-linear-gradient(45deg,
+            transparent 0px, rgba(255,255,255,0.03) 0.5px,
+            transparent 1px, transparent 8px);
+    border-radius: 4px;
 }
 
-/* Sacred ball under paw */
+/* 青苔细点附着效果 */
+.lion-pedestal::after {
+    content: '';
+    position: absolute;
+    bottom: 8px;
+    left: 15%;
+    width: 70%;
+    height: 6px;
+    background:
+        radial-gradient(circle at 20% 50%, rgba(80,95,75,0.3) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(85,100,80,0.25) 0%, transparent 35%),
+        radial-gradient(circle at 80% 50%, rgba(75,90,70,0.28) 0%, transparent 38%);
+    filter: blur(0.5px);
+}
+
+/* ===== 雄狮绣球 - 圆润镂空纹绣球 ===== */
 .lion-ball {
     position: absolute;
-    bottom: 40px;
-    left: 25%;
+    bottom: 45px;
+    left: 28%;
     transform: translateX(-50%);
-    width: 35px;
-    height: 35px;
+    width: 40px;
+    height: 40px;
+    /* 青灰色花岗岩球体 */
     background:
-        radial-gradient(circle at 30% 30%,
-            #b5b5b5 0%, #9a9a9a 30%, #808080 60%, #6a6a6a 100%);
+        radial-gradient(circle at 32% 28%,
+            #8a95a0 0%, #7a8590 20%, #6b7580 45%, #5f6a75 70%, #545e68 100%);
     border-radius: 50%;
     box-shadow:
-        inset -5px -5px 10px rgba(0,0,0,0.5),
-        inset 3px 3px 8px rgba(255,255,255,0.3),
-        0 8px 15px rgba(0,0,0,0.6),
-        0 3px 6px rgba(0,0,0,0.4);
+        inset -6px -6px 12px rgba(0,0,0,0.55),
+        inset 4px 4px 10px rgba(255,255,255,0.25),
+        0 10px 18px rgba(0,0,0,0.65),
+        0 5px 10px rgba(0,0,0,0.45);
     z-index: 3;
 }
 
-/* Ball decorative patterns */
-.lion-ball::before {
-    content: '';
+/* 绣球镂空装饰纹路 */
+.ball-pattern {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 70%;
-    height: 70%;
+    width: 75%;
+    height: 75%;
     background:
+        /* 十字镂空纹 */
+        repeating-linear-gradient(0deg,
+            transparent 0px, rgba(0,0,0,0.18) 1px,
+            transparent 2px, transparent 8px),
+        repeating-linear-gradient(90deg,
+            transparent 0px, rgba(0,0,0,0.18) 1px,
+            transparent 2px, transparent 8px),
+        /* 对角线镂空 */
         repeating-linear-gradient(45deg,
-            transparent 0px, rgba(0,0,0,0.1) 1px,
-            transparent 2px, transparent 5px),
+            transparent 0px, rgba(0,0,0,0.12) 0.5px,
+            transparent 1.5px, transparent 6px),
         repeating-linear-gradient(-45deg,
-            transparent 0px, rgba(0,0,0,0.1) 1px,
-            transparent 2px, transparent 5px);
+            transparent 0px, rgba(0,0,0,0.12) 0.5px,
+            transparent 1.5px, transparent 6px);
     border-radius: 50%;
 }
 
-/* Lion body (main torso) */
-.lion-body {
+/* ===== 雌狮幼崽 - 依偎姿态可爱 ===== */
+.lion-cub {
     position: absolute;
-    bottom: 40px;
+    bottom: 45px;
+    right: 28%;
+    transform: translateX(50%);
+    width: 32px;
+    height: 38px;
+    z-index: 3;
+}
+
+/* 幼狮头部 */
+.cub-head {
+    position: absolute;
+    top: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 120px;
-    height: 80px;
+    width: 20px;
+    height: 18px;
+    background:
+        radial-gradient(ellipse at 40% 35%,
+            #8a95a0 0%, #7a8590 30%, #6b7580 60%, #5f6a75 100%);
+    border-radius: 50%;
+    box-shadow:
+        inset -3px -2px 5px rgba(0,0,0,0.4),
+        inset 2px 2px 4px rgba(255,255,255,0.2),
+        0 3px 6px rgba(0,0,0,0.5);
+}
+
+/* 幼狮身体 */
+.cub-body {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 24px;
+    height: 22px;
     background:
         linear-gradient(135deg,
-            #a8a8a8 0%, #c0c0c0 15%, #ababab 30%,
-            #909090 50%, #9d9d9d 70%, #8a8a8a 100%),
+            #7a8590 0%, #6b7580 40%, #5f6a75 100%);
+    border-radius: 45% 45% 40% 40% / 35% 35% 65% 65%;
+    box-shadow:
+        inset -4px -3px 6px rgba(0,0,0,0.45),
+        inset 3px 2px 5px rgba(255,255,255,0.2),
+        0 4px 8px rgba(0,0,0,0.5);
+}
+
+/* 幼狮耳朵（使用伪元素） */
+.cub-head::before,
+.cub-head::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    width: 7px;
+    height: 8px;
+    background: #6b7580;
+    border-radius: 50% 50% 20% 20%;
+    box-shadow:
+        inset -1px -1px 2px rgba(0,0,0,0.3),
+        1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.cub-head::before {
+    left: 2px;
+}
+
+.cub-head::after {
+    right: 2px;
+}
+
+/* ===== 狮身 - 身姿厚重、肌肉饱满 ===== */
+.lion-body {
+    position: absolute;
+    bottom: 45px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 130px;
+    height: 88px;
+    /* 青灰色花岗岩躯干 */
+    background:
+        /* 细砂颗粒质感 */
         repeating-linear-gradient(30deg,
-            transparent 0px, rgba(0,0,0,0.03) 1px,
-            transparent 2px, transparent 10px);
+            transparent 0px, rgba(0,0,0,0.025) 0.5px,
+            transparent 1px, transparent 8px),
+        /* 石材层理 */
+        repeating-linear-gradient(120deg,
+            transparent 0px, rgba(255,255,255,0.02) 0.5px,
+            transparent 1.5px, transparent 12px),
+        /* 青灰色主色调 */
+        linear-gradient(135deg,
+            #7a8590 0%, #8a95a0 12%, #7a8590 25%,
+            #6b7580 50%, #7a8590 75%, #5f6a75 100%);
     border-radius: 50% 50% 45% 45% / 35% 35% 65% 65%;
     box-shadow:
-        inset -20px -15px 30px rgba(0,0,0,0.45),
-        inset 20px 15px 30px rgba(255,255,255,0.35),
-        inset 0 -10px 20px rgba(0,0,0,0.25),
-        0 18px 40px rgba(0,0,0,0.65),
-        -10px 12px 25px rgba(0,0,0,0.45);
+        /* 肌肉立体感 */
+        inset -22px -18px 35px rgba(0,0,0,0.5),
+        inset 22px 18px 32px rgba(255,255,255,0.15),
+        inset 0 -12px 22px rgba(0,0,0,0.3),
+        /* 外部阴影 */
+        0 20px 45px rgba(0,0,0,0.7),
+        -12px 14px 28px rgba(0,0,0,0.5);
     z-index: 2;
 }
 
-/* Chest/breast plate detail */
-.lion-chest {
+/* 胸前装饰云纹 */
+.chest-pattern {
     position: absolute;
-    top: 15px;
+    top: 18px;
     left: 50%;
     transform: translateX(-50%);
-    width: 60px;
-    height: 45px;
+    width: 65px;
+    height: 50px;
     background:
-        radial-gradient(ellipse at center,
-            rgba(180,180,180,0.4) 0%,
-            rgba(140,140,140,0.3) 50%,
+        /* 云卷纹路 */
+        radial-gradient(ellipse at 30% 30%,
+            rgba(100,110,120,0.35) 0%,
+            rgba(90,100,110,0.25) 30%,
+            rgba(80,90,100,0.15) 50%,
+            transparent 75%),
+        radial-gradient(ellipse at 70% 60%,
+            rgba(95,105,115,0.3) 0%,
+            rgba(85,95,105,0.2) 35%,
             transparent 70%);
     border-radius: 50%;
 }
 
-/* Front legs */
+/* 颈部铃铛和绶带装饰 */
+.lion-collar {
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 85px;
+    height: 20px;
+    z-index: 6;
+}
+
+/* 铃铛 */
+.collar-bell {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 14px;
+    height: 16px;
+    background:
+        radial-gradient(ellipse at 40% 30%,
+            #9a8970 0%, #8a7960 40%, #7a6950 70%, #6a5940 100%);
+    border-radius: 50% 50% 45% 45% / 45% 45% 55% 55%;
+    box-shadow:
+        inset -2px -2px 4px rgba(0,0,0,0.5),
+        inset 1px 1px 3px rgba(255,255,255,0.3),
+        0 3px 6px rgba(0,0,0,0.6);
+}
+
+/* 铃铛口 */
+.collar-bell::after {
+    content: '';
+    position: absolute;
+    bottom: 1px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    height: 4px;
+    background: radial-gradient(ellipse, #2a2a2a 0%, #1a1a1a 100%);
+    border-radius: 50%;
+}
+
+/* 绶带 */
+.collar-ribbon {
+    position: absolute;
+    top: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 12px;
+    background:
+        /* 褶皱纹理 */
+        repeating-linear-gradient(90deg,
+            rgba(90,80,70,0.3) 0px, rgba(100,90,80,0.4) 2px,
+            rgba(90,80,70,0.3) 4px, rgba(80,70,60,0.25) 6px),
+        /* 绶带底色 */
+        linear-gradient(90deg,
+            #6a5945 0%, #7a6955 25%, #6a5945 50%, #7a6955 75%, #6a5945 100%);
+    border-radius: 6px;
+    box-shadow:
+        inset 0 -2px 4px rgba(0,0,0,0.4),
+        inset 0 1px 2px rgba(255,255,255,0.2),
+        0 2px 4px rgba(0,0,0,0.5);
+}
+
+/* ===== 前腿 - 粗壮扎实 ===== */
 .lion-leg.front-left,
 .lion-leg.front-right {
     position: absolute;
-    bottom: -35px;
-    width: 28px;
-    height: 75px;
+    bottom: -38px;
+    width: 32px;
+    height: 80px;
+    /* 青灰色花岗岩腿部 */
     background:
+        /* 细砂颗粒 */
+        repeating-linear-gradient(0deg,
+            transparent 0px, rgba(0,0,0,0.02) 0.5px,
+            transparent 1px, transparent 6px),
+        /* 青灰色渐变 */
         linear-gradient(180deg,
-            #9d9d9d 0%, #ababab 20%, #959595 50%, #878787 100%);
-    border-radius: 8px 8px 4px 4px;
+            #7a8590 0%, #8a95a0 15%, #7a8590 35%,
+            #6b7580 65%, #5f6a75 100%);
+    border-radius: 10px 10px 5px 5px;
     box-shadow:
-        inset -5px 0 10px rgba(0,0,0,0.4),
-        inset 5px 0 10px rgba(255,255,255,0.25),
-        3px 5px 12px rgba(0,0,0,0.5);
+        /* 肌肉立体感 */
+        inset -6px 0 12px rgba(0,0,0,0.45),
+        inset 6px 0 10px rgba(255,255,255,0.18),
+        /* 外部阴影 */
+        4px 6px 14px rgba(0,0,0,0.55);
     z-index: 4;
 }
 
 .lion-leg.front-left {
-    left: 20px;
+    left: 22px;
 }
 
 .lion-leg.front-right {
-    right: 20px;
+    right: 22px;
 }
 
-/* Paw details */
+/* 雄狮右爪按绣球姿态 */
+.lion-leg.front-right.pressing-ball {
+    height: 65px;
+    bottom: -28px;
+    transform: rotate(-8deg);
+}
+
+/* 雌狮左爪护幼狮姿态 */
+.lion-leg.front-left.protecting-cub {
+    height: 68px;
+    bottom: -30px;
+    transform: rotate(12deg);
+}
+
+/* 爪掌细节 - 厚实稳固 */
 .lion-leg.front-left::after,
 .lion-leg.front-right::after {
     content: '';
@@ -259,107 +469,194 @@ body {
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 32px;
-    height: 12px;
+    width: 36px;
+    height: 14px;
     background:
         radial-gradient(ellipse at bottom,
-            #858585 0%, #757575 50%, #656565 100%);
-    border-radius: 50% 50% 5px 5px / 40% 40% 60% 60%;
+            #6b7580 0%, #5f6a75 50%, #545e68 100%);
+    border-radius: 50% 50% 6px 6px / 40% 40% 60% 60%;
     box-shadow:
-        inset 0 -3px 5px rgba(0,0,0,0.5),
-        0 2px 4px rgba(0,0,0,0.4);
+        inset 0 -4px 6px rgba(0,0,0,0.55),
+        inset 0 2px 3px rgba(255,255,255,0.15),
+        0 3px 5px rgba(0,0,0,0.5);
 }
 
-/* Back legs (partially visible) */
+/* 爪尖 - 锋利却沉稳 */
+.lion-leg.front-left::before,
+.lion-leg.front-right::before {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 28px;
+    height: 5px;
+    background:
+        linear-gradient(90deg,
+            transparent 0%, transparent 15%,
+            rgba(70,75,80,0.6) 18%, rgba(60,65,70,0.7) 23%,
+            transparent 26%, transparent 40%,
+            rgba(70,75,80,0.6) 43%, rgba(60,65,70,0.7) 48%,
+            transparent 51%, transparent 60%,
+            rgba(70,75,80,0.6) 63%, rgba(60,65,70,0.7) 68%,
+            transparent 71%, transparent 85%,
+            rgba(70,75,80,0.6) 88%, rgba(60,65,70,0.7) 93%,
+            transparent 96%);
+    z-index: 2;
+}
+
+/* ===== 后腿 - 坐姿端正 ===== */
 .lion-leg.back-left,
 .lion-leg.back-right {
     position: absolute;
-    bottom: -20px;
-    width: 35px;
-    height: 60px;
+    bottom: -22px;
+    width: 38px;
+    height: 65px;
+    /* 青灰色花岗岩后腿 */
     background:
+        /* 细砂质感 */
+        repeating-linear-gradient(160deg,
+            transparent 0px, rgba(0,0,0,0.02) 0.5px,
+            transparent 1px, transparent 7px),
+        /* 青灰色渐变 */
         linear-gradient(160deg,
-            #8a8a8a 0%, #9a9a9a 30%, #858585 70%, #757575 100%);
-    border-radius: 45% 45% 25% 25% / 30% 30% 70% 70%;
+            #6b7580 0%, #7a8590 25%, #6b7580 55%, #5f6a75 100%);
+    border-radius: 48% 48% 28% 28% / 32% 32% 68% 68%;
     box-shadow:
-        inset -8px -5px 15px rgba(0,0,0,0.5),
-        inset 5px 3px 12px rgba(255,255,255,0.2),
-        2px 8px 15px rgba(0,0,0,0.4);
+        inset -10px -6px 18px rgba(0,0,0,0.52),
+        inset 6px 4px 14px rgba(255,255,255,0.15),
+        3px 10px 18px rgba(0,0,0,0.5);
     z-index: 1;
 }
 
 .lion-leg.back-left {
-    left: 15px;
-    transform: rotate(-10deg);
+    left: 18px;
+    transform: rotate(-12deg);
 }
 
 .lion-leg.back-right {
-    right: 15px;
-    transform: rotate(10deg);
+    right: 18px;
+    transform: rotate(12deg);
 }
 
-/* Lion head */
+/* ===== 狮头 - 圆润头骨、威严表情 ===== */
 .lion-head {
     position: absolute;
-    top: 25px;
+    top: 28px;
     left: 50%;
     transform: translateX(-50%);
-    width: 85px;
-    height: 75px;
+    width: 92px;
+    height: 82px;
+    /* 青灰色花岗岩头部 */
     background:
-        radial-gradient(ellipse at 50% 40%,
-            #b8b8b8 0%, #a5a5a5 25%, #959595 50%, #888888 100%);
-    border-radius: 50% 50% 45% 45% / 55% 55% 45% 45%;
+        /* 细砂质感 */
+        repeating-linear-gradient(135deg,
+            transparent 0px, rgba(0,0,0,0.02) 0.5px,
+            transparent 1px, transparent 5px),
+        /* 青灰色头部渐变 */
+        radial-gradient(ellipse at 50% 38%,
+            #8a95a0 0%, #7a8590 22%, #6b7580 48%, #5f6a75 100%);
+    border-radius: 50% 50% 46% 46% / 56% 56% 44% 44%;
     box-shadow:
-        inset -12px -10px 20px rgba(0,0,0,0.4),
-        inset 12px 10px 20px rgba(255,255,255,0.35),
-        0 15px 30px rgba(0,0,0,0.6),
-        0 8px 15px rgba(0,0,0,0.4);
+        /* 面部立体感 */
+        inset -14px -12px 24px rgba(0,0,0,0.45),
+        inset 14px 12px 22px rgba(255,255,255,0.18),
+        /* 外部阴影 */
+        0 18px 35px rgba(0,0,0,0.65),
+        0 10px 18px rgba(0,0,0,0.5);
     z-index: 5;
 }
 
-/* Majestic mane */
+/* ===== 鬃毛 - 层层卷毛、螺旋卷纹、云卷斗纹 ===== */
 .lion-mane {
     position: absolute;
-    top: -15px;
+    top: -18px;
     left: 50%;
     transform: translateX(-50%);
-    width: 110px;
-    height: 95px;
+    width: 120px;
+    height: 105px;
+    /* 深色青灰鬃毛 */
     background:
         radial-gradient(ellipse at center,
-            rgba(130,130,130,0.8) 0%,
-            rgba(115,115,115,0.7) 30%,
-            rgba(105,105,105,0.6) 50%,
-            rgba(95,95,95,0.4) 70%,
-            transparent 85%);
+            rgba(95,105,115,0.85) 0%,
+            rgba(85,95,105,0.75) 28%,
+            rgba(75,85,95,0.65) 48%,
+            rgba(65,75,85,0.45) 68%,
+            transparent 88%);
     border-radius: 50%;
     z-index: -1;
 }
 
-/* Mane texture details */
-.lion-mane::before {
-    content: '';
+/* 鬃毛层次1 - 外层大卷 */
+.mane-layer.layer-1 {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 95%;
-    height: 95%;
+    width: 100%;
+    height: 100%;
     background:
-        repeating-linear-gradient(25deg,
-            transparent 0px, rgba(0,0,0,0.15) 1px,
-            transparent 3px, transparent 8px),
-        repeating-linear-gradient(-25deg,
-            transparent 0px, rgba(0,0,0,0.15) 1px,
-            transparent 3px, transparent 8px),
-        repeating-linear-gradient(85deg,
-            transparent 0px, rgba(0,0,0,0.1) 1px,
-            transparent 2px, transparent 6px);
+        /* 大螺旋卷纹 */
+        repeating-radial-gradient(circle at 30% 30%,
+            transparent 0px, rgba(0,0,0,0.18) 2px,
+            transparent 4px, transparent 12px),
+        repeating-radial-gradient(circle at 70% 30%,
+            transparent 0px, rgba(0,0,0,0.18) 2px,
+            transparent 4px, transparent 12px),
+        repeating-radial-gradient(circle at 50% 70%,
+            transparent 0px, rgba(0,0,0,0.18) 2px,
+            transparent 4px, transparent 12px);
     border-radius: 50%;
 }
 
-/* Face details container */
+/* 鬃毛层次2 - 中层卷毛 */
+.mane-layer.layer-2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    height: 90%;
+    background:
+        /* 中等螺旋卷纹 */
+        repeating-linear-gradient(28deg,
+            transparent 0px, rgba(0,0,0,0.14) 1px,
+            transparent 3px, transparent 9px),
+        repeating-linear-gradient(-28deg,
+            transparent 0px, rgba(0,0,0,0.14) 1px,
+            transparent 3px, transparent 9px),
+        /* 云卷斗纹 */
+        repeating-linear-gradient(88deg,
+            transparent 0px, rgba(0,0,0,0.12) 0.5px,
+            transparent 2px, transparent 7px);
+    border-radius: 50%;
+}
+
+/* 鬃毛层次3 - 内层细密卷 */
+.mane-layer.layer-3 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 75%;
+    height: 75%;
+    background:
+        /* 细密立体毛簇 */
+        repeating-linear-gradient(42deg,
+            transparent 0px, rgba(0,0,0,0.16) 0.5px,
+            transparent 1.5px, transparent 5px),
+        repeating-linear-gradient(-42deg,
+            transparent 0px, rgba(0,0,0,0.16) 0.5px,
+            transparent 1.5px, transparent 5px),
+        /* 根部紧实，毛尖外翻效果 */
+        radial-gradient(ellipse at center,
+            rgba(70,80,90,0.3) 0%,
+            rgba(60,70,80,0.2) 50%,
+            transparent 75%);
+    border-radius: 50%;
+}
+
+/* ===== 面部容器 ===== */
 .lion-face {
     position: absolute;
     top: 50%;
@@ -369,201 +666,300 @@ body {
     height: 100%;
 }
 
-/* Eyes - fierce and alert */
+/* 隆起眉骨 - 威严感强 */
+.lion-brow {
+    position: absolute;
+    top: 24px;
+    width: 18px;
+    height: 8px;
+    background:
+        linear-gradient(180deg,
+            rgba(95,105,115,0.6) 0%,
+            rgba(85,95,105,0.4) 50%,
+            transparent 100%);
+    border-radius: 50% 50% 30% 30% / 60% 60% 40% 40%;
+    box-shadow:
+        inset 0 -2px 4px rgba(0,0,0,0.4),
+        0 1px 2px rgba(0,0,0,0.3);
+}
+
+.lion-brow.left {
+    left: 20px;
+    transform: rotate(-8deg);
+}
+
+.lion-brow.right {
+    right: 20px;
+    transform: rotate(8deg);
+}
+
+/* 凶猛眼神 - 杏核形眼睛 */
 .lion-eye {
     position: absolute;
-    top: 28px;
-    width: 12px;
-    height: 14px;
+    top: 30px;
+    width: 14px;
+    height: 16px;
+    /* 深邃眼窝 */
     background:
-        radial-gradient(circle at 35% 35%,
-            #3a3a3a 0%, #2a2a2a 40%, #1a1a1a 70%, #0a0a0a 100%);
-    border-radius: 50% 50% 50% 50% / 45% 45% 55% 55%;
+        radial-gradient(ellipse at 38% 32%,
+            #2a2a2a 0%, #1a1a1a 35%, #0a0a0a 70%, #000000 100%);
+    /* 杏核形状 */
+    border-radius: 50% 50% 48% 48% / 45% 45% 55% 55%;
     box-shadow:
-        inset -2px -2px 4px rgba(0,0,0,0.8),
-        inset 1px 1px 2px rgba(255,255,255,0.3),
-        0 2px 4px rgba(0,0,0,0.6);
+        inset -3px -3px 6px rgba(0,0,0,0.85),
+        inset 2px 2px 3px rgba(255,255,255,0.15),
+        0 3px 6px rgba(0,0,0,0.7);
 }
 
 .lion-eye.left {
-    left: 22px;
+    left: 24px;
 }
 
 .lion-eye.right {
-    right: 22px;
+    right: 24px;
 }
 
-/* Eye highlight - alert gaze */
+/* 炯炯有神的目光高光 */
 .lion-eye::before {
     content: '';
     position: absolute;
-    top: 3px;
-    left: 3px;
-    width: 4px;
-    height: 4px;
-    background: radial-gradient(circle,
-        rgba(255,255,255,0.8) 0%,
-        rgba(255,255,255,0.4) 50%,
-        transparent 100%);
+    top: 4px;
+    left: 4px;
+    width: 5px;
+    height: 5px;
+    background:
+        radial-gradient(circle,
+            rgba(255,255,255,0.9) 0%,
+            rgba(255,255,255,0.5) 45%,
+            transparent 100%);
     border-radius: 50%;
 }
 
-/* Nose - prominent and strong */
+/* 鼻梁 - 宽厚突出 */
 .lion-nose {
     position: absolute;
-    top: 45px;
+    top: 48px;
     left: 50%;
     transform: translateX(-50%);
-    width: 18px;
-    height: 14px;
+    width: 20px;
+    height: 16px;
+    /* 青灰色鼻梁 */
     background:
         linear-gradient(180deg,
-            #5a5a5a 0%, #4a4a4a 50%, #3a3a3a 100%);
-    border-radius: 50% 50% 45% 45% / 35% 35% 65% 65%;
+            #5f6a75 0%, #545e68 45%, #4b525e 100%);
+    border-radius: 50% 50% 46% 46% / 38% 38% 62% 62%;
     box-shadow:
-        inset -3px -2px 5px rgba(0,0,0,0.6),
-        inset 2px 1px 3px rgba(255,255,255,0.2),
-        0 3px 6px rgba(0,0,0,0.5);
+        inset -4px -3px 7px rgba(0,0,0,0.65),
+        inset 3px 2px 5px rgba(255,255,255,0.15),
+        0 4px 8px rgba(0,0,0,0.6);
 }
 
-/* Nostrils */
+/* 鼻孔 */
 .lion-nose::before,
 .lion-nose::after {
     content: '';
     position: absolute;
-    bottom: 3px;
-    width: 4px;
-    height: 5px;
-    background: radial-gradient(ellipse,
-        #1a1a1a 0%, #000000 70%);
+    bottom: 4px;
+    width: 5px;
+    height: 6px;
+    background:
+        radial-gradient(ellipse,
+            #0a0a0a 0%, #000000 100%);
     border-radius: 50%;
-    box-shadow: inset 0 -1px 2px rgba(0,0,0,0.8);
+    box-shadow:
+        inset 0 -2px 3px rgba(0,0,0,0.9),
+        0 1px 2px rgba(0,0,0,0.5);
 }
 
 .lion-nose::before {
-    left: 3px;
+    left: 4px;
 }
 
 .lion-nose::after {
-    right: 3px;
+    right: 4px;
 }
 
-/* Mouth - powerful and majestic */
+/* 嘴部 - 雄狮张口咆哮 / 雌狮闭口沉稳 */
 .lion-mouth {
     position: absolute;
-    top: 52px;
+    top: 56px;
     left: 50%;
     transform: translateX(-50%);
-    width: 40px;
-    height: 20px;
+    width: 44px;
+    height: 22px;
+    /* 口腔深邃黑暗 */
     background:
         radial-gradient(ellipse at top,
-            #3a3a3a 0%, #2a2a2a 40%, #1a1a1a 100%);
-    border-radius: 50% 50% 50% 50% / 30% 30% 70% 70%;
+            #2a2a2a 0%, #1a1a1a 45%, #0a0a0a 100%);
+    border-radius: 50% 50% 52% 52% / 32% 32% 68% 68%;
     box-shadow:
-        inset 0 -5px 10px rgba(0,0,0,0.8),
-        inset 0 2px 5px rgba(255,255,255,0.1);
+        inset 0 -6px 12px rgba(0,0,0,0.85),
+        inset 0 3px 6px rgba(255,255,255,0.08);
 }
 
-/* Teeth details */
+/* 雄狮张口 */
+.lion-mouth.open {
+    height: 28px;
+    top: 54px;
+    border-radius: 50% 50% 55% 55% / 28% 28% 72% 72%;
+}
+
+/* 锋利獠牙 */
 .lion-teeth {
     position: absolute;
-    top: 55px;
+    top: 58px;
     left: 50%;
     transform: translateX(-50%);
-    width: 35px;
-    height: 8px;
+    width: 38px;
+    height: 10px;
+    /* 象牙白牙齿 */
     background:
         linear-gradient(90deg,
-            transparent 0%, transparent 10%,
-            rgba(220,220,220,0.9) 12%, rgba(200,200,200,0.9) 18%,
-            transparent 20%, transparent 30%,
-            rgba(220,220,220,0.9) 32%, rgba(200,200,200,0.9) 38%,
-            transparent 40%, transparent 60%,
-            rgba(220,220,220,0.9) 62%, rgba(200,200,200,0.9) 68%,
-            transparent 70%, transparent 80%,
-            rgba(220,220,220,0.9) 82%, rgba(200,200,200,0.9) 88%,
-            transparent 90%, transparent 100%);
-    box-shadow: 0 2px 3px rgba(0,0,0,0.4);
+            transparent 0%, transparent 8%,
+            rgba(235,235,230,0.95) 10%, rgba(220,220,215,0.95) 15%,
+            transparent 17%, transparent 28%,
+            rgba(235,235,230,0.95) 30%, rgba(220,220,215,0.95) 35%,
+            transparent 37%, transparent 48%,
+            rgba(235,235,230,0.95) 50%, rgba(220,220,215,0.95) 55%,
+            transparent 57%, transparent 68%,
+            rgba(235,235,230,0.95) 70%, rgba(220,220,215,0.95) 75%,
+            transparent 77%, transparent 88%,
+            rgba(235,235,230,0.95) 90%, rgba(220,220,215,0.95) 95%,
+            transparent 97%);
+    box-shadow:
+        0 2px 4px rgba(0,0,0,0.5),
+        0 1px 2px rgba(255,255,255,0.3);
 }
 
-/* Ears */
+/* 雌狮牙齿 - subtle不显露 */
+.lion-teeth.subtle {
+    opacity: 0.3;
+    height: 6px;
+}
+
+/* 雄狮舌尖 - 微翘 */
+.lion-tongue {
+    position: absolute;
+    top: 64px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 16px;
+    height: 12px;
+    background:
+        radial-gradient(ellipse at top,
+            #a87070 0%, #986060 50%, #885050 100%);
+    border-radius: 50% 50% 45% 45% / 40% 40% 60% 60%;
+    box-shadow:
+        inset -2px -2px 4px rgba(0,0,0,0.5),
+        inset 1px 1px 2px rgba(255,200,200,0.3),
+        0 2px 4px rgba(0,0,0,0.6);
+}
+
+/* 舌尖微翘 */
+.lion-tongue::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 6px;
+    background: #885050;
+    border-radius: 50%;
+}
+
+/* ===== 耳朵 ===== */
 .lion-ear {
     position: absolute;
-    top: 8px;
-    width: 20px;
-    height: 22px;
+    top: 10px;
+    width: 22px;
+    height: 25px;
+    /* 青灰色花岗岩耳朵 */
     background:
-        linear-gradient(45deg,
-            #9a9a9a 0%, #ababab 40%, #959595 100%);
-    border-radius: 50% 50% 20% 20% / 60% 60% 40% 40%;
+        linear-gradient(48deg,
+            #7a8590 0%, #8a95a0 35%, #7a8590 100%);
+    border-radius: 50% 50% 22% 22% / 62% 62% 38% 38%;
     box-shadow:
-        inset -4px -3px 8px rgba(0,0,0,0.4),
-        inset 3px 2px 6px rgba(255,255,255,0.3),
-        2px 3px 8px rgba(0,0,0,0.4);
+        inset -5px -4px 10px rgba(0,0,0,0.45),
+        inset 4px 3px 8px rgba(255,255,255,0.2),
+        3px 4px 10px rgba(0,0,0,0.5);
 }
 
 .lion-ear.left {
-    left: 5px;
-    transform: rotate(-25deg);
+    left: 6px;
+    transform: rotate(-28deg);
 }
 
 .lion-ear.right {
-    right: 5px;
-    transform: rotate(25deg);
+    right: 6px;
+    transform: rotate(28deg);
 }
 
-/* Inner ear detail */
+/* 内耳细节 */
 .lion-ear::before {
     content: '';
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 60%;
-    height: 65%;
+    width: 62%;
+    height: 68%;
     background:
         radial-gradient(ellipse,
-            rgba(70,70,70,0.6) 0%,
-            rgba(80,80,80,0.4) 50%,
-            transparent 80%);
+            rgba(60,68,75,0.65) 0%,
+            rgba(70,78,85,0.45) 50%,
+            transparent 82%);
     border-radius: 50%;
 }
 
-/* Tail - curled and majestic */
+/* ===== 尾巴 - 贴腿弯曲 ===== */
 .lion-tail {
     position: absolute;
-    bottom: 60px;
-    right: -5px;
-    width: 45px;
-    height: 60px;
+    bottom: 65px;
+    right: -6px;
+    width: 50px;
+    height: 65px;
+    /* 青灰色花岗岩尾巴 */
     background:
+        /* 细砂质感 */
+        repeating-linear-gradient(135deg,
+            transparent 0px, rgba(0,0,0,0.02) 0.5px,
+            transparent 1px, transparent 6px),
+        /* 青灰色渐变 */
         linear-gradient(135deg,
-            #959595 0%, #a5a5a5 30%, #8a8a8a 70%, #7a7a7a 100%);
-    border-radius: 60% 40% 30% 70% / 40% 50% 50% 60%;
-    transform: rotate(-15deg);
+            #6b7580 0%, #7a8590 28%, #6b7580 68%, #5f6a75 100%);
+    border-radius: 62% 38% 32% 68% / 42% 52% 48% 58%;
+    transform: rotate(-18deg);
     box-shadow:
-        inset -5px -5px 12px rgba(0,0,0,0.4),
-        inset 3px 3px 10px rgba(255,255,255,0.25),
-        3px 5px 12px rgba(0,0,0,0.45);
+        inset -6px -6px 14px rgba(0,0,0,0.48),
+        inset 4px 4px 12px rgba(255,255,255,0.18),
+        4px 6px 14px rgba(0,0,0,0.5);
     z-index: 1;
 }
 
-/* Tail tuft */
-.lion-tail::after {
-    content: '';
+/* 尾端卷云形纹路 */
+.tail-tuft {
     position: absolute;
-    bottom: -8px;
-    right: 5px;
-    width: 22px;
-    height: 22px;
+    bottom: -10px;
+    right: 6px;
+    width: 26px;
+    height: 26px;
+    /* 深色尾穗 */
     background:
+        /* 蓬松质感 */
+        repeating-radial-gradient(circle,
+            transparent 0px, rgba(0,0,0,0.15) 1px,
+            transparent 2px, transparent 5px),
+        /* 青灰色尾穗 */
         radial-gradient(circle,
-            rgba(120,120,120,0.8) 0%,
-            rgba(110,110,110,0.6) 40%,
-            rgba(100,100,100,0.4) 70%,
-            transparent 90%);
+            rgba(85,95,105,0.85) 0%,
+            rgba(75,85,95,0.65) 38%,
+            rgba(65,75,85,0.45) 68%,
+            transparent 92%);
     border-radius: 50%;
+    box-shadow:
+        inset -3px -3px 6px rgba(0,0,0,0.5),
+        0 3px 6px rgba(0,0,0,0.5);
 }
 
 .entrance-door {
