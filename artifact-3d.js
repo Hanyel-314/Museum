@@ -417,9 +417,9 @@ class Artifact3DRenderer {
             }
         );
 
-        // Classic gold museum frame
-        const frameThickness = 0.18;
-        const frameDepth = 0.12;
+        // Classic gold museum frame (refined thickness to match painting proportions)
+        const frameThickness = 0.12;
+        const frameDepth = 0.1;
         const frameMaterial = new THREE.MeshStandardMaterial({
             color: 0xDAA520, // Gold
             metalness: 0.7,
@@ -427,25 +427,25 @@ class Artifact3DRenderer {
         });
 
         // Frame pieces for landscape painting (canvas 2.3x1.85)
-        const topFrame = new THREE.BoxGeometry(2.66, frameThickness, frameDepth);
-        const bottomFrame = new THREE.BoxGeometry(2.66, frameThickness, frameDepth);
-        const leftFrame = new THREE.BoxGeometry(frameThickness, 2.21, frameDepth);
-        const rightFrame = new THREE.BoxGeometry(frameThickness, 2.21, frameDepth);
+        const topFrame = new THREE.BoxGeometry(2.54, frameThickness, frameDepth);
+        const bottomFrame = new THREE.BoxGeometry(2.54, frameThickness, frameDepth);
+        const leftFrame = new THREE.BoxGeometry(frameThickness, 2.09, frameDepth);
+        const rightFrame = new THREE.BoxGeometry(frameThickness, 2.09, frameDepth);
 
         const top = new THREE.Mesh(topFrame, frameMaterial);
-        top.position.set(0, 1.015, -0.06);
+        top.position.set(0, 0.985, -0.06);
         group.add(top);
 
         const bottom = new THREE.Mesh(bottomFrame, frameMaterial);
-        bottom.position.set(0, -1.015, -0.06);
+        bottom.position.set(0, -0.985, -0.06);
         group.add(bottom);
 
         const left = new THREE.Mesh(leftFrame, frameMaterial);
-        left.position.set(-1.24, 0, -0.06);
+        left.position.set(-1.21, 0, -0.06);
         group.add(left);
 
         const right = new THREE.Mesh(rightFrame, frameMaterial);
-        right.position.set(1.24, 0, -0.06);
+        right.position.set(1.21, 0, -0.06);
         group.add(right);
 
         group.scale.set(0.9, 0.9, 0.9);
